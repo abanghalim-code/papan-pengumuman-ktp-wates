@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#15365b">
+  <title>Papan Pengumuman Digital KTP-EL | Kecamatan Wates</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="public-page">
+  <main class="board">
+    <header class="board-header">
+      <div class="brand-mark" aria-hidden="true">W</div>
+      <div class="brand-copy">
+        <p class="eyebrow">PEMERINTAH KABUPATEN BLITAR</p>
+        <h1>PAPAN PENGUMUMAN DIGITAL</h1>
+        <p class="subheading">KANTOR KECAMATAN WATES</p>
+      </div>
+      <div class="live-indicator"><span></span> INFORMASI PELAYANAN</div>
+    </header>
+
+    <section class="intro">
+      <p class="eyebrow">INFORMASI PELAYANAN ADMINISTRASI KEPENDUDUKAN</p>
+      <h2>Status Pelayanan Pencetakan KTP-EL</h2>
+      <p class="intro-note">Silakan perhatikan informasi ketersediaan blanko dan kondisi jaringan sebelum mengajukan pencetakan.</p>
+    </section>
+
+    <section class="status-grid" aria-label="Status pelayanan">
+      <article class="status-card status-card-wide">
+        <div class="card-icon" aria-hidden="true">▣</div>
+        <div class="card-content">
+          <p class="card-label">Ketersediaan Keping KTP</p>
+          <p id="ktp-status" class="status-value status-warning">Menunggu Pengiriman</p>
+        </div>
+        <span id="ktp-pill" class="pill pill-warning">MENUNGGU PENGIRIMAN</span>
+      </article>
+
+      <article class="status-card">
+        <div class="card-icon" aria-hidden="true">▤</div>
+        <div class="card-content">
+          <p class="card-label">Jumlah Keping KTP</p>
+          <p id="ktp-quantity" class="quantity-value">100 <small>Buah</small></p>
+        </div>
+      </article>
+
+      <article class="status-card">
+        <div class="card-icon" aria-hidden="true">⌁</div>
+        <div class="card-content">
+          <p class="card-label">Kondisi Jaringan Internet</p>
+          <p id="internet-status" class="status-value status-normal">Normal</p>
+        </div>
+        <span id="internet-pill" class="pill pill-normal">NORMAL</span>
+      </article>
+
+      <article class="status-card">
+        <div class="card-icon" aria-hidden="true">◎</div>
+        <div class="card-content">
+          <p class="card-label">Kondisi Jaringan SIAK</p>
+          <p id="siak-status" class="status-value status-normal">Normal</p>
+        </div>
+        <span id="siak-pill" class="pill pill-normal">NORMAL</span>
+      </article>
+    </section>
+
+    <section class="notice-panel">
+      <div class="notice-heading"><span class="notice-symbol">i</span><h2>Ketentuan Pencetakan KTP-EL</h2></div>
+      <p>Pencetakan KTP yang dapat dilaksanakan di Kantor Kecamatan Wates adalah <strong>pencetakan KTP untuk pemula</strong>.</p>
+      <p>Untuk pengurusan KTP karena <strong>hilang atau rusak</strong>, silakan datang ke <strong>Dinas Kependudukan dan Pencatatan Sipil Kabupaten Blitar</strong>.</p>
+    </section>
+
+    <section class="contact-panel">
+      <div class="contact-icon" aria-hidden="true">☎</div>
+      <div>
+        <p class="card-label">Informasi lebih lanjut</p>
+        <h2>Mas Iwan</h2>
+        <a href="tel:+6282141809931">+62 821-4180-9931</a>
+      </div>
+      <a class="contact-action" href="https://wa.me/6282141809931" target="_blank" rel="noopener">Hubungi</a>
+    </section>
+
+    <footer class="board-footer">
+      <p>TERIMA KASIH ATAS KUNJUNGAN ANDA</p>
+      <p id="updated-at">Pembaruan data: menggunakan informasi awal</p>
+    </footer>
+    <p id="connection-message" class="connection-message" role="status">Menampilkan informasi awal. Data akan diperbarui otomatis setelah koneksi database diaktifkan.</p>
+  </main>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
