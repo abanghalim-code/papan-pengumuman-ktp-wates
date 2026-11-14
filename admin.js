@@ -1,27 +1,14 @@
 
 (() => {
-  const config = window.APP_CONFIG || {};
-  const endpoint = config.API_URL || "";
-
+  const endpoint = (window.APP_CONFIG || {}).API_URL || "";
   const form = document.getElementById("admin-form");
   const message = document.getElementById("save-message");
   const button = form.querySelector('button[type="submit"]');
 
-  const allowedOperators = [
-    "udin",
-    "hari",
-    "fatkhur",
-    "enik"
-  ];
+  const operators = ["udin", "hari", "fatkhur", "enik"];
 
-  form.addEventListener("submit", async (event) => {
+  form.addEventListener("submit", (event) => {
     event.preventDefault();
-
-    if (!endpoint || endpoint.includes("TEMPEL_URL")) {
-      message.textContent = "URL database belum terpasang.";
-      message.className = "save-message error";
-      return;
-    }
 
     const payload = {
       token: document.getElementById("admin-token").value.trim(),
@@ -32,56 +19,82 @@
       siak: form.elements.siak.value
     };
 
-    if (!allowedOperators.includes(payload.by)) {
-      message.textContent = "Silakan pilih nama petugas.";
-      message.className = "save-message error";
+    if (!endpoint) {
+      message.textContent = "URL database belum terpasang.";
       return;
     }
 
-    if (!payload.token) {
-      message.textContent = "Kode akses admin wajib diisi.";
-      message.className = "save-message error";
+    if (!operators.includes(payload.by) || !payload.token) {
+      message.textContent = "Petugas dan kode akses wajib diisi.";
       return;
     }
 
     button.disabled = true;
-    button.textContent = "Menyimpan...";
+    button.textContent = "Mengirim...";
+    message.textContent = "Mengirim data ke database...";
 
-    message.textContent = "Sedang mengirim data ke database...";
-    message.className = "save-message";
+    const frame = document.createElement("iframe");
+    frame.name = "ktp-save-frame";
+    frame.hidden = true;
+    document.body.appendChild(frame);
 
-    try {
-      const body = new URLSearchParams(payload);
+    const postForm = document.createElement("form");
+    postForm.method = "POST";
+    postForm.action = endpoint;
+    postForm.target = frame.name;
+    postForm.style.display = "none";
 
-      await fetch(endpoint, {
-        method: "POST",
-        mode: "no-cors",
-        redirect: "follow",
-        headers: {
-          "Content-Type":
-            "application/x-www-form-urlencoded;charset=UTF-8"
-        },
-        body: body
-      });
+    Object.entries(payload).forEach(([name, value]) => {
+      const input = document.createElement("input");
+      input.type = "hidden";
+      input.name = name;
+      input.value = String(value);
+      postForm.appendChild(input);
+    });
 
-      message.textContent =
-        "Permintaan dikirim. Silakan periksa Google Sheets untuk memastikan data tersimpan.";
+    let submitted = false;
+    let finished = false;
+    let timeoutId;
 
-      message.className = "save-message success";
+    function finish(success, text) {
+      if (finished) return;
+      finished = true;
+      clearTimeout(timeoutId);
+      frame.removeEventListener("load", onLoad);
+      postForm.remove();
+      frame.remove();
 
-      document.getElementById("admin-token").value = "";
-
-    } catch (error) {
-      message.textContent =
-        "Gagal mengirim data. Periksa koneksi internet.";
-
-      message.className = "save-message error";
-
-      console.error(error);
-
-    } finally {
       button.disabled = false;
       button.textContent = "Simpan perubahan";
+      message.textContent = text;
+      message.className = success
+        ? "save-message success"
+        : "save-message error";
+
+      if (success) {
+        document.getElementById("admin-token").value = "";
+      }
     }
+
+    function onLoad() {
+      if (!submitted) return;
+      finish(
+        true,
+        "POST selesai dikirim. Periksa Google Sheets untuk memastikan data tersimpan."
+      );
+    }
+
+    frame.addEventListener("load", onLoad);
+    document.body.appendChild(postForm);
+
+    timeoutId = setTimeout(() => {
+      finish(
+        false,
+        "Tidak ada konfirmasi dari server. Periksa riwayat eksekusi Apps Script."
+      );
+    }, 20000);
+
+    submitted = true;
+    postForm.submit();
   });
 })();
