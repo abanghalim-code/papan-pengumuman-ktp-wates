@@ -2,89 +2,63 @@
 <html lang="id">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#15365b">
-  <title>Papan Pengumuman Digital KTP-EL | Kecamatan Wates</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#B7E94A">
+  <title>REPUBLIK MELON | Kecamatan Wates</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="public-page">
-  <main class="board">
-    <header class="board-header">
-      <div class="brand-mark" aria-hidden="true">W</div>
-      <div class="brand-copy">
-        <p class="eyebrow">PEMERINTAH KABUPATEN BLITAR</p>
-        <h1>PAPAN PENGUMUMAN DIGITAL</h1>
-        <p class="subheading">KANTOR KECAMATAN WATES</p>
+  <main class="melon-board">
+    <header class="topbar">
+      <div class="identity">
+        <div class="crest-wrap melon-logo"><img src="assets/logo-republik-melon.png" alt="Logo REPUBLIK MELON Kecamatan Wates"></div>
+        <div class="identity-copy"><div class="govline">PEMERINTAH KABUPATEN BLITAR</div><h1>REPUBLIK <span>MELON</span></h1><div class="office-line">PAPAN INFORMASI DIGITAL · KECAMATAN WATES</div></div>
       </div>
-      <div class="live-indicator"><span></span> INFORMASI PELAYANAN</div>
+      <div class="clockbox" aria-label="Tanggal dan waktu real time">
+        <div class="clock-day" id="clock-day">SENIN · PON</div>
+        <div class="clock-date" id="clock-date">14 November 2026</div>
+        <div class="clock-time" id="clock-time">00:00:00</div>
+      </div>
     </header>
 
-    <section class="intro">
-      <p class="eyebrow">INFORMASI PELAYANAN ADMINISTRASI KEPENDUDUKAN</p>
-      <h2>Status Pelayanan Pencetakan KTP-EL</h2>
-      <p class="intro-note">Silakan perhatikan informasi ketersediaan blanko dan kondisi jaringan sebelum mengajukan pencetakan.</p>
+    <section class="main-grid">
+      <section class="service-area" aria-label="Informasi pelayanan">
+        <div class="section-heading"><span class="heading-mark"></span><div><p class="section-kicker">PUSAT INFORMASI MASYARAKAT</p><h2>INFORMASI PELAYANAN</h2></div><span class="live-chip"><i></i> DATA TERKINI</span></div>
+        <div class="service-hero">
+          <div class="service-title"><span class="mini-label">ADMINISTRASI KEPENDUDUKAN</span><h3>Pelayanan Pencetakan<br>KTP Elektronik</h3><p>Informasi ketersediaan blanko dan kesiapan sistem pelayanan Kecamatan Wates.</p></div>
+          <div class="availability"><div class="availability-label">STATUS KETERSEDIAAN KTP-EL</div><div id="ktp-status" class="availability-value">Menunggu Pengiriman</div><div class="availability-bottom"><span id="ktp-pill" class="status-pill warning">MENUNGGU PENGIRIMAN</span><strong id="ktp-quantity">100 <small>KEPING</small></strong></div></div>
+        </div>
+        <div class="network-grid">
+          <article class="network-card"><div class="network-symbol">⌁</div><div><span class="card-caption">JARINGAN INTERNET</span><strong id="internet-status" class="network-state normal">Normal</strong></div><span id="internet-pill" class="tiny-pill normal">NORMAL</span></article>
+          <article class="network-card"><div class="network-symbol">◎</div><div><span class="card-caption">SISTEM SIAK</span><strong id="siak-status" class="network-state normal">Normal</strong></div><span id="siak-pill" class="tiny-pill normal">NORMAL</span></article>
+        </div>
+        <div class="service-note"><b>INFO PENTING</b><span>Pencetakan di Kecamatan Wates diperuntukkan bagi KTP-EL pemula. Pengurusan KTP hilang atau rusak dilayani di Dispendukcapil Kabupaten Blitar.</span></div>
+      </section>
+
+      <aside class="official-area" aria-label="Status pejabat kecamatan">
+        <div class="section-heading compact"><span class="heading-mark"></span><div><p class="section-kicker">PELAYANAN DAN KOORDINASI</p><h2>STATUS PEJABAT</h2></div></div>
+        <div class="official-list">
+          <div class="official-row"><span class="official-role">Camat</span><strong id="camat-status" class="official-status on">ADA</strong></div>
+          <div class="official-row"><span class="official-role">Sekretaris Kecamatan</span><strong id="sekcam-status" class="official-status on">ADA</strong></div>
+          <div class="official-row"><span class="official-role">Kasi Pemerintahan</span><strong id="kasipem-status" class="official-status on">ADA</strong></div>
+          <div class="official-row"><span class="official-role">Kasi Pemberdayaan Masyarakat dan Desa</span><strong id="kasi_pmd-status" class="official-status on">ADA</strong></div>
+          <div class="official-row"><span class="official-role">Kasi Kesejahteraan Sosial</span><strong id="kasi_kesos-status" class="official-status on">ADA</strong></div>
+          <div class="official-row"><span class="official-role">Kasi Ketenteraman dan Ketertiban</span><strong id="kasi_trantib-status" class="official-status on">ADA</strong></div>
+        </div>
+        <div class="official-foot">Status keberadaan pejabat diperbarui oleh admin kecamatan.</div>
+      </aside>
     </section>
 
-    <section class="status-grid" aria-label="Status pelayanan">
-      <article class="status-card status-card-wide">
-        <div class="card-icon" aria-hidden="true">▣</div>
-        <div class="card-content">
-          <p class="card-label">Ketersediaan Keping KTP</p>
-          <p id="ktp-status" class="status-value status-warning">Menunggu Pengiriman</p>
-        </div>
-        <span id="ktp-pill" class="pill pill-warning">MENUNGGU PENGIRIMAN</span>
-      </article>
-
-      <article class="status-card">
-        <div class="card-icon" aria-hidden="true">▤</div>
-        <div class="card-content">
-          <p class="card-label">Jumlah Keping KTP</p>
-          <p id="ktp-quantity" class="quantity-value">100 <small>Buah</small></p>
-        </div>
-      </article>
-
-      <article class="status-card">
-        <div class="card-icon" aria-hidden="true">⌁</div>
-        <div class="card-content">
-          <p class="card-label">Kondisi Jaringan Internet</p>
-          <p id="internet-status" class="status-value status-normal">Normal</p>
-        </div>
-        <span id="internet-pill" class="pill pill-normal">NORMAL</span>
-      </article>
-
-      <article class="status-card">
-        <div class="card-icon" aria-hidden="true">◎</div>
-        <div class="card-content">
-          <p class="card-label">Kondisi Jaringan SIAK</p>
-          <p id="siak-status" class="status-value status-normal">Normal</p>
-        </div>
-        <span id="siak-pill" class="pill pill-normal">NORMAL</span>
-      </article>
-    </section>
-
-    <section class="notice-panel">
-      <div class="notice-heading"><span class="notice-symbol">i</span><h2>Ketentuan Pencetakan KTP-EL</h2></div>
-      <p>Pencetakan KTP yang dapat dilaksanakan di Kantor Kecamatan Wates adalah <strong>pencetakan KTP untuk pemula</strong>.</p>
-      <p>Untuk pengurusan KTP karena <strong>hilang atau rusak</strong>, silakan datang ke <strong>Dinas Kependudukan dan Pencatatan Sipil Kabupaten Blitar</strong>.</p>
-    </section>
-
-    <section class="contact-panel">
-      <div class="contact-icon" aria-hidden="true">☎</div>
-      <div>
-        <p class="card-label">Informasi lebih lanjut</p>
-        <h2>Mas Iwan</h2>
-        <a href="tel:+6282141809931">+62 821-4180-9931</a>
+    <section class="market-area" aria-label="Informasi hari pasaran pasar">
+      <div class="market-heading"><div><p class="section-kicker">AGENDA PASAR WILAYAH KECAMATAN WATES</p><h2>INFO PASARAN</h2></div><span class="market-subtitle">Jadwal pasaran masyarakat</span></div>
+      <div class="market-grid">
+        <article class="market-card"><img src="assets/pasar-wates.jpg" alt="Foto Pasar Desa Wates"><div class="market-overlay"><span class="market-name">PASAR DESA WATES</span><strong>WAGE</strong><span class="market-coordinate">-8.252800, 112.377769</span></div></article>
+        <article class="market-card"><img src="assets/pasar-bantengan.jpg" alt="Foto Pasar Hewan Bantengan"><div class="market-overlay"><span class="market-name">PASAR HEWAN BANTENGAN</span><strong>KLIWON <em>•</em> PAHING</strong><span class="market-coordinate">-8.268670, 112.326074</span></div></article>
       </div>
-      <a class="contact-action" href="https://wa.me/6282141809931" target="_blank" rel="noopener">Hubungi</a>
     </section>
 
-    <footer class="board-footer">
-      <p>TERIMA KASIH ATAS KUNJUNGAN ANDA</p>
-      <p id="updated-at">Pembaruan data: menggunakan informasi awal</p>
-    </footer>
-    <p id="connection-message" class="connection-message" role="status">Menampilkan informasi awal. Data akan diperbarui otomatis setelah koneksi database diaktifkan.</p>
+    <footer class="bottomline"><div class="motto">INFORMASI JELAS · PELAYANAN BERKUALITAS</div><div class="contact-info"><span>INFORMASI LEBIH LANJUT</span> <strong>Mas Iwan</strong> <a href="tel:+6282141809931">+62 821-4180-9931</a></div><div class="update-stack"><div id="updated-at" class="updated-at">Terakhir diperbarui —</div><div id="connection-message" class="connection-message">Menghubungkan database…</div></div></footer>
   </main>
-  <script src="config.js"></script>
-  <script src="app.js"></script>
+  <script src="config.js"></script><script src="app.js"></script>
 </body>
 </html>
