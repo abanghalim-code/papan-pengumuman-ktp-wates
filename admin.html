@@ -1,1 +1,161 @@
-<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#B7E94A"><title>Admin REPUBLIK MELON | Kecamatan Wates</title><link rel="stylesheet" href="styles.css"></head><body class="admin-page"><main class="admin-shell"><header class="admin-header"><a href="index.html" class="back-link">← Kembali ke REPUBLIK MELON</a><p class="eyebrow">KECAMATAN WATES · KABUPATEN BLITAR</p><h1>Admin REPUBLIK MELON</h1><p>Kelola informasi pelayanan dan status keberadaan pejabat kecamatan.</p></header><form id="admin-form" class="admin-form"><div class="form-field form-field-full"><label for="operator">Nama petugas penginput</label><select id="operator" name="by" required><option value="">Pilih petugas</option><option value="udin">Udin</option><option value="hari">Hari</option><option value="fatkhur">Fatkhur</option><option value="enik">Enik</option></select></div><div class="form-field"><label for="ktp-availability">Ketersediaan KTP-EL</label><select id="ktp-availability" name="ktp_availability"><option>Menunggu Pengiriman</option><option>Ada</option></select></div><div class="form-field"><label for="quantity">Jumlah keping KTP</label><input id="quantity" name="quantity" type="number" min="0" max="100000" value="100" required></div><div class="form-field"><label for="internet">Jaringan internet</label><select id="internet" name="internet"><option>Normal</option><option>Gangguan</option></select></div><div class="form-field"><label for="siak">Sistem SIAK</label><select id="siak" name="siak"><option>Normal</option><option>Gangguan</option></select></div><div class="form-field form-field-full"><h2>Status pejabat kecamatan</h2><small>Pilih ADA DI KANTOR atau KELUAR untuk setiap pejabat.</small></div><div class="form-field"><label for="camat">Camat</label><select id="camat" name="camat_status"><option>ADA</option><option>KELUAR</option></select></div><div class="form-field"><label for="sekcam">Sekretaris Kecamatan</label><select id="sekcam" name="sekcam_status"><option>ADA</option><option>KELUAR</option></select></div><div class="form-field"><label for="kasipem">Kasi Pemerintahan</label><select id="kasipem" name="kasipem_status"><option>ADA</option><option>KELUAR</option></select></div><div class="form-field"><label for="kasi_pmd">Kasi PMD</label><select id="kasi_pmd" name="kasi_pmd_status"><option>ADA</option><option>KELUAR</option></select></div><div class="form-field"><label for="kasi_kesos">Kasi Kesejahteraan Sosial</label><select id="kasi_kesos" name="kasi_kesos_status"><option>ADA</option><option>KELUAR</option></select></div><div class="form-field"><label for="kasi_trantib">Kasi Trantib</label><select id="kasi_trantib" name="kasi_trantib_status"><option>ADA</option><option>KELUAR</option></select></div><div class="form-field form-field-full"><label for="admin-token">Kode akses admin</label><input id="admin-token" name="token" type="password" autocomplete="current-password" placeholder="Masukkan kode akses admin" required><small>Jangan bagikan kode akses kepada masyarakat.</small></div><div class="form-field form-field-full"><button class="primary-button" type="submit">Simpan seluruh perubahan</button><p id="save-message" class="save-message" role="status"></p></div></form><aside class="admin-help"><strong>Catatan:</strong> Setelah perubahan Apps Script dipasang dan deployment diperbarui, setiap penyimpanan akan mencatat riwayat baru di Google Sheets.</aside></main><script src="config.js"></script><script src="admin.js"></script></body></html>
+
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#B7E94A">
+  <title>Admin REPUBLIK MELON | Kecamatan Wates</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="admin-page">
+<main class="admin-shell">
+
+<header class="admin-header">
+  <a href="index.html" class="back-link">
+    ← Kembali ke REPUBLIK MELON
+  </a>
+  <p class="eyebrow">KECAMATAN WATES · KABUPATEN BLITAR</p>
+  <h1>Admin REPUBLIK MELON</h1>
+  <p>Kelola informasi pelayanan dan status keberadaan pejabat kecamatan.</p>
+</header>
+
+<form id="admin-form" class="admin-form">
+
+  <div class="form-field form-field-full">
+    <label for="operator">Nama petugas penginput</label>
+    <select id="operator" name="by" required>
+      <option value="">Pilih petugas</option>
+      <option value="udin">Udin</option>
+      <option value="hari">Hari</option>
+      <option value="fatkhur">Fatkhur</option>
+      <option value="enik">Enik</option>
+    </select>
+  </div>
+
+  <div class="form-field">
+    <label for="ktp-availability">Ketersediaan KTP-EL</label>
+    <select id="ktp-availability" name="ktp_availability">
+      <option>Menunggu Pengiriman</option>
+      <option>Ada</option>
+    </select>
+  </div>
+
+  <div class="form-field">
+    <label for="quantity">Jumlah keping KTP</label>
+    <input id="quantity" name="quantity"
+      type="number" min="0" max="100000"
+      value="100" required>
+  </div>
+
+  <div class="form-field">
+    <label for="internet">Jaringan internet</label>
+    <select id="internet" name="internet">
+      <option>Normal</option>
+      <option>Gangguan</option>
+    </select>
+  </div>
+
+  <div class="form-field">
+    <label for="siak">Sistem SIAK</label>
+    <select id="siak" name="siak">
+      <option>Normal</option>
+      <option>Gangguan</option>
+    </select>
+  </div>
+
+  <div class="form-field form-field-full">
+    <h2>Status pejabat kecamatan</h2>
+    <small>Pilih ADA DI KANTOR atau KELUAR untuk setiap pejabat.</small>
+  </div>
+
+  <div class="form-field">
+    <label for="camat">Camat</label>
+    <select id="camat" name="camat_status">
+      <option>ADA</option>
+      <option>KELUAR</option>
+    </select>
+  </div>
+
+  <div class="form-field">
+    <label for="sekcam">Sekcam</label>
+    <select id="sekcam" name="sekcam_status">
+      <option>ADA</option>
+      <option>KELUAR</option>
+    </select>
+  </div>
+
+  <div class="form-field">
+    <label for="kasipem">Kasipem</label>
+    <select id="kasipem" name="kasipem_status">
+      <option>ADA</option>
+      <option>KELUAR</option>
+    </select>
+  </div>
+
+  <div class="form-field">
+    <label for="kasi_pmd">Kasi PMD</label>
+    <select id="kasi_pmd" name="kasi_pmd_status">
+      <option>ADA</option>
+      <option>KELUAR</option>
+    </select>
+  </div>
+
+  <div class="form-field">
+    <label for="kasi_kesos">Kasi Kesos</label>
+    <select id="kasi_kesos" name="kasi_kesos_status">
+      <option>ADA</option>
+      <option>KELUAR</option>
+    </select>
+  </div>
+
+  <div class="form-field">
+    <label for="kasi_trantib">Kasi Trantib</label>
+    <select id="kasi_trantib" name="kasi_trantib_status">
+      <option>ADA</option>
+      <option>KELUAR</option>
+    </select>
+  </div>
+
+  <div class="form-field form-field-full">
+    <label for="penyuluh_kb">Penyuluh KB</label>
+    <select id="penyuluh_kb" name="penyuluh_kb_status">
+      <option>ADA</option>
+      <option>KELUAR</option>
+    </select>
+  </div>
+
+  <div class="form-field form-field-full">
+    <label for="admin-token">Kode akses admin</label>
+    <input
+      id="admin-token"
+      name="token"
+      type="password"
+      autocomplete="current-password"
+      placeholder="Masukkan kode akses admin"
+      required>
+    <small>Jangan bagikan kode akses kepada masyarakat.</small>
+  </div>
+
+  <div class="form-field form-field-full">
+    <button class="primary-button" type="submit">
+      Simpan seluruh perubahan
+    </button>
+    <p id="save-message" class="save-message" role="status"></p>
+  </div>
+
+</form>
+
+<aside class="admin-help">
+  <strong>Catatan:</strong>
+  Setiap penyimpanan akan mencatat riwayat perubahan di Google Sheets.
+</aside>
+
+</main>
+
+<script src="config.js"></script>
+<script src="admin.js"></script>
+
+</body>
+</html>
