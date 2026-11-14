@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="id">
 <head>
@@ -17,6 +18,18 @@
     </header>
 
     <form id="admin-form" class="admin-form">
+
+      <div class="form-field form-field-full">
+        <label for="operator">Nama Petugas Penginput</label>
+        <select id="operator" name="by" required>
+          <option value="">Pilih nama petugas</option>
+          <option value="udin">Udin</option>
+          <option value="hari">Hari</option>
+          <option value="fatkhur">Fatkhur</option>
+          <option value="enik">Enik</option>
+        </select>
+      </div>
+
       <div class="form-field">
         <label for="ktp-availability">Ketersediaan keping KTP</label>
         <select id="ktp-availability" name="ktp_availability" required>
@@ -24,10 +37,13 @@
           <option value="Ada">Ada</option>
         </select>
       </div>
+
       <div class="form-field">
         <label for="quantity">Jumlah keping KTP (buah)</label>
-        <input id="quantity" name="quantity" type="number" min="0" max="100000" value="100" required>
+        <input id="quantity" name="quantity" type="number"
+          min="0" max="100000" value="100" required>
       </div>
+
       <div class="form-field">
         <label for="internet">Kondisi jaringan internet</label>
         <select id="internet" name="internet" required>
@@ -35,6 +51,7 @@
           <option value="Gangguan">Gangguan</option>
         </select>
       </div>
+
       <div class="form-field">
         <label for="siak">Kondisi jaringan SIAK</label>
         <select id="siak" name="siak" required>
@@ -42,21 +59,31 @@
           <option value="Gangguan">Gangguan</option>
         </select>
       </div>
+
       <div class="form-field form-field-full">
         <label for="admin-token">Kode akses admin</label>
-        <input id="admin-token" name="token" type="password" autocomplete="current-password" placeholder="Masukkan kode akses admin" required>
-        <small>Kode ini dibuat sendiri pada pengaturan Google Apps Script. Jangan dibagikan kepada masyarakat.</small>
+        <input id="admin-token" name="token" type="password"
+          autocomplete="current-password"
+          placeholder="Masukkan kode akses admin" required>
+        <small>Kode akses bersifat rahasia dan tidak boleh dibagikan kepada masyarakat.</small>
       </div>
+
       <div class="form-field form-field-full">
-        <button class="primary-button" type="submit">Simpan perubahan</button>
+        <button class="primary-button" type="submit">
+          Simpan perubahan
+        </button>
         <p id="save-message" class="save-message" role="status"></p>
       </div>
+
     </form>
 
     <aside class="admin-help">
-      <strong>Catatan:</strong> Setelah menekan Simpan, tunggu beberapa saat lalu buka halaman publik untuk memastikan data terbaru sudah tampil. Demi keamanan, jangan menaruh kode akses admin di file <code>config.js</code>.
+      <strong>Informasi:</strong>
+      Nama petugas dan waktu pembaruan akan dicatat otomatis
+      ke database setiap kali perubahan disimpan.
     </aside>
   </main>
+
   <script src="config.js"></script>
   <script src="admin.js"></script>
 </body>
