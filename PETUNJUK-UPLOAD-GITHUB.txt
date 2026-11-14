@@ -1,0 +1,11 @@
+REPUBLIK MELON – PEMBARUAN IKON DAN TATA LETAK
+
+Isi paket ini adalah satu folder proyek. Unggah/replace file pada repository GitHub dengan struktur folder yang sama.
+
+File halaman publik yang diperbarui: index.html dan styles.css.
+Ikon baru: assets/icon-internet.png dan assets/icon-siak.jpg.
+File app.js, config.js, admin.html, admin.js, dan Code.gs tetap disertakan agar paket dapat menggantikan versi proyek secara utuh.
+
+PENTING: config.js berisi URL Web App Apps Script yang sudah digunakan proyek. Jangan mengubah URL tersebut. Jangan mengubah atau menjalankan ulang setupSheet() hanya untuk pembaruan tampilan.
+
+Setelah upload ke GitHub, buka GitHub Pages dan lakukan hard refresh (Ctrl+F5).
