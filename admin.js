@@ -1,159 +1,162 @@
-<!doctype html>
-<html lang="id">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#A8D934">
-  <title>REPUBLIK MELON | Kecamatan Wates</title>
-  <link rel="stylesheet" href="styles-v2.css?v=2">
-  <style>
-    @media (min-width:761px) {
-      html, body {height:100%;}
-      .public-page {height:100vh; min-height:0; overflow:hidden;}
-      .melon-board {
-        height:100%; min-height:0; overflow:hidden;
-        display:flex; flex-direction:column;
-        gap:8px;
+
+/* =====================================================
+   REPUBLIK MELON
+   ADMIN PANEL - admin.js
+   Kecamatan Wates, Kabupaten Blitar
+   ===================================================== */
+
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("admin-form");
+  const saveButton = form
+    ? form.querySelector('button[type="submit"]')
+    : null;
+
+  const messageBox = document.getElementById("save-message");
+
+  // Ambil alamat API dari config.js
+  const API_URL = window.APP_CONFIG
+    ? window.APP_CONFIG.API_URL
+    : "";
+
+  // Tampilkan pesan
+  function showMessage(message, type) {
+    if (!messageBox) {
+      alert(message);
+      return;
+    }
+
+    messageBox.textContent = message;
+    messageBox.className = "save-message " + (type || "");
+    messageBox.style.display = "block";
+  }
+
+  // Atur kondisi tombol simpan
+  function setLoading(isLoading) {
+    if (!saveButton) return;
+
+    saveButton.disabled = isLoading;
+    saveButton.textContent = isLoading
+      ? "Menyimpan..."
+      : "Simpan Perubahan";
+  }
+
+  // Validasi awal
+  if (!form) {
+    console.error("Form admin-form tidak ditemukan.");
+    return;
+  }
+
+  if (!API_URL) {
+    showMessage(
+      "Alamat API belum ditemukan. Periksa file config.js.",
+      "error"
+    );
+    return;
+  }
+
+  // Proses penyimpanan
+  form.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const formData = new FormData(form);
+
+    const operator = String(formData.get("by") || "").trim();
+    const token = String(formData.get("token") || "").trim();
+    const quantity = String(formData.get("quantity") || "").trim();
+
+    // Validasi operator
+    if (!operator) {
+      showMessage("Silakan pilih nama operator.", "error");
+      return;
+    }
+
+    // Validasi password/token
+    if (!token) {
+      showMessage("Password admin wajib diisi.", "error");
+      return;
+    }
+
+    // Validasi jumlah KTP-EL
+    if (quantity !== "" && Number(quantity) < 0) {
+      showMessage("Jumlah KTP-EL tidak boleh negatif.", "error");
+      return;
+    }
+
+    // Konfirmasi penyimpanan
+    const confirmed = confirm(
+      "Apakah data REPUBLIK MELON akan disimpan?"
+    );
+
+    if (!confirmed) return;
+
+    // Susun data untuk dikirim ke Google Apps Script
+    const payload = new URLSearchParams();
+
+    payload.append("action", "save");
+
+    for (const [key, value] of formData.entries()) {
+      payload.append(key, String(value).trim());
+    }
+
+    setLoading(true);
+    showMessage("Sedang menyimpan data...", "loading");
+
+    try {
+      const response = await fetch(API_URL, {
+        method: "POST",
+        redirect: "follow",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+        },
+        body: payload.toString()
+      });
+
+      const responseText = await response.text();
+
+      let result;
+
+      try {
+        result = JSON.parse(responseText);
+      } catch (parseError) {
+        throw new Error(
+          "Respons server tidak valid. Periksa Google Apps Script."
+        );
       }
-      .main-grid {min-height:0; flex:1 1 0; align-items:stretch;}
-      .service-area, .official-area {min-height:0; height:100%; overflow:hidden;}
-      .official-area {display:grid;grid-template-rows:34px minmax(0,1fr);gap:5px;}
-      .official-list {display:grid;grid-template-rows:repeat(9,minmax(0,1fr));min-height:0;gap:1px;}
-      .official-row {min-height:0;padding:2px 5px;}
-      .official-photo, .official-avatar {width:clamp(40px,3.3vw,50px);height:clamp(40px,3.3vw,50px);min-width:clamp(40px,3.3vw,50px);}
-      .market-area {display:flex !important;flex:0 0 18%;min-height:105px;height:100%;overflow:hidden;}
-      .market-heading {flex:0 0 auto;min-height:20px;}
-      .market-grid {display:grid !important;flex:1 1 auto;min-height:0;grid-template-columns:repeat(2,minmax(0,1fr));}
-      .market-card {min-height:0;height:100%;}
-      .bottomline {min-height:26px;}
-    }
-    @media (min-width:761px) and (max-height:760px) {
-      .melon-board {gap:6px;padding:9px;}
-      .topbar {padding:6px 14px;}
-      .crest-wrap {width:58px;height:58px;}
-      .official-photo,.official-avatar {width:36px;height:36px;min-width:36px;}
-      .official-row {padding:1px 4px;}
-      .market-area {flex-basis:17%;min-height:95px;}
-    }
-    @media (max-width:760px) {
-      .market-area {display:flex !important;}
-      .market-grid {display:grid !important;}
-    }
-  </style>
-</head>
-<body class="public-page">
-  <main class="melon-board">
-    <header class="topbar">
-      <div class="identity">
-        <div class="crest-wrap melon-logo"><img src="assets/logo-republik-melon.png" alt="Logo REPUBLIK MELON Kecamatan Wates"></div>
-        <div class="identity-copy">
-          <div class="govline">PEMERINTAH KABUPATEN BLITAR</div>
-          <h1>REPUBLIK <span>MELON</span></h1>
-          <div class="office-line">PAPAN INFORMASI DIGITAL · KECAMATAN WATES</div>
-        </div>
-      </div>
-      <div class="clockbox" aria-label="Tanggal dan waktu real time">
-        <div class="clock-day" id="clock-day">SENIN · PON</div>
-        <div class="clock-date" id="clock-date">15 November 2026</div>
-        <div class="clock-time" id="clock-time">00:00:00</div>
-      </div>
-    </header>
 
-    <section class="official-area official-area-full" aria-label="Status sembilan pejabat Kecamatan Wates">
-      <div class="official-heading">
-        <div>
-          <h2>STATUS PEJABAT</h2>
-          <p class="official-subtitle">PEMERINTAH KABUPATEN BLITAR · KECAMATAN WATES</p>
-        </div>
-      </div>
-      <div class="official-list official-grid">
-        <article class="official-row">
-          <img class="official-photo" src="assets/pejabat/camat.png" alt="Foto Camat" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="official-avatar" hidden>CAM</span>
-          <span class="official-role">Camat</span><strong id="camat-status" class="official-status on">ADA</strong>
-        </article>
-        <article class="official-row">
-          <img class="official-photo" src="assets/pejabat/sekcam.png" alt="Foto Sekcam" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="official-avatar" hidden>SKC</span>
-          <span class="official-role">Sekcam</span><strong id="sekcam-status" class="official-status on">ADA</strong>
-        </article>
-        <article class="official-row">
-          <img class="official-photo" src="assets/pejabat/kasi_pem.png" alt="Foto Kasipem" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="official-avatar" hidden>KPM</span>
-          <span class="official-role">Kasipem</span><strong id="kasipem-status" class="official-status on">ADA</strong>
-        </article>
-        <article class="official-row">
-          <img class="official-photo" src="assets/pejabat/kasi_pmd.png" alt="Foto Kasi PMD" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="official-avatar" hidden>PMD</span>
-          <span class="official-role">Kasi PMD</span><strong id="kasi_pmd-status" class="official-status on">ADA</strong>
-        </article>
-        <article class="official-row">
-          <img class="official-photo" src="assets/pejabat/kasi_kesos.png" alt="Foto Kasi Kesos" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="official-avatar" hidden>KSO</span>
-          <span class="official-role">Kasi Kesos</span><strong id="kasi_kesos-status" class="official-status on">ADA</strong>
-        </article>
-        <article class="official-row">
-          <img class="official-photo" src="assets/pejabat/kasi_trantib.png" alt="Foto Kasi Trantib" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="official-avatar" hidden>TRB</span>
-          <span class="official-role">Kasi Trantib</span><strong id="kasi_trantib-status" class="official-status on">ADA</strong>
-        </article>
-        <article class="official-row">
-          <img class="official-photo" src="assets/pejabat/kasub_sunggram.png" alt="Foto Kasubag Sungram" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="official-avatar" hidden>SUN</span>
-          <span class="official-role">Kasubag Sungram</span><strong id="kasub_sunggram-status" class="official-status on">ADA</strong>
-        </article>
-        <article class="official-row">
-          <img class="official-photo" src="assets/pejabat/kasub_umpeg.png" alt="Foto Kasubag Umpeg" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="official-avatar" hidden>UMP</span>
-          <span class="official-role">Kasubag Umpeg</span><strong id="kasub_umpeg-status" class="official-status on">ADA</strong>
-        </article>
-        <article class="official-row">
-          <img class="official-photo" src="assets/pejabat/penyuluh_kb.png" alt="Foto Penyuluh KB" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="official-avatar" hidden>PKB</span>
-          <span class="official-role">Penyuluh KB</span><strong id="penyuluh_kb-status" class="official-status on">ADA</strong>
-        </article>
-      </div>
-    </section>
+      if (
+        result.ok === true ||
+        result.success === true
+      ) {
+        showMessage(
+          result.message || "Data berhasil disimpan.",
+          "success"
+        );
 
-    <section class="information-area" aria-label="Informasi pelayanan Kecamatan Wates">
-      <div class="information-heading">
-        <div>
-          <p class="section-kicker">INFORMASI LAYANAN KECAMATAN WATES</p>
-          <h2>INFORMASI PELAYANAN</h2>
-        </div>
-      </div>
-      <div class="information-table">
-        <div class="information-row">
-          <div class="information-label">KETERSEDIAAN KTP ELEKTRONIK</div>
-          <div class="information-value availability-inline">
-            <strong id="ktp-quantity">10 <small>KEPING</small></strong>
-            <span id="ktp-status" class="info-state waiting">Menunggu Pengiriman</span>
-          </div>
-        </div>
-        <div class="information-row">
-          <div class="information-label">JARINGAN INTERNET</div>
-          <div class="information-value"><strong id="internet-status" class="network-state normal">Normal</strong></div>
-        </div>
-        <div class="information-row">
-          <div class="information-label">JARINGAN SISTEM SIAK</div>
-          <div class="information-value"><strong id="siak-status" class="network-state warning">Gangguan</strong></div>
-        </div>
-        <div class="information-row information-description">
-          <div class="information-label">KETENTUAN PELAYANAN</div>
-          <div class="information-value">Pelayanan pencetakan KTP-Elektronik dapat dilaksanakan apabila keping KTP-Elektronik tersedia dan tidak ada gangguan pada jaringan internet maupun Sistem SIAK.</div>
-        </div>
-        <div class="information-row information-description">
-          <div class="information-label">PENCETAKAN KTP-EL</div>
-          <div class="information-value">Pencetakan di Kecamatan Wates diperuntukkan bagi KTP-EL pemula.</div>
-        </div>
-        <div class="information-row information-description">
-          <div class="information-label">KTP HILANG / RUSAK</div>
-          <div class="information-value">Pengurusan KTP hilang atau rusak dilayani di Dispendukcapil Kabupaten Blitar.</div>
-        </div>
-      </div>
-    </section>
+        // Kosongkan password setelah berhasil
+        const tokenInput = form.querySelector('[name="token"]');
 
-    <footer class="bottomline">
-      <div class="motto">INFORMASI JELAS · PELAYANAN BERKUALITAS</div>
-      <div class="contact-info"><span>INFORMASI LEBIH LANJUT</span> <strong>Mas Iwan</strong> <a href="tel:+6282141809931">+62 821-4180-9931</a></div>
-      <div class="update-stack">
-        <div id="updated-at" class="updated-at">Terakhir diperbarui —</div>
-        <div id="connection-message" class="connection-message">Menghubungkan database…</div>
-      </div>
-    </footer>
-  </main>
-  <script src="config.js"></script>
-  <script src="app.js"></script>
-</body>
-</html>
+        if (tokenInput) {
+          tokenInput.value = "";
+        }
+
+      } else {
+        throw new Error(
+          result.message || "Data gagal disimpan."
+        );
+      }
+
+    } catch (error) {
+      console.error("Kesalahan penyimpanan:", error);
+
+      showMessage(
+        error.message ||
+        "Terjadi kesalahan saat menghubungi server.",
+        "error"
+      );
+
+    } finally {
+      setLoading(false);
+    }
+  });
+
+});
