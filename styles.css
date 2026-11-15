@@ -502,3 +502,133 @@ body{
     font-variant-numeric: tabular-nums;
   }
 }
+
+/* =========================================
+   PERAPIAN FINAL INFORMASI REPUBLIK MELON
+   ========================================= */
+
+/* Hilangkan ruang bekas keterangan status pejabat */
+@media (min-width: 761px) {
+  .official-area {
+    grid-template-rows: 30px minmax(0, 1fr) !important;
+  }
+
+  .official-heading {
+    padding: 0 !important;
+  }
+
+  .official-subtitle {
+    display: none !important;
+  }
+}
+
+/* Judul informasi pelayanan */
+.information-heading {
+  padding: 0 0 3px !important;
+}
+
+.information-heading .section-kicker {
+  display: none !important;
+}
+
+.information-heading h2 {
+  margin: 0 !important;
+  color: #294d0d !important;
+  font-size: clamp(17px, 1.35vw, 21px) !important;
+  font-weight: 950 !important;
+  line-height: 1.2;
+}
+
+/* Tabel informasi */
+.information-table {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #c9dda0;
+  border-radius: 9px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.information-row {
+  display: grid;
+  grid-template-columns: minmax(220px, 29%) minmax(0, 1fr);
+  border-bottom: 1px solid #dce8c6;
+  min-height: 29px;
+}
+
+.information-row:last-child {
+  border-bottom: none;
+}
+
+/* Kolom label */
+.information-label {
+  display: flex;
+  align-items: center;
+  padding: 6px 11px !important;
+  border-right: 1px solid #dce8c6;
+  background: #f5f9ed;
+  color: #29480d;
+  font-size: 11px !important;
+  font-weight: 900;
+  line-height: 1.25;
+}
+
+/* Kolom keterangan */
+.information-value {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  padding: 6px 12px !important;
+  color: #263f12;
+  font-size: 11px !important;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+/* Jumlah keping dan status */
+.availability-inline {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: nowrap;
+}
+
+.availability-inline strong {
+  color: #23480c;
+  font-size: 16px !important;
+  font-weight: 950;
+  white-space: nowrap;
+}
+
+.availability-inline strong small {
+  font-size: 10px;
+}
+
+.info-state {
+  font-size: 10px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+/* Layar kecil */
+@media (max-width: 760px) {
+  .information-row {
+    grid-template-columns: minmax(115px, 36%) minmax(0, 1fr);
+  }
+
+  .information-label {
+    font-size: 9px !important;
+    padding: 7px 6px !important;
+  }
+
+  .information-value {
+    font-size: 10px !important;
+    padding: 7px 8px !important;
+    flex-wrap: wrap;
+  }
+
+  .availability-inline {
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+}
