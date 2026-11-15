@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#B7E94A">
+  <title>Admin REPUBLIK MELON | Kecamatan Wates</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Aturan khusus admin: jangan mengunci tinggi halaman atau scroll. */
+    html:has(body.admin-page) {
+      height: auto !important;
+      min-height: 100%;
+      overflow-x: hidden !important;
+      overflow-y: auto !important;
+    }
+    body.admin-page {
+      height: auto !important;
+      min-height: 100vh !important;
+      overflow-x: hidden !important;
+      overflow-y: auto !important;
+      box-sizing: border-box;
+      padding: 10px 14px 30px !important;
+    }
+    body.admin-page .admin-shell {
+      width: min(100%, 1100px);
+      max-width: 1100px !important;
+      height: auto !important;
+      min-height: calc(100vh - 40px);
+      max-height: none !important;
+      margin: 0 auto !important;
+      padding: 20px 26px !important;
+      display: flex;
+      flex-direction: column;
+      overflow: visible !important;
+      box-sizing: border-box;
+    }
+    .admin-header .back-link { margin-bottom: 12px; }
+    .admin-header .eyebrow { margin: 5px 0; }
+    .admin-header h1 { margin: 0 0 5px; line-height: 1.2; }
+    .admin-header > p:last-child { margin: 0 0 18px; }
+    body.admin-page .admin-form {
+      flex: 0 0 auto !important;
+      min-height: auto !important;
+      display: grid !important;
+      grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+      grid-auto-rows: min-content;
+      column-gap: 14px;
+      row-gap: 12px;
+      align-content: start !important;
+    }
+    .admin-form .form-field { min-width: 0; gap: 5px; }
+    .admin-form .operator-field,
+    .admin-form .section-field { grid-column: 1 / -1 !important; }
+    .admin-form .ktp-field,
+    .admin-form .quantity-field { grid-column: span 2 !important; }
+    .admin-form .internet-field,
+    .admin-form .siak-field { grid-column: span 1 !important; }
+    .admin-form .official-field { grid-column: span 2 !important; }
+    .admin-form .token-field,
+    .admin-form .submit-field { grid-column: span 3 !important; }
+    .admin-form label { line-height: 1.3; }
+    .admin-form input,
+    .admin-form select {
+      min-width: 0;
+      height: 39px;
+      padding: 7px 11px;
+      box-sizing: border-box;
+    }
+    .admin-form .submit-field {
+      justify-content: flex-end;
+      align-self: end;
+    }
+    .admin-help { flex: 0 0 auto; margin-bottom: 5px; }
+
+    @media (max-width: 760px) {
+      body.admin-page { padding: 8px !important; }
+      body.admin-page .admin-shell {
+        width: 100%;
+        min-height: 0;
+        padding: 17px 14px !important;
+      }
+      body.admin-page .admin-form {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        row-gap: 12px;
+      }
+      .admin-form .operator-field,
+      .admin-form .section-field,
+      .admin-form .token-field,
+      .admin-form .submit-field { grid-column: 1 / -1 !important; }
+      .admin-form .ktp-field,
+      .admin-form .quantity-field,
+      .admin-form .internet-field,
+      .admin-form .siak-field,
+      .admin-form .official-field { grid-column: span 1 !important; }
+    }
+    @media (max-width: 420px) {
+      body.admin-page .admin-form { grid-template-columns: 1fr !important; }
+      .admin-form .ktp-field,
+      .admin-form .quantity-field,
+      .admin-form .internet-field,
+      .admin-form .siak-field,
+      .admin-form .official-field { grid-column: 1 / -1 !important; }
+    }
+  </style>
+</head>
+<body class="admin-page">
+<main class="admin-shell">
+  <header class="admin-header">
+    <a href="index.html" class="back-link">← Kembali ke REPUBLIK MELON</a>
+    <p class="eyebrow">KECAMATAN WATES · KABUPATEN BLITAR</p>
+    <h1>Admin REPUBLIK MELON</h1>
+    <p>Kelola informasi pelayanan dan status keberadaan pejabat kecamatan.</p>
+  </header>
+
+  <form id="admin-form" class="admin-form">
+    <div class="form-field operator-field">
+      <label for="operator">Nama petugas penginput</label>
+      <select id="operator" name="by" required>
+        <option value="">Pilih petugas</option>
+        <option value="udin">Udin</option>
+        <option value="hari">Hari</option>
+        <option value="fatkhur">Fatkhur</option>
+        <option value="enik">Enik</option>
+      </select>
+    </div>
+
+    <div class="form-field ktp-field">
+      <label for="ktp-availability">Ketersediaan KTP-EL (otomatis)</label>
+      <input id="ktp-availability" name="ktp_availability" type="text"
+        value="Ada" readonly aria-readonly="true">
+      <small>Status otomatis berdasarkan jumlah keping KTP.</small>
+    </div>
+    <div class="form-field quantity-field">
+      <label for="quantity">Jumlah keping KTP</label>
+      <input id="quantity" name="quantity" type="number"
+        min="0" max="100000" step="1" value="100" required>
+    </div>
+    <div class="form-field internet-field">
+      <label for="internet">Internet</label>
+      <select id="internet" name="internet"><option>Normal</option><option>Gangguan</option></select>
+    </div>
+    <div class="form-field siak-field">
+      <label for="siak">Sistem SIAK</label>
+      <select id="siak" name="siak"><option>Normal</option><option>Gangguan</option></select>
+    </div>
+
+    <div class="form-field form-field-full section-field">
+      <h2>Status pejabat kecamatan</h2>
+      <small>Pilih ADA atau KELUAR untuk setiap pejabat.</small>
+    </div>
+
+    <div class="form-field official-field">
+      <label for="camat">Camat</label>
+      <select id="camat" name="camat_status"><option>ADA</option><option>KELUAR</option></select>
+    </div>
+    <div class="form-field official-field">
+      <label for="sekcam">Sekcam</label>
+      <select id="sekcam" name="sekcam_status"><option>ADA</option><option>KELUAR</option></select>
+    </div>
+    <div class="form-field official-field">
+      <label for="kasipem">Kasipem</label>
+      <select id="kasipem" name="kasipem_status"><option>ADA</option><option>KELUAR</option></select>
+    </div>
+    <div class="form-field official-field">
+      <label for="kasi_pmd">Kasi PMD</label>
+      <select id="kasi_pmd" name="kasi_pmd_status"><option>ADA</option><option>KELUAR</option></select>
+    </div>
+    <div class="form-field official-field">
+      <label for="kasi_kesos">Kasi Kesos</label>
+      <select id="kasi_kesos" name="kasi_kesos_status"><option>ADA</option><option>KELUAR</option></select>
+    </div>
+    <div class="form-field official-field">
+      <label for="kasi_trantib">Kasi Trantib</label>
+      <select id="kasi_trantib" name="kasi_trantib_status"><option>ADA</option><option>KELUAR</option></select>
+    </div>
+    <div class="form-field official-field">
+      <label for="kasub_sunggram">Kasubag Sungram</label>
+      <select id="kasub_sunggram" name="kasub_sunggram_status"><option>ADA</option><option>KELUAR</option></select>
+    </div>
+    <div class="form-field official-field">
+      <label for="kasub_umpeg">Kasubag Umpeg</label>
+      <select id="kasub_umpeg" name="kasub_umpeg_status"><option>ADA</option><option>KELUAR</option></select>
+    </div>
+    <div class="form-field official-field">
+      <label for="penyuluh_kb">Penyuluh KB</label>
+      <select id="penyuluh_kb" name="penyuluh_kb_status"><option>ADA</option><option>KELUAR</option></select>
+    </div>
+
+    <div class="form-field token-field">
+      <label for="admin-token">Kode akses admin</label>
+      <input id="admin-token" name="token" type="password"
+        autocomplete="current-password" placeholder="Masukkan kode akses admin" required>
+    </div>
+    <div class="form-field submit-field">
+      <button class="primary-button" type="submit">Simpan seluruh perubahan</button>
+      <p id="save-message" class="save-message" role="status"></p>
+    </div>
+  </form>
+  <aside class="admin-help">
+    <strong>Catatan:</strong> Setiap penyimpanan akan mencatat riwayat perubahan di Google Sheets.
+  </aside>
+</main>
+<script src="config.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>
