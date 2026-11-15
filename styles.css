@@ -394,3 +394,111 @@ body{
     margin-top: 4px !important;
   }
 }
+
+/* =========================================
+   REPUBLIK MELON - HEADER REFINEMENT
+   ========================================= */
+
+@media (min-width: 761px) {
+
+  /* Header lebih lapang */
+  .topbar {
+    flex: 0 0 16% !important;
+    min-height: 100px;
+    padding: 12px 24px !important;
+    gap: 20px;
+  }
+
+  /* Identitas instansi */
+  .crest-wrap {
+    width: 82px;
+    height: 82px;
+  }
+
+  .identity h1 {
+    font-size: clamp(32px, 3.2vw, 48px);
+    letter-spacing: -1px;
+  }
+
+  /* Panel jam */
+  .clockbox {
+    min-width: 250px;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 13px;
+    background: #355E0B;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(30,65,5,.18);
+  }
+
+  /* Hari dan pasaran */
+  .clock-day {
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 950;
+    letter-spacing: 1px;
+  }
+
+  /* Tanggal */
+  .clock-date {
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 700;
+    margin: 4px 0;
+  }
+
+  /* Jam digital putih ekstra bold */
+  .clock-time {
+    color: #FFFFFF !important;
+    font-size: clamp(30px, 3vw, 44px);
+    font-weight: 950 !important;
+    letter-spacing: 1.5px;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+    text-shadow: 0 2px 4px rgba(0,0,0,.2);
+  }
+}
+
+/* Penyesuaian layar pendek */
+@media (min-width: 761px) and (max-height: 760px) {
+  .topbar {
+    flex-basis: 15% !important;
+    min-height: 82px;
+  }
+
+  .crest-wrap {
+    width: 65px;
+    height: 65px;
+  }
+
+  .clockbox {
+    padding: 7px 12px;
+  }
+
+  .clock-time {
+    font-size: 30px;
+  }
+}
+
+/* Tampilan mobile */
+@media (max-width: 760px) {
+  .clockbox {
+    background: #355E0B;
+    border-radius: 10px;
+    padding: 9px 12px;
+    text-align: center;
+    border: none;
+  }
+
+  .clock-day,
+  .clock-date,
+  .clock-time {
+    color: #FFFFFF !important;
+  }
+
+  .clock-time {
+    font-weight: 950;
+    font-size: 30px;
+    font-variant-numeric: tabular-nums;
+  }
+}
