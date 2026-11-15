@@ -330,3 +330,57 @@ body{
   .information-description .information-value{font-weight:600}
   .bottomline{flex-wrap:wrap}
 }
+
+/* =========================================
+   FIX FINAL KARTU STATUS PEJABAT
+   ========================================= */
+
+@media (min-width: 761px) {
+
+  .official-grid .official-row {
+    display: grid !important;
+    grid-template-columns: 58px minmax(0, 1fr) auto !important;
+    grid-template-rows: 1fr !important;
+    align-items: center !important;
+    gap: 10px !important;
+    padding: 6px 10px !important;
+    overflow: hidden;
+  }
+
+  /* Sembunyikan avatar cadangan */
+  .official-grid .official-row .official-avatar[hidden] {
+    display: none !important;
+  }
+
+  /* Foto pejabat */
+  .official-grid .official-row .official-photo {
+    grid-column: 1;
+    grid-row: 1;
+    width: 54px;
+    height: 54px;
+    min-width: 54px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  /* Nama jabatan */
+  .official-grid .official-row .official-role {
+    grid-column: 2;
+    grid-row: 1;
+    text-align: left !important;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Status kehadiran */
+  .official-grid .official-row .official-status {
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
+    min-width: 65px;
+    text-align: center !important;
+    padding: 7px 10px;
+  }
+}
