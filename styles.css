@@ -384,3 +384,13 @@ body{
     padding: 7px 10px;
   }
 }
+@media (min-width: 761px) {
+  .official-heading {
+    padding-bottom: 12px !important;
+  }
+
+  .official-subtitle {
+    line-height: 1.5;
+    margin-top: 4px !important;
+  }
+}
