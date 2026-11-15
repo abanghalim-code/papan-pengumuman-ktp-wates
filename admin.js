@@ -1,102 +1,97 @@
-
-/* =====================================================
-   REPUBLIK MELON
-   ADMIN PANEL - admin.js
-   Kecamatan Wates, Kabupaten Blitar
-   ===================================================== */
-
+/* REPUBLIK MELON - Admin panel - Kecamatan Wates */
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("admin-form");
-  const saveButton = form
-    ? form.querySelector('button[type="submit"]')
-    : null;
-
+  const saveButton = form?.querySelector('button[type="submit"]');
   const messageBox = document.getElementById("save-message");
+  const quantityInput = document.getElementById("quantity");
+  const availabilityInput = document.getElementById("ktp-availability");
 
-  // Ambil alamat API dari config.js
-  const API_URL = window.APP_CONFIG
-    ? window.APP_CONFIG.API_URL
-    : "";
+  const API_URL = window.APP_CONFIG?.API_URL || "";
 
-  // Tampilkan pesan
-  function showMessage(message, type) {
+  function showMessage(message, type = "") {
     if (!messageBox) {
       alert(message);
       return;
     }
-
     messageBox.textContent = message;
-    messageBox.className = "save-message " + (type || "");
+    messageBox.className = "save-message " + type;
     messageBox.style.display = "block";
   }
 
-  // Atur kondisi tombol simpan
-  function setLoading(isLoading) {
+  function setLoading(loading) {
     if (!saveButton) return;
-
-    saveButton.disabled = isLoading;
-    saveButton.textContent = isLoading
+    saveButton.disabled = loading;
+    saveButton.textContent = loading
       ? "Menyimpan..."
-      : "Simpan Perubahan";
+      : "Simpan seluruh perubahan";
   }
 
-  // Validasi awal
   if (!form) {
     console.error("Form admin-form tidak ditemukan.");
     return;
   }
 
+  // 0 keping = Menunggu Pengiriman; 1 keping atau lebih = Ada.
+  function syncKtpAvailability() {
+    const raw = quantityInput.value.trim();
+    const quantity = raw === "" ? 0 : Number(raw);
+    availabilityInput.value =
+      Number.isFinite(quantity) && quantity >= 1
+        ? "Ada"
+        : "Menunggu Pengiriman";
+  }
+
+  quantityInput.addEventListener("input", syncKtpAvailability);
+  quantityInput.addEventListener("change", syncKtpAvailability);
+  syncKtpAvailability();
+
   if (!API_URL) {
-    showMessage(
-      "Alamat API belum ditemukan. Periksa file config.js.",
-      "error"
-    );
+    showMessage("Alamat API belum ditemukan. Periksa file config.js.", "error");
     return;
   }
 
-  // Proses penyimpanan
   form.addEventListener("submit", async function (event) {
     event.preventDefault();
+    syncKtpAvailability();
 
     const formData = new FormData(form);
-
     const operator = String(formData.get("by") || "").trim();
     const token = String(formData.get("token") || "").trim();
     const quantity = String(formData.get("quantity") || "").trim();
+    const quantityNumber = Number(quantity);
 
-    // Validasi operator
     if (!operator) {
       showMessage("Silakan pilih nama operator.", "error");
       return;
     }
-
-    // Validasi password/token
     if (!token) {
-      showMessage("Password admin wajib diisi.", "error");
+      showMessage("Kode akses admin wajib diisi.", "error");
+      return;
+    }
+    if (
+      quantity === "" ||
+      !Number.isInteger(quantityNumber) ||
+      quantityNumber < 0 ||
+      quantityNumber > 100000
+    ) {
+      showMessage("Jumlah keping KTP harus bilangan bulat antara 0 sampai 100.000.", "error");
       return;
     }
 
-    // Validasi jumlah KTP-EL
-    if (quantity !== "" && Number(quantity) < 0) {
-      showMessage("Jumlah KTP-EL tidak boleh negatif.", "error");
-      return;
-    }
+    if (!confirm("Apakah data REPUBLIK MELON akan disimpan?")) return;
 
-    // Konfirmasi penyimpanan
-    const confirmed = confirm(
-      "Apakah data REPUBLIK MELON akan disimpan?"
-    );
-
-    if (!confirmed) return;
-
-    // Susun data untuk dikirim ke Google Apps Script
     const payload = new URLSearchParams();
-
     payload.append("action", "save");
 
     for (const [key, value] of formData.entries()) {
       payload.append(key, String(value).trim());
     }
+
+    // Tetapkan ulang agar nilai status otomatis selalu terkirim.
+    payload.set(
+      "ktp_availability",
+      quantityNumber >= 1 ? "Ada" : "Menunggu Pengiriman"
+    );
 
     setLoading(true);
     showMessage("Sedang menyimpan data...", "loading");
@@ -112,51 +107,28 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       const responseText = await response.text();
-
       let result;
 
       try {
         result = JSON.parse(responseText);
-      } catch (parseError) {
-        throw new Error(
-          "Respons server tidak valid. Periksa Google Apps Script."
-        );
+      } catch {
+        throw new Error("Respons server tidak valid. Periksa Google Apps Script.");
       }
 
-      if (
-        result.ok === true ||
-        result.success === true
-      ) {
-        showMessage(
-          result.message || "Data berhasil disimpan.",
-          "success"
-        );
-
-        // Kosongkan password setelah berhasil
-        const tokenInput = form.querySelector('[name="token"]');
-
-        if (tokenInput) {
-          tokenInput.value = "";
-        }
-
+      if (result.ok === true || result.success === true) {
+        showMessage(result.message || "Data berhasil disimpan.", "success");
+        form.querySelector('[name="token"]').value = "";
       } else {
-        throw new Error(
-          result.message || "Data gagal disimpan."
-        );
+        throw new Error(result.message || "Data gagal disimpan.");
       }
-
     } catch (error) {
       console.error("Kesalahan penyimpanan:", error);
-
       showMessage(
-        error.message ||
-        "Terjadi kesalahan saat menghubungi server.",
+        error.message || "Terjadi kesalahan saat menghubungi server.",
         "error"
       );
-
     } finally {
       setLoading(false);
     }
   });
-
 });
