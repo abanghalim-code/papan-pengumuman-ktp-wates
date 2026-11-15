@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#A8D934">
   <title>REPUBLIK MELON | Kecamatan Wates</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles-v2.css?v=2">
   <style>
     @media (min-width:761px) {
       html, body {height:100%;}
@@ -59,63 +59,88 @@
       </div>
     </header>
 
-    <section class="main-grid">
-      <section class="service-area" aria-label="Informasi pelayanan">
-        <div class="service-hero service-hero-compact">
-          <div class="availability availability-wide">
-            <div class="availability-label">STATUS KETERSEDIAAN KTP-EL</div>
-            <div id="ktp-status" class="availability-value">Menunggu Pengiriman</div>
-            <div class="availability-bottom">
-              <strong id="ktp-quantity">100 <small>KEPING</small></strong>
-            </div>
-          </div>
+    <section class="official-area official-area-full" aria-label="Status sembilan pejabat Kecamatan Wates">
+      <div class="official-heading">
+        <div>
+          <h2>STATUS PEJABAT</h2>
+          <p class="official-subtitle">PEMERINTAH KABUPATEN BLITAR · KECAMATAN WATES</p>
         </div>
-        <div class="network-grid">
-          <article class="network-card">
-            <div class="network-symbol"><img src="assets/icon-internet.png" alt="Ikon jaringan internet"></div>
-            <div><span class="card-caption">JARINGAN INTERNET</span><strong id="internet-status" class="network-state normal">Normal</strong></div>
-          </article>
-          <article class="network-card">
-            <div class="network-symbol network-symbol-siak"><img src="assets/icon-siak.jpg" alt="Ikon jaringan SIAK"></div>
-            <div><span class="card-caption">SISTEM SIAK</span><strong id="siak-status" class="network-state normal">Normal</strong></div>
-          </article>
-        </div>
-        <div class="service-note">
-          <b>INFO PENTING</b>
-          <span>Pencetakan di Kecamatan Wates diperuntukkan bagi KTP-EL pemula. Pengurusan KTP hilang atau rusak dilayani di Dispendukcapil Kabupaten Blitar.</span>
-        </div>
-      </section>
-
-      <aside class="official-area" aria-label="Status pejabat kecamatan">
-        <div class="official-heading"><h2>STATUS PEJABAT</h2></div>
-        <div class="official-list">
-          <div class="official-row"><img class="official-photo" src="assets/pejabat/camat.png" alt="Foto Camat" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="official-avatar" hidden>CAM</span><span class="official-role">Camat</span><strong id="camat-status" class="official-status on">ADA</strong></div>
-          <div class="official-row"><img class="official-photo" src="assets/pejabat/sekcam.png" alt="Foto Sekcam" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="official-avatar" hidden>SKC</span><span class="official-role">Sekcam</span><strong id="sekcam-status" class="official-status on">ADA</strong></div>
-          <div class="official-row"><img class="official-photo" src="assets/pejabat/kasi_pem.png" alt="Foto Kasipem" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="official-avatar" hidden>KPM</span><span class="official-role">Kasipem</span><strong id="kasipem-status" class="official-status on">ADA</strong></div>
-          <div class="official-row"><img class="official-photo" src="assets/pejabat/kasi_pmd.png" alt="Foto Kasi PMD" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="official-avatar" hidden>PMD</span><span class="official-role">Kasi PMD</span><strong id="kasi_pmd-status" class="official-status on">ADA</strong></div>
-          <div class="official-row"><img class="official-photo" src="assets/pejabat/kasi_kesos.png" alt="Foto Kasi Kesos" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="official-avatar" hidden>KSO</span><span class="official-role">Kasi Kesos</span><strong id="kasi_kesos-status" class="official-status on">ADA</strong></div>
-          <div class="official-row"><img class="official-photo" src="assets/pejabat/kasi_trantib.png" alt="Foto Kasi Trantib" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="official-avatar" hidden>TRB</span><span class="official-role">Kasi Trantib</span><strong id="kasi_trantib-status" class="official-status on">ADA</strong></div>
-          <div class="official-row"><img class="official-photo" src="assets/pejabat/kasub_sunggram.png" alt="Foto Kasubag Sungram" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="official-avatar" hidden>SUN</span><span class="official-role">Kasubag Sungram</span><strong id="kasub_sunggram-status" class="official-status on">ADA</strong></div>
-          <div class="official-row"><img class="official-photo" src="assets/pejabat/kasub_umpeg.png" alt="Foto Kasubag Umpeg" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="official-avatar" hidden>UMP</span><span class="official-role">Kasubag Umpeg</span><strong id="kasub_umpeg-status" class="official-status on">ADA</strong></div>
-          <div class="official-row"><img class="official-photo" src="assets/pejabat/penyuluh_kb.png" alt="Foto Penyuluh KB" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="official-avatar" hidden>PKB</span><span class="official-role">Penyuluh KB</span><strong id="penyuluh_kb-status" class="official-status on">ADA</strong></div>
-        </div>
-      </aside>
+      </div>
+      <div class="official-list official-grid">
+        <article class="official-row">
+          <img class="official-photo" src="assets/pejabat/camat.png" alt="Foto Camat" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="official-avatar" hidden>CAM</span>
+          <span class="official-role">Camat</span><strong id="camat-status" class="official-status on">ADA</strong>
+        </article>
+        <article class="official-row">
+          <img class="official-photo" src="assets/pejabat/sekcam.png" alt="Foto Sekcam" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="official-avatar" hidden>SKC</span>
+          <span class="official-role">Sekcam</span><strong id="sekcam-status" class="official-status on">ADA</strong>
+        </article>
+        <article class="official-row">
+          <img class="official-photo" src="assets/pejabat/kasi_pem.png" alt="Foto Kasipem" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="official-avatar" hidden>KPM</span>
+          <span class="official-role">Kasipem</span><strong id="kasipem-status" class="official-status on">ADA</strong>
+        </article>
+        <article class="official-row">
+          <img class="official-photo" src="assets/pejabat/kasi_pmd.png" alt="Foto Kasi PMD" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="official-avatar" hidden>PMD</span>
+          <span class="official-role">Kasi PMD</span><strong id="kasi_pmd-status" class="official-status on">ADA</strong>
+        </article>
+        <article class="official-row">
+          <img class="official-photo" src="assets/pejabat/kasi_kesos.png" alt="Foto Kasi Kesos" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="official-avatar" hidden>KSO</span>
+          <span class="official-role">Kasi Kesos</span><strong id="kasi_kesos-status" class="official-status on">ADA</strong>
+        </article>
+        <article class="official-row">
+          <img class="official-photo" src="assets/pejabat/kasi_trantib.png" alt="Foto Kasi Trantib" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="official-avatar" hidden>TRB</span>
+          <span class="official-role">Kasi Trantib</span><strong id="kasi_trantib-status" class="official-status on">ADA</strong>
+        </article>
+        <article class="official-row">
+          <img class="official-photo" src="assets/pejabat/kasub_sunggram.png" alt="Foto Kasubag Sungram" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="official-avatar" hidden>SUN</span>
+          <span class="official-role">Kasubag Sungram</span><strong id="kasub_sunggram-status" class="official-status on">ADA</strong>
+        </article>
+        <article class="official-row">
+          <img class="official-photo" src="assets/pejabat/kasub_umpeg.png" alt="Foto Kasubag Umpeg" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="official-avatar" hidden>UMP</span>
+          <span class="official-role">Kasubag Umpeg</span><strong id="kasub_umpeg-status" class="official-status on">ADA</strong>
+        </article>
+        <article class="official-row">
+          <img class="official-photo" src="assets/pejabat/penyuluh_kb.png" alt="Foto Penyuluh KB" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="official-avatar" hidden>PKB</span>
+          <span class="official-role">Penyuluh KB</span><strong id="penyuluh_kb-status" class="official-status on">ADA</strong>
+        </article>
+      </div>
     </section>
 
-    <section class="market-area" aria-label="Informasi hari pasaran pasar">
-      <div class="market-heading">
-        <div><p class="section-kicker">AGENDA PASAR WILAYAH KECAMATAN WATES</p><h2>INFO PASARAN</h2></div>
-        <span class="market-subtitle">Jadwal pasaran masyarakat</span>
+    <section class="information-area" aria-label="Informasi pelayanan Kecamatan Wates">
+      <div class="information-heading">
+        <div>
+          <p class="section-kicker">INFORMASI LAYANAN KECAMATAN WATES</p>
+          <h2>INFORMASI PELAYANAN</h2>
+        </div>
       </div>
-      <div class="market-grid">
-        <article class="market-card">
-          <img src="assets/pasar-wates.jpg" alt="Foto Pasar Desa Wates">
-          <div class="market-overlay"><span class="market-name">PASAR DESA WATES</span><strong>WAGE</strong><span class="market-coordinate">-8.252800, 112.377769</span></div>
-        </article>
-        <article class="market-card">
-          <img src="assets/pasar-bantengan.jpg" alt="Foto Pasar Hewan Bantengan">
-          <div class="market-overlay"><span class="market-name">PASAR HEWAN BANTENGAN</span><strong>KLIWON <em>•</em> PAHING</strong><span class="market-coordinate">-8.268670, 112.326074</span></div>
-        </article>
+      <div class="information-table">
+        <div class="information-row">
+          <div class="information-label">KETERSEDIAAN KTP ELEKTRONIK</div>
+          <div class="information-value availability-inline">
+            <strong id="ktp-quantity">10 <small>KEPING</small></strong>
+            <span id="ktp-status" class="info-state waiting">Menunggu Pengiriman</span>
+          </div>
+        </div>
+        <div class="information-row">
+          <div class="information-label">JARINGAN INTERNET</div>
+          <div class="information-value"><strong id="internet-status" class="network-state normal">Normal</strong></div>
+        </div>
+        <div class="information-row">
+          <div class="information-label">JARINGAN SISTEM SIAK</div>
+          <div class="information-value"><strong id="siak-status" class="network-state warning">Gangguan</strong></div>
+        </div>
+        <div class="information-row information-description">
+          <div class="information-label">KETENTUAN PELAYANAN</div>
+          <div class="information-value">Pelayanan pencetakan KTP-Elektronik dapat dilaksanakan apabila keping KTP-Elektronik tersedia dan tidak ada gangguan pada jaringan internet maupun Sistem SIAK.</div>
+        </div>
+        <div class="information-row information-description">
+          <div class="information-label">PENCETAKAN KTP-EL</div>
+          <div class="information-value">Pencetakan di Kecamatan Wates diperuntukkan bagi KTP-EL pemula.</div>
+        </div>
+        <div class="information-row information-description">
+          <div class="information-label">KTP HILANG / RUSAK</div>
+          <div class="information-value">Pengurusan KTP hilang atau rusak dilayani di Dispendukcapil Kabupaten Blitar.</div>
+        </div>
       </div>
     </section>
 
