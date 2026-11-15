@@ -1,12 +1,15 @@
-/* REPUBLIK MELON - Admin panel - Kecamatan Wates */
+/* REPUBLIK MELON - Admin panel
+   Pengiriman memakai form + iframe agar tidak terhalang CORS fetch.
+*/
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("admin-form");
   const saveButton = form?.querySelector('button[type="submit"]');
   const messageBox = document.getElementById("save-message");
   const quantityInput = document.getElementById("quantity");
   const availabilityInput = document.getElementById("ktp-availability");
-
   const API_URL = window.APP_CONFIG?.API_URL || "";
+
+  let activeNonce = "";
 
   function showMessage(message, type = "") {
     if (!messageBox) {
@@ -22,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!saveButton) return;
     saveButton.disabled = loading;
     saveButton.textContent = loading
-      ? "Menyimpan..."
+      ? "Mengirim data..."
       : "Simpan seluruh perubahan";
   }
 
@@ -31,7 +34,6 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
-  // 0 keping = Menunggu Pengiriman; 1 keping atau lebih = Ada.
   function syncKtpAvailability() {
     const raw = quantityInput.value.trim();
     const quantity = raw === "" ? 0 : Number(raw);
@@ -50,7 +52,33 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
-  form.addEventListener("submit", async function (event) {
+  // Respons Apps Script mengirim postMessage dari iframe ini.
+  const responseFrame = document.createElement("iframe");
+  responseFrame.name = "melon-admin-response";
+  responseFrame.title = "Respons penyimpanan";
+  responseFrame.style.display = "none";
+  document.body.appendChild(responseFrame);
+
+  window.addEventListener("message", function (event) {
+    if (event.source !== responseFrame.contentWindow) return;
+    const data = event.data;
+    if (!data || data.type !== "REPUBLIK_MELON_SAVE" || data.nonce !== activeNonce) return;
+
+    activeNonce = "";
+    setLoading(false);
+
+    if (data.result && data.result.ok === true) {
+      showMessage(data.result.message || "Data berhasil disimpan.", "success");
+      form.querySelector('[name="token"]').value = "";
+    } else {
+      showMessage(
+        (data.result && data.result.message) || "Data gagal disimpan. Periksa kode akses dan Google Sheets.",
+        "error"
+      );
+    }
+  });
+
+  form.addEventListener("submit", function (event) {
     event.preventDefault();
     syncKtpAvailability();
 
@@ -60,75 +88,57 @@ document.addEventListener("DOMContentLoaded", function () {
     const quantity = String(formData.get("quantity") || "").trim();
     const quantityNumber = Number(quantity);
 
-    if (!operator) {
-      showMessage("Silakan pilih nama operator.", "error");
-      return;
-    }
-    if (!token) {
-      showMessage("Kode akses admin wajib diisi.", "error");
-      return;
-    }
+    if (!operator) return showMessage("Silakan pilih nama operator.", "error");
+    if (!token) return showMessage("Kode akses admin wajib diisi.", "error");
     if (
       quantity === "" ||
       !Number.isInteger(quantityNumber) ||
       quantityNumber < 0 ||
       quantityNumber > 100000
     ) {
-      showMessage("Jumlah keping KTP harus bilangan bulat antara 0 sampai 100.000.", "error");
-      return;
+      return showMessage("Jumlah keping KTP harus bilangan bulat antara 0 sampai 100.000.", "error");
     }
 
     if (!confirm("Apakah data REPUBLIK MELON akan disimpan?")) return;
 
-    const payload = new URLSearchParams();
-    payload.append("action", "save");
-
-    for (const [key, value] of formData.entries()) {
-      payload.append(key, String(value).trim());
-    }
-
-    // Tetapkan ulang agar nilai status otomatis selalu terkirim.
-    payload.set(
+    activeNonce = "melon_" + Date.now() + "_" + Math.random().toString(36).slice(2);
+    formData.set(
       "ktp_availability",
       quantityNumber >= 1 ? "Ada" : "Menunggu Pengiriman"
     );
+    formData.set("nonce", activeNonce);
 
-    setLoading(true);
-    showMessage("Sedang menyimpan data...", "loading");
+    const postForm = document.createElement("form");
+    postForm.method = "POST";
+    postForm.action = API_URL;
+    postForm.target = responseFrame.name;
+    postForm.style.display = "none";
 
-    try {
-      const response = await fetch(API_URL, {
-        method: "POST",
-        redirect: "follow",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
-        },
-        body: payload.toString()
-      });
-
-      const responseText = await response.text();
-      let result;
-
-      try {
-        result = JSON.parse(responseText);
-      } catch {
-        throw new Error("Respons server tidak valid. Periksa Google Apps Script.");
-      }
-
-      if (result.ok === true || result.success === true) {
-        showMessage(result.message || "Data berhasil disimpan.", "success");
-        form.querySelector('[name="token"]').value = "";
-      } else {
-        throw new Error(result.message || "Data gagal disimpan.");
-      }
-    } catch (error) {
-      console.error("Kesalahan penyimpanan:", error);
-      showMessage(
-        error.message || "Terjadi kesalahan saat menghubungi server.",
-        "error"
-      );
-    } finally {
-      setLoading(false);
+    for (const [key, value] of formData.entries()) {
+      const input = document.createElement("input");
+      input.type = "hidden";
+      input.name = key;
+      input.value = String(value);
+      postForm.appendChild(input);
     }
+
+    document.body.appendChild(postForm);
+    setLoading(true);
+    showMessage("Sedang mengirim data ke Google Sheets...", "loading");
+    postForm.submit();
+    postForm.remove();
+
+    // Jika Apps Script tidak mengirim balasan, jangan menganggap penyimpanan berhasil.
+    const submittedNonce = activeNonce;
+    window.setTimeout(function () {
+      if (activeNonce === submittedNonce) {
+        activeNonce = "";
+        setLoading(false);
+        showMessage(
+          "Belum ada konfirmasi dari server. Periksa deployment Google Apps Script dan coba lagi.",
+          "error"
+        );
+      }
+    }, 30000);
   });
 });
