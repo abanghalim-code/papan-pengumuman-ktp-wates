@@ -1416,3 +1416,43 @@ body{
   color: #168A36;
   text-decoration: underline;
 }
+
+/* =========================================
+   FOTO PEJABAT LEBIH BESAR
+   ========================================= */
+
+@media (min-width: 761px) {
+  .official-grid .official-row {
+    grid-template-columns: 68px minmax(0, 1fr) auto !important;
+    gap: 10px !important;
+    padding: 4px 9px !important;
+  }
+
+  .official-grid .official-row .official-photo,
+  .official-grid .official-row .official-avatar {
+    width: 62px !important;
+    height: 62px !important;
+    min-width: 62px !important;
+    border-radius: 9px !important;
+    object-fit: cover !important;
+  }
+
+  .official-grid .official-row .official-role {
+    font-size: 13px !important;
+    font-weight: 900 !important;
+  }
+
+  .official-grid .official-row .official-status {
+    min-width: 60px !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .official-grid .official-row .official-photo,
+  .official-grid .official-row .official-avatar {
+    width: 54px !important;
+    height: 54px !important;
+    min-width: 54px !important;
+    object-fit: cover !important;
+  }
+}
