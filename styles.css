@@ -1573,3 +1573,90 @@ body{
     font-size: 9.5px !important;
   }
 }
+
+
+
+/* =========================================================
+   REPUBLIK MELON – KOMPAKSI TABEL INFORMASI PELAYANAN
+   Mengurangi tinggi area tabel agar header tidak terdesak.
+   Desktop only; tampilan mobile tetap mengikuti aturan sebelumnya.
+   ========================================================= */
+@media (min-width: 761px) {
+  /* Batasi porsi panel informasi; ruang vertikal kembali ke header */
+  .information-area {
+    flex: 0 0 22% !important;
+    min-height: 0 !important;
+    padding: 5px 9px !important;
+    gap: 3px !important;
+  }
+
+  .information-heading {
+    flex: 0 0 auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .information-heading h2 {
+    font-size: 15px !important;
+    line-height: 1 !important;
+  }
+
+  /* Baris tabel dibuat rapat, bukan membentang memenuhi seluruh panel */
+  .information-table {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .information-row {
+    flex: 1 1 0 !important;
+    min-height: 0 !important;
+  }
+
+  .information-label,
+  .information-value {
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+    line-height: 1.08 !important;
+  }
+
+  .information-label {
+    font-size: 9px !important;
+  }
+
+  .information-value {
+    font-size: 9px !important;
+  }
+
+  .availability-inline {
+    gap: 8px !important;
+  }
+
+  .availability-inline strong {
+    font-size: 14px !important;
+  }
+
+  .information-description .information-value {
+    line-height: 1.12 !important;
+  }
+}
+
+/* Laptop dengan tinggi layar terbatas */
+@media (min-width: 761px) and (max-height: 760px) {
+  .information-area {
+    flex-basis: 21% !important;
+    padding: 4px 8px !important;
+  }
+
+  .information-heading h2 {
+    font-size: 14px !important;
+  }
+
+  .information-label,
+  .information-value {
+    padding-top: 1px !important;
+    padding-bottom: 1px !important;
+    font-size: 9px !important;
+  }
+}
