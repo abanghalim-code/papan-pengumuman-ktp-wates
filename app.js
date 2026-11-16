@@ -61,22 +61,15 @@
   }
 
   function status(el, value) {
-    if (!el) return;
+  if (!el) return;
 
-    const v = String(value || "ADA").trim().toUpperCase();
-    el.textContent = v;
+  const v = String(value || "ADA").trim().toUpperCase();
+  el.textContent = v;
 
-    let stateClass = "on";
+  const stateClass = v === "RAPAT" ? "off" : "on";
 
-    if (v.includes("KELUAR")) stateClass = "off";
-    else if (
-      v.includes("DINAS") ||
-      v.includes("CUTI") ||
-      v.includes("IZIN")
-    ) stateClass = "duty";
-
-    el.className = `official-status ${stateClass}`;
-  }
+  el.className = `official-status ${stateClass}`;
+}
 
   function render(data) {
     const availability = String(
