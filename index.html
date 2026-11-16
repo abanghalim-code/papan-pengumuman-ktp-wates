@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="id">
 <head>
@@ -6,125 +7,272 @@
   <meta name="theme-color" content="#A8D934">
   <title>REPUBLIK MELON | Kecamatan Wates</title>
   <link rel="stylesheet" href="styles.css?v=3">
+
   <style>
     @media (min-width:761px) {
       html, body {height:100%;}
-      .public-page {height:100vh; min-height:0; overflow:hidden;}
+
+      .public-page {
+        height:100vh;
+        min-height:0;
+        overflow:hidden;
+      }
+
       .melon-board {
-        height:100%; min-height:0; overflow:hidden;
-        display:flex; flex-direction:column;
+        height:100%;
+        min-height:0;
+        overflow:hidden;
+        display:flex;
+        flex-direction:column;
         gap:8px;
       }
-      .main-grid {min-height:0; flex:1 1 0; align-items:stretch;}
-      .service-area, .official-area {min-height:0; height:100%; overflow:hidden;}
-      .official-area {display:grid;grid-template-rows:34px minmax(0,1fr);gap:5px;}
-      .official-list {display:grid;grid-template-rows:repeat(3,minmax(0,1fr));min-height:0;gap:1px;}
-      .official-row {min-height:0;padding:2px 5px;}
-      .official-photo, .official-avatar {width:clamp(40px,3.3vw,50px);height:clamp(40px,3.3vw,50px);min-width:clamp(40px,3.3vw,50px);}
-      .market-area {display:flex !important;flex:0 0 18%;min-height:105px;height:100%;overflow:hidden;}
-      .market-heading {flex:0 0 auto;min-height:20px;}
-      .market-grid {display:grid !important;flex:1 1 auto;min-height:0;grid-template-columns:repeat(2,minmax(0,1fr));}
-      .market-card {min-height:0;height:100%;}
-      .bottomline {min-height:26px;}
+
+      .main-grid {
+        min-height:0;
+        flex:1 1 0;
+        align-items:stretch;
+      }
+
+      .service-area,
+      .official-area {
+        min-height:0;
+        height:100%;
+        overflow:hidden;
+      }
+
+      .official-area {
+        display:grid;
+        grid-template-rows:34px minmax(0,1fr);
+        gap:5px;
+      }
+
+      .official-list {
+        display:grid;
+        grid-template-rows:repeat(3,minmax(0,1fr));
+        min-height:0;
+        gap:1px;
+      }
+
+      .official-row {
+        min-height:0;
+        padding:2px 5px;
+      }
+
+      .official-photo,
+      .official-avatar {
+        width:clamp(40px,3.3vw,50px);
+        height:clamp(40px,3.3vw,50px);
+        min-width:clamp(40px,3.3vw,50px);
+      }
+
+      .market-area {
+        display:flex !important;
+        flex:0 0 18%;
+        min-height:105px;
+        height:100%;
+        overflow:hidden;
+      }
+
+      .market-heading {
+        flex:0 0 auto;
+        min-height:20px;
+      }
+
+      .market-grid {
+        display:grid !important;
+        flex:1 1 auto;
+        min-height:0;
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+
+      .market-card {
+        min-height:0;
+        height:100%;
+      }
+
+      .bottomline {
+        min-height:26px;
+      }
     }
+
     @media (min-width:761px) and (max-height:760px) {
-      .melon-board {gap:6px;padding:9px;}
-      .topbar {padding:6px 14px;}
-      .crest-wrap {width:58px;height:58px;}
-      .official-photo,.official-avatar {width:36px;height:36px;min-width:36px;}
-      .official-row {padding:1px 4px;}
-      .market-area {flex-basis:17%;min-height:95px;}
+      .melon-board {
+        gap:6px;
+        padding:9px;
+      }
+
+      .topbar {
+        padding:6px 14px;
+      }
+
+      .crest-wrap {
+        width:58px;
+        height:58px;
+      }
+
+      .official-photo,
+      .official-avatar {
+        width:36px;
+        height:36px;
+        min-width:36px;
+      }
+
+      .official-row {
+        padding:1px 4px;
+      }
+
+      .market-area {
+        flex-basis:17%;
+        min-height:95px;
+      }
     }
+
     @media (max-width:760px) {
-      .market-area {display:flex !important;}
-      .market-grid {display:grid !important;}
+      .market-area {
+        display:flex !important;
+      }
+
+      .market-grid {
+        display:grid !important;
+      }
     }
   </style>
 </head>
+
 <body class="public-page">
   <main class="melon-board">
-   
-<header class="topbar">
-  <div class="brand-logo">
-    <img
-      src="assets/logo-republik-melon-horizontal.png"
-      alt="REPUBLIK MELON Wates Blitar">
-  </div>
 
-  <div class="identity">
-    <div class="crest-wrap">
-      <img
-        src="assets/logo-kabupaten-blitar.png"
-        alt="Lambang Kabupaten Blitar">
-    </div>
+    <!-- HEADER UTAMA -->
+    <header class="topbar">
+      <div class="brand-logo">
+        <img
+          src="assets/logo-republik-melon-horizontal.png"
+          alt="REPUBLIK MELON Wates Blitar">
+      </div>
 
-    <div class="identity-copy">
-      <div class="govline">PEMERINTAH KABUPATEN BLITAR</div>
-      <h1>KECAMATAN <span>WATES</span></h1>
-      <div class="office-line">PAPAN INFORMASI DIGITAL</div>
-    </div>
-  </div>
+      <div class="identity">
+        <div class="crest-wrap">
+          <img
+            src="assets/logo-kabupaten-blitar.png"
+            alt="Lambang Kabupaten Blitar">
+        </div>
 
-  <div class="clockbox" aria-label="Tanggal dan waktu real time">
-    <div class="clock-day" id="clock-day">MINGGU · LEGI</div>
-    <div class="clock-date" id="clock-date">15 November 2026</div>
-    <div class="clock-time" id="clock-time">00:00:00</div>
-  </div>
-</header>
-   
-    <section class="official-area official-area-full" aria-label="Status sembilan pejabat Kecamatan Wates">
+        <div class="identity-copy">
+          <div class="govline">PEMERINTAH KABUPATEN BLITAR</div>
+          <h1>KECAMATAN <span>WATES</span></h1>
+          <div class="office-line">PAPAN INFORMASI DIGITAL</div>
+        </div>
+      </div>
+
+      <div class="clockbox" aria-label="Tanggal dan waktu real time">
+        <div class="clock-day" id="clock-day">MINGGU · LEGI</div>
+        <div class="clock-date" id="clock-date">15 November 2026</div>
+        <div class="clock-time" id="clock-time">00:00:00</div>
+      </div>
+    </header>
+
+    <!-- STATUS PEJABAT -->
+    <section
+      class="official-area official-area-full"
+      aria-label="Status sembilan pejabat Kecamatan Wates">
+
       <div class="official-heading">
         <div>
           <h2>STATUS PEJABAT</h2>
         </div>
       </div>
+
       <div class="official-list official-grid">
+
         <article class="official-row">
-          <img class="official-photo" src="assets/pejabat/camat.png" alt="Foto Camat" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="official-avatar" hidden>CAM</span>
-          <span class="official-role">Camat</span><strong id="camat-status" class="official-status on">ADA</strong>
+          <img class="official-photo" src="assets/pejabat/camat.png" alt="Foto Camat"
+            onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+          <span class="official-avatar" hidden>CAM</span>
+          <span class="official-role">Camat</span>
+          <strong id="camat-status" class="official-status on">ADA</strong>
         </article>
+
         <article class="official-row">
-          <img class="official-photo" src="assets/pejabat/sekcam.png" alt="Foto Sekcam" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="official-avatar" hidden>SKC</span>
-          <span class="official-role">Sekcam</span><strong id="sekcam-status" class="official-status on">ADA</strong>
+          <img class="official-photo" src="assets/pejabat/sekcam.png" alt="Foto Sekcam"
+            onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+          <span class="official-avatar" hidden>SKC</span>
+          <span class="official-role">Sekcam</span>
+          <strong id="sekcam-status" class="official-status on">ADA</strong>
         </article>
+
         <article class="official-row">
-          <img class="official-photo" src="assets/pejabat/kasi_pem.png" alt="Foto Kasi Pemerintahan" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="official-avatar" hidden>KPM</span>
-          <span class="official-role">Kasi Pemerintahan</span><strong id="kasipem-status" class="official-status on">ADA</strong>
+          <img class="official-photo" src="assets/pejabat/kasi_pem.png" alt="Foto Kasi Pemerintahan"
+            onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+          <span class="official-avatar" hidden>KPM</span>
+          <span class="official-role">Kasi Pemerintahan</span>
+          <strong id="kasipem-status" class="official-status on">ADA</strong>
         </article>
+
         <article class="official-row">
-          <img class="official-photo" src="assets/pejabat/kasi_pmd.png" alt="Foto Kasi PMD" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="official-avatar" hidden>PMD</span>
-          <span class="official-role">Kasi PMD</span><strong id="kasi_pmd-status" class="official-status on">ADA</strong>
+          <img class="official-photo" src="assets/pejabat/kasi_pmd.png" alt="Foto Kasi PMD"
+            onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+          <span class="official-avatar" hidden>PMD</span>
+          <span class="official-role">Kasi PMD</span>
+          <strong id="kasi_pmd-status" class="official-status on">ADA</strong>
         </article>
+
         <article class="official-row">
-          <img class="official-photo" src="assets/pejabat/kasi_kesos.png" alt="Foto Kasi Kesos" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="official-avatar" hidden>KSO</span>
-          <span class="official-role">Kasi Kesos</span><strong id="kasi_kesos-status" class="official-status on">ADA</strong>
+          <img class="official-photo" src="assets/pejabat/kasi_kesos.png" alt="Foto Kasi Kesos"
+            onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+          <span class="official-avatar" hidden>KSO</span>
+          <span class="official-role">Kasi Kesos</span>
+          <strong id="kasi_kesos-status" class="official-status on">ADA</strong>
         </article>
+
         <article class="official-row">
-          <img class="official-photo" src="assets/pejabat/kasi_trantib.png" alt="Foto Kasi Trantib" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="official-avatar" hidden>TRB</span>
-          <span class="official-role">Kasi Trantib</span><strong id="kasi_trantib-status" class="official-status on">ADA</strong>
+          <img class="official-photo" src="assets/pejabat/kasi_trantib.png" alt="Foto Kasi Trantib"
+            onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+          <span class="official-avatar" hidden>TRB</span>
+          <span class="official-role">Kasi Trantib</span>
+          <strong id="kasi_trantib-status" class="official-status on">ADA</strong>
         </article>
+
         <article class="official-row">
-          <img class="official-photo" src="assets/pejabat/kasub_sungram.png" alt="Foto Kasubag Sungram" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="official-avatar" hidden>SUN</span>
-          <span class="official-role">Kasubag Sungram</span><strong id="kasub_sunggram-status" class="official-status on">ADA</strong>
+          <img class="official-photo" src="assets/pejabat/kasub_sungram.png" alt="Foto Kasubag Sungram"
+            onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+          <span class="official-avatar" hidden>SUN</span>
+          <span class="official-role">Kasubag Sungram</span>
+          <strong id="kasub_sunggram-status" class="official-status on">ADA</strong>
         </article>
+
         <article class="official-row">
-          <img class="official-photo" src="assets/pejabat/kasub_umpeg.png" alt="Foto Kasubag Umpeg" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="official-avatar" hidden>UMP</span>
-          <span class="official-role">Kasubag Umpeg</span><strong id="kasub_umpeg-status" class="official-status on">ADA</strong>
+          <img class="official-photo" src="assets/pejabat/kasub_umpeg.png" alt="Foto Kasubag Umpeg"
+            onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+          <span class="official-avatar" hidden>UMP</span>
+          <span class="official-role">Kasubag Umpeg</span>
+          <strong id="kasub_umpeg-status" class="official-status on">ADA</strong>
         </article>
+
         <article class="official-row">
-          <img class="official-photo" src="assets/pejabat/penyuluh_kb.png" alt="Foto Penyuluh KB" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="official-avatar" hidden>PKB</span>
-          <span class="official-role">Penyuluh KB</span><strong id="penyuluh_kb-status" class="official-status on">ADA</strong>
+          <img class="official-photo" src="assets/pejabat/penyuluh_kb.png" alt="Foto Penyuluh KB"
+            onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+          <span class="official-avatar" hidden>PKB</span>
+          <span class="official-role">Penyuluh KB</span>
+          <strong id="penyuluh_kb-status" class="official-status on">ADA</strong>
         </article>
+
       </div>
     </section>
 
-    <section class="information-area" aria-label="Informasi pelayanan Kecamatan Wates">
-      <div class="information-heading">
+    <!-- INFORMASI PELAYANAN -->
+    <section
+      class="information-area"
+      aria-label="Informasi pelayanan Kecamatan Wates">
+
+      <!-- Menggunakan struktur header yang sama dengan STATUS PEJABAT -->
+      <div class="official-heading information-heading">
         <div>
           <h2>INFORMASI PELAYANAN</h2>
         </div>
       </div>
+
       <div class="information-table">
+
         <div class="information-row">
           <div class="information-label">KETERSEDIAAN KTP ELEKTRONIK</div>
           <div class="information-value availability-inline">
@@ -132,46 +280,61 @@
             <span id="ktp-status" class="info-state waiting">Menunggu Pengiriman</span>
           </div>
         </div>
+
         <div class="information-row">
           <div class="information-label">JARINGAN INTERNET</div>
-          <div class="information-value"><strong id="internet-status" class="network-state normal">Normal</strong></div>
+          <div class="information-value">
+            <strong id="internet-status" class="network-state normal">Normal</strong>
+          </div>
         </div>
+
         <div class="information-row">
           <div class="information-label">JARINGAN SISTEM SIAK</div>
-          <div class="information-value"><strong id="siak-status" class="network-state warning">Gangguan</strong></div>
+          <div class="information-value">
+            <strong id="siak-status" class="network-state warning">Gangguan</strong>
+          </div>
         </div>
+
         <div class="information-row information-description">
           <div class="information-label">KETENTUAN PELAYANAN</div>
-          <div class="information-value">Pelayanan pencetakan KTP-EL dapat dilaksanakan apabila keping KTP-EL tersedia dan tidak ada gangguan pada jaringan internet maupun Sistem SIAK.</div>
+          <div class="information-value information-description-text">Pelayanan pencetakan KTP-EL dapat dilaksanakan apabila keping KTP-EL tersedia dan tidak ada gangguan pada jaringan internet maupun Sistem SIAK.</div>
         </div>
+
         <div class="information-row information-description">
           <div class="information-label">PENCETAKAN KTP-EL</div>
-          <div class="information-value">Kecamatan melayani pencetakan KTP-EL pemula dan perubahan data, sedangkan untuk KTP-EL hilang dan rusak dilaksanakan di DUKCAPIL.</div>
+          <div class="information-value information-description-text">Kecamatan melayani pencetakan KTP-EL pemula dan perubahan data, sedangkan untuk KTP-EL hilang dan rusak dilaksanakan di DUKCAPIL.</div>
         </div>
-       
+
       </div>
     </section>
 
+    <!-- FOOTER -->
     <footer class="bottomline">
-      <div class="motto">INFORMASI JELAS · PELAYANAN BERKUALITAS</div>
-      
-<div class="contact-info">
-  <span>INFORMASI LEBIH LANJUT KONTAK :</span>
-  <a
-    href="https://wa.me/6282141809931"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="whatsapp-contact">
-    <strong>Mas Iwan</strong> +62 821-4180-9931
-  </a>
-</div>
+
+      <div class="motto">
+        INFORMASI JELAS · PELAYANAN BERKUALITAS
+      </div>
+
+      <div class="contact-info">
+        <span>INFORMASI LEBIH LANJUT KONTAK :</span>
+        <a
+          href="https://wa.me/6282141809931"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="whatsapp-contact">
+          <strong>Mas Iwan</strong> +62 821-4180-9931
+        </a>
+      </div>
 
       <div class="update-stack">
         <div id="updated-at" class="updated-at">Terakhir diperbarui —</div>
         <div id="connection-message" class="connection-message">Menghubungkan database…</div>
       </div>
+
     </footer>
+
   </main>
+
   <script src="config.js"></script>
   <script src="app.js"></script>
 </body>
