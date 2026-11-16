@@ -204,6 +204,29 @@
       overflow:hidden;
     }
 
+    /* Jadwal pelayanan: ringkas agar seluruh informasi tetap muat satu halaman */
+    .service-page .service-schedule-row .information-value {
+      display:flex;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:6px;
+    }
+
+    .service-page .service-schedule-row .information-value strong {
+      font-weight:800;
+      color:#24520b;
+    }
+
+    .service-page .schedule-separator {
+      color:#65734f;
+      font-weight:600;
+    }
+
+    .service-page .night-service-row .information-label,
+    .service-page .night-service-row .information-value strong {
+      color:#c85b00;
+    }
+
     .page-navigation {
       flex:0 0 34px;
       min-height:34px;
@@ -452,6 +475,38 @@
         <div class="information-row information-description">
           <div class="information-label">PENCETAKAN KTP-EL</div>
           <div class="information-value information-description-text">Kecamatan melayani pencetakan KTP-EL pemula dan perubahan data, sedangkan untuk KTP-EL hilang dan rusak dilaksanakan di DUKCAPIL.</div>
+        </div>
+
+        <div class="information-row service-schedule-row">
+          <div class="information-label">HARI KERJA</div>
+          <div class="information-value service-schedule-value">
+            <strong>SENIN – JUMAT</strong>
+          </div>
+        </div>
+
+        <div class="information-row service-schedule-row">
+          <div class="information-label">WAKTU PELAYANAN</div>
+          <div class="information-value service-schedule-value">
+            <strong>08.00 – 12.00 WIB</strong>
+            <span class="schedule-separator">dan</span>
+            <strong>13.00 – 15.00 WIB</strong>
+          </div>
+        </div>
+
+        <div class="information-row service-schedule-row">
+          <div class="information-label">KHUSUS JUMAT</div>
+          <div class="information-value service-schedule-value">
+            <strong>08.00 – 11.30 WIB</strong>
+            <span class="schedule-separator">dan</span>
+            <strong>13.00 – 15.00 WIB</strong>
+          </div>
+        </div>
+
+        <div class="information-row service-schedule-row night-service-row">
+          <div class="information-label">LAYANAN MALAM</div>
+          <div class="information-value service-schedule-value">
+            <strong>18.00 – 21.00 WIB</strong>
+          </div>
         </div>
 
       </div>
