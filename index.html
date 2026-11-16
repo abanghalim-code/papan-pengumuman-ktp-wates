@@ -136,6 +136,148 @@
         display:grid !important;
       }
     }
+
+
+    /* =========================================================
+       REPUBLIK MELON - MULTI-PAGE DISPLAY
+       Tambahkan halaman baru dengan class="display-page"
+       dan data-page-title="Judul Halaman".
+       ========================================================= */
+    html, body {
+      width:100%;
+      height:100%;
+      margin:0;
+    }
+
+    .public-page {
+      height:100vh;
+      height:100dvh;
+      min-height:0;
+      overflow:hidden;
+    }
+
+    .melon-board {
+      height:100%;
+      min-height:0;
+      display:flex;
+      flex-direction:column;
+      overflow:hidden;
+    }
+
+    .page-stage {
+      position:relative;
+      flex:1 1 0;
+      min-height:0;
+      width:100%;
+      overflow:hidden;
+    }
+
+    .display-page {
+      display:none;
+      width:100%;
+      height:100%;
+      min-height:0;
+      overflow:hidden;
+      flex-direction:column;
+    }
+
+    .display-page.page-active {
+      display:flex;
+    }
+
+    .official-page > .official-area,
+    .service-page > .information-area {
+      flex:1 1 auto;
+      min-height:0;
+      height:100%;
+      overflow:hidden;
+    }
+
+    .service-page > .information-area {
+      display:flex;
+      flex-direction:column;
+    }
+
+    .service-page .information-table {
+      flex:1 1 auto;
+      min-height:0;
+      overflow:hidden;
+    }
+
+    .page-navigation {
+      flex:0 0 34px;
+      min-height:34px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:2px 8px;
+      border:1px solid rgba(125,170,45,.35);
+      border-radius:10px;
+      background:rgba(255,255,255,.88);
+      color:#24520b;
+      overflow:hidden;
+    }
+
+    .page-nav-button {
+      border:0;
+      border-radius:7px;
+      padding:7px 13px;
+      background:#2f650d;
+      color:#fff;
+      font:700 11px/1.1 inherit;
+      letter-spacing:.3px;
+      cursor:pointer;
+      white-space:nowrap;
+    }
+
+    .page-nav-button:disabled {
+      opacity:.35;
+      cursor:default;
+    }
+
+    .page-indicator {
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:5px;
+      min-width:0;
+      font-weight:800;
+      font-size:12px;
+      white-space:nowrap;
+    }
+
+    .page-title {
+      margin-left:8px;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      text-transform:uppercase;
+      letter-spacing:.4px;
+    }
+
+    .page-separator {
+      opacity:.55;
+    }
+
+    @media (max-width:760px) {
+      .page-navigation {
+        flex-basis:32px;
+        min-height:32px;
+        padding:2px 5px;
+      }
+      .page-nav-button {
+        padding:7px 8px;
+        font-size:10px;
+      }
+      .page-indicator {
+        font-size:10px;
+        gap:3px;
+      }
+      .page-title {
+        margin-left:4px;
+      }
+    }
+
   </style>
 </head>
 
@@ -171,8 +313,13 @@
       </div>
     </header>
 
+    <div class="page-stage" id="page-stage">
     <!-- STATUS PEJABAT -->
     <section
+      class="display-page page-active official-page"
+      data-page-title="Status Pejabat"
+      aria-label="Halaman status pejabat">
+      <section
       class="official-area official-area-full"
       aria-label="Status sembilan pejabat Kecamatan Wates">
 
@@ -257,8 +404,10 @@
         </article>
 
       </div>
+      </section>
     </section>
 
+    <section class="display-page service-page" data-page-title="Informasi Pelayanan" aria-label="Halaman informasi pelayanan">
     <!-- INFORMASI PELAYANAN -->
     <section
       class="information-area"
@@ -306,7 +455,19 @@
         </div>
 
       </div>
+      </section>
     </section>
+
+    </div>\n\n
+    <!-- NAVIGASI MULTI-HALAMAN: halaman baru cukup ditambahkan sebagai .display-page -->
+    <nav class="page-navigation" aria-label="Navigasi halaman">
+      <button type="button" class="page-nav-button" id="page-prev" aria-label="Halaman sebelumnya">‹ SEBELUMNYA</button>
+      <div class="page-indicator" id="page-indicator" aria-live="polite">
+        <span id="page-current">01</span><span class="page-separator">/</span><span id="page-total">02</span>
+        <span class="page-title" id="page-title">STATUS PEJABAT</span>
+      </div>
+      <button type="button" class="page-nav-button" id="page-next" aria-label="Halaman berikutnya">BERIKUTNYA ›</button>
+    </nav>
 
     <!-- FOOTER -->
     <footer class="bottomline">
@@ -337,5 +498,83 @@
 
   <script src="config.js"></script>
   <script src="app.js"></script>
+
+  <script>
+    /* Pengendali halaman generik: otomatis membaca semua .display-page */
+    (() => {
+      const pages = Array.from(document.querySelectorAll('.display-page'));
+      if (!pages.length) return;
+
+      const previousButton = document.getElementById('page-prev');
+      const nextButton = document.getElementById('page-next');
+      const currentLabel = document.getElementById('page-current');
+      const totalLabel = document.getElementById('page-total');
+      const titleLabel = document.getElementById('page-title');
+
+      let activeIndex = Math.max(0, pages.findIndex(page => page.classList.contains('page-active')));
+      let autoTimer = null;
+      const AUTO_INTERVAL = 15000;
+
+      const showPage = (index) => {
+        if (index < 0 || index >= pages.length) return;
+        activeIndex = index;
+
+        pages.forEach((page, pageIndex) => {
+          const isActive = pageIndex === activeIndex;
+          page.classList.toggle('page-active', isActive);
+          page.setAttribute('aria-hidden', String(!isActive));
+        });
+
+        if (currentLabel) currentLabel.textContent = String(activeIndex + 1).padStart(2, '0');
+        if (totalLabel) totalLabel.textContent = String(pages.length).padStart(2, '0');
+        if (titleLabel) titleLabel.textContent = pages[activeIndex].dataset.pageTitle || `HALAMAN ${activeIndex + 1}`;
+
+        if (previousButton) previousButton.disabled = activeIndex === 0;
+        if (nextButton) nextButton.disabled = activeIndex === pages.length - 1;
+      };
+
+      const stopAuto = () => {
+        if (autoTimer) window.clearInterval(autoTimer);
+        autoTimer = null;
+      };
+
+      const startAuto = () => {
+        stopAuto();
+        if (pages.length < 2) return;
+        autoTimer = window.setInterval(() => {
+          showPage((activeIndex + 1) % pages.length);
+        }, AUTO_INTERVAL);
+      };
+
+      previousButton?.addEventListener('click', () => {
+        showPage((activeIndex - 1 + pages.length) % pages.length);
+        startAuto();
+      });
+
+      nextButton?.addEventListener('click', () => {
+        showPage((activeIndex + 1) % pages.length);
+        startAuto();
+      });
+
+      document.addEventListener('keydown', event => {
+        if (event.key === 'ArrowRight') {
+          showPage((activeIndex + 1) % pages.length);
+          startAuto();
+        } else if (event.key === 'ArrowLeft') {
+          showPage((activeIndex - 1 + pages.length) % pages.length);
+          startAuto();
+        }
+      });
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) stopAuto();
+        else startAuto();
+      });
+
+      showPage(activeIndex);
+      startAuto();
+    })();
+  </script>
+
 </body>
 </html>
