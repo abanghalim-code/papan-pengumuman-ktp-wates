@@ -1,747 +1,128 @@
-:root{--melon:#B7E94A;--melon-dark:#79ad19;--orange:#FFB52E;--orange-deep:#e98a0b;--ink:#26351b;--muted:#68745b;--cream:#fffdf5;--line:#e4edcf;--green:#3e851c;--red:#b7442a}
-*{box-sizing:border-box}html,body{width:100%;height:100%;margin:0}body{font-family:Inter,Arial,Helvetica,sans-serif;color:var(--ink);background-color:#fff4d6;background-image:linear-gradient(rgba(255,250,232,.48),rgba(255,250,232,.48)),url("assets/kulit-melon.png");background-repeat:repeat;background-size:auto,397px 221px;overflow:hidden}.public-page{min-height:100svh;display:flex;align-items:stretch;justify-content:center;padding:clamp(8px,1.25vh,16px) clamp(10px,1.3vw,22px)}.melon-board{width:100%;height:100%;max-width:1920px;min-height:0;display:flex;flex-direction:column;gap:clamp(7px,1vh,13px);padding:clamp(10px,1.2vw,20px);border:1px solid #dceab9;border-radius:clamp(14px,1.3vw,24px);background:rgba(255,255,250,.97);box-shadow:0 12px 45px rgba(84,111,32,.13);overflow:hidden}.topbar{flex:0 0 14%;min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:clamp(9px,1.1vw,17px) clamp(14px,1.8vw,28px);border-radius:16px;background:linear-gradient(105deg,#b7e94a 0%,#d5f17e 55%,#ffb52e 100%);position:relative;overflow:hidden}.topbar:after{content:"";position:absolute;width:38vw;height:38vw;max-width:500px;max-height:500px;border:1px solid rgba(255,255,255,.35);border-radius:50%;right:14%;top:-340%;pointer-events:none}.identity{display:flex;align-items:center;gap:clamp(10px,1.3vw,20px);min-width:0}.crest-wrap{width:clamp(48px,5.3vw,76px);height:clamp(48px,5.3vw,76px);border-radius:14px;background:#fff;display:grid;place-items:center;overflow:hidden;flex:none;border:2px solid rgba(255,255,255,.8);position:relative}.crest-wrap img{width:100%;height:100%;object-fit:contain}.crest-fallback{font-size:32px;font-weight:900;color:#426b17}.govline,.office-line{font-size:clamp(8px,.72vw,11px);font-weight:800;letter-spacing:1.3px;color:#3d5b18}.identity h1{font-size:clamp(24px,3vw,46px);line-height:.98;margin:4px 0;color:#24420d;font-weight:950;letter-spacing:-1.3px}.identity h1 span{color:#e87900}.office-line{letter-spacing:1.6px}.clockbox{z-index:1;text-align:right;min-width:190px;padding-left:14px;border-left:1px solid rgba(70,95,28,.25)}.clock-day{font-size:clamp(10px,1vw,15px);font-weight:900;letter-spacing:1px;color:#3e5e19}.clock-date{font-size:clamp(10px,.85vw,13px);color:#536b2c;margin:3px 0}.clock-time{font-size:clamp(20px,2.3vw,34px);font-weight:900;letter-spacing:1px;color:#243d0e;font-variant-numeric:tabular-nums}
-.main-grid{flex:1 1 52%;min-height:0;display:grid;grid-template-columns:minmax(0,1.72fr) minmax(280px,.9fr);gap:clamp(9px,1vw,16px)}.service-area,.official-area{min-width:0;min-height:0;border:1px solid var(--line);border-radius:16px;padding:clamp(10px,1.1vw,17px);background:#fff}.service-area{display:flex;flex-direction:column;gap:clamp(8px,1vh,13px)}.section-heading{display:flex;align-items:center;gap:10px;min-height:32px}.section-heading h2,.market-heading h2{font-size:clamp(15px,1.5vw,22px);margin:0;color:#36551a;font-weight:950;letter-spacing:.5px}.section-kicker{font-size:clamp(7px,.65vw,10px);letter-spacing:1.25px;font-weight:900;color:#91b52d;margin:0 0 3px}.heading-mark{width:7px;height:30px;border-radius:8px;background:var(--orange);flex:none}.live-chip{margin-left:auto;border-radius:30px;background:#f0f9d9;color:#54851c;padding:6px 10px;font-size:9px;font-weight:900;letter-spacing:.6px;white-space:nowrap}.live-chip i{display:inline-block;width:7px;height:7px;background:#64b52a;border-radius:50%;margin-right:5px}.service-hero{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:12px;border-radius:14px;padding:clamp(12px,1.3vw,20px);background:linear-gradient(120deg,#f0f9d8,#fff6e5);border:1px solid #e5efc9}.service-title{display:flex;flex-direction:column;justify-content:center}.mini-label{font-size:clamp(8px,.72vw,11px);font-weight:900;letter-spacing:1px;color:#8aa92e}.service-title h3{font-size:clamp(20px,2.3vw,34px);line-height:1.06;margin:8px 0;color:#315018;font-weight:950}.service-title p{font-size:clamp(10px,.85vw,13px);line-height:1.5;color:#69765b;margin:0;max-width:420px}.availability{display:flex;flex-direction:column;justify-content:center;padding:clamp(12px,1.5vw,22px);border-radius:12px;background:#fff;border:1px solid #e9edda;box-shadow:0 5px 16px rgba(92,116,47,.07)}.availability-label{font-size:clamp(8px,.7vw,10px);font-weight:900;letter-spacing:1px;color:#88965f}.availability-value{font-size:clamp(20px,2.4vw,36px);line-height:1.12;font-weight:950;color:#d27a05;margin:8px 0 12px}.availability-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}.availability-bottom>strong{font-size:clamp(20px,2.1vw,31px);color:#35591a;font-weight:950}.availability-bottom small{font-size:9px;letter-spacing:1px;color:#87936e}.status-pill{padding:7px 10px;border-radius:30px;font-size:9px;font-weight:950;letter-spacing:.5px}.warning{background:#fff0d2;color:#b66a00}.success{background:#e5f5d2;color:#3e851c}.network-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.network-card{min-width:0;display:flex;align-items:center;gap:10px;padding:clamp(9px,1vw,15px);border:1px solid var(--line);border-radius:12px;background:#fff}.network-symbol{width:clamp(32px,3vw,44px);height:clamp(32px,3vw,44px);display:grid;place-items:center;border-radius:10px;background:#eff8dc;color:#5a8c20;font-size:23px;flex:none}.network-card>div:nth-child(2){min-width:0;flex:1}.card-caption{display:block;font-size:clamp(8px,.68vw,10px);font-weight:900;letter-spacing:.7px;color:#89946f;margin-bottom:4px}.network-state{font-size:clamp(14px,1.35vw,20px);font-weight:950}.network-state.normal{color:#3e851c}.network-state.warning{color:#c06d00}.tiny-pill{padding:5px 8px;border-radius:20px;font-size:8px;font-weight:900}.tiny-pill.normal{background:#e5f5d2;color:#3e851c}.tiny-pill.warning{background:#fff0d2;color:#b66a00}.service-note{display:flex;align-items:center;gap:12px;padding:9px 12px;border-radius:10px;background:#fff8e9;border:1px solid #f6e5bd;font-size:clamp(9px,.75vw,11px);line-height:1.4;color:#655a3e}.service-note b{background:var(--orange);color:#6a4300;padding:6px 8px;border-radius:7px;font-size:8px;letter-spacing:.7px;white-space:nowrap}
-.official-area{display:flex;flex-direction:column;gap:10px;background:linear-gradient(155deg,#fbfff2,#fffaf0)}.official-list{display:flex;flex-direction:column;justify-content:space-evenly;flex:1;min-height:0;gap:4px}.official-row{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:clamp(8px,.9vw,13px) 10px;border-bottom:1px solid #e9efd9}.official-role{font-size:clamp(10px,.9vw,13px);font-weight:750;color:#53613e}.official-status{min-width:64px;text-align:center;padding:6px 10px;border-radius:30px;font-size:9px;letter-spacing:.5px;font-weight:950}.official-status.on{background:#e5f5d2;color:#3e851c}.official-status.off{background:#ffeadb;color:#bd4b20}.official-foot{font-size:9px;line-height:1.4;color:#89946f;padding:7px 9px;background:#f3f8e7;border-radius:8px}
-.market-area{flex:0 0 24%;min-height:0;display:flex;flex-direction:column;gap:7px}.market-heading{display:flex;align-items:center;justify-content:space-between;gap:10px}.market-heading h2{font-size:clamp(13px,1.25vw,18px)}.market-subtitle{font-size:10px;color:#8a946f}.market-grid{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:12px}.market-card{position:relative;min-height:0;border-radius:13px;overflow:hidden;background:#d8e8ba;border:1px solid #dce8c7}.market-card img{width:100%;height:100%;display:block;object-fit:cover;object-position:center 54%}.market-card:after{content:"";position:absolute;inset:25% 0 0;background:linear-gradient(transparent,rgba(22,37,12,.82))}.market-overlay{position:absolute;z-index:1;left:14px;right:14px;bottom:9px;display:grid;grid-template-columns:1fr auto;align-items:end;gap:2px 12px;color:white;text-shadow:0 1px 4px rgba(0,0,0,.35)}.market-name{font-size:clamp(9px,.95vw,14px);font-weight:950;letter-spacing:.7px}.market-overlay strong{grid-column:2;grid-row:1/3;font-size:clamp(14px,1.6vw,23px);color:#ffe39a;font-weight:950;white-space:nowrap}.market-overlay em{font-style:normal;color:#fff}.market-coordinate{grid-column:1;font-size:8px;opacity:.88}.bottomline{flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:7px 4px 0;border-top:1px solid #e8efd9}.motto{font-size:9px;font-weight:950;letter-spacing:1px;color:#779c29}.updated-at,.connection-message{font-size:9px;color:#7b8767}.connection-message.connected{color:#3e851c}
-@media(max-height:700px){.melon-board{gap:6px;padding:9px}.topbar{flex-basis:12%;min-height:64px}.main-grid{flex-basis:52%}.market-area{flex-basis:25%}.service-area,.official-area{padding:9px}.service-hero{padding:10px}.service-title h3{font-size:clamp(18px,2vw,28px)}.network-card{padding:7px}.official-row{padding:6px 8px}.market-card img{object-position:center 58%}}
-@media(max-width:760px){body{overflow:auto;height:auto}.public-page{padding:8px;min-height:100svh}.melon-board{height:auto;min-height:100svh;overflow:visible}.topbar{flex-wrap:wrap}.clockbox{min-width:0;border-left:0;text-align:left;padding:0 0 0 60px;width:100%;display:flex;align-items:center;gap:9px}.clock-time{margin-left:auto}.main-grid{grid-template-columns:1fr}.service-hero{grid-template-columns:1fr}.network-grid{grid-template-columns:1fr 1fr}.official-list{gap:0}.market-area{flex-basis:auto}.market-grid{grid-template-columns:1fr;grid-auto-rows:170px}.bottomline{flex-wrap:wrap}.market-subtitle{display:none}}
-/* Admin workspace styling */
-:root{--navy:#36551a;--navy2:#5b821d;--blue:#eff8dc;--ink:#26351b;--muted:#68745b;--line:#e4edcf;--green:#3e851c;--green-bg:#e5f5d2}
-.admin-page{min-height:100vh;height:auto;overflow:auto;padding:24px 14px;background-color:#fff4d6;background-image:linear-gradient(rgba(255,250,232,.48),rgba(255,250,232,.48)),url("assets/kulit-melon.png");background-repeat:repeat;background-size:auto,397px 221px}.admin-shell{max-width:820px;margin:0 auto;background:#fffef8;border:1px solid #dceab9;border-radius:18px;padding:26px;box-shadow:0 14px 40px rgba(84,111,32,.12)}.back-link{color:#628c1e;text-decoration:none;font-size:13px;font-weight:800;display:inline-block;margin-bottom:18px}.admin-header .eyebrow{color:#91b52d;font-size:10px;letter-spacing:1.4px;font-weight:900}.admin-header h1{font-size:28px;color:#36551a;margin:0 0 7px}.admin-header>p:last-child{font-size:14px;color:#68745b;margin:0 0 22px}.admin-form{display:grid;grid-template-columns:1fr 1fr;gap:14px}.form-field{display:flex;flex-direction:column;gap:7px}.form-field-full{grid-column:1/-1}.form-field h2{font-size:16px;color:#36551a;margin:8px 0 0}.form-field label{font-size:12px;font-weight:800;color:#53613e}.form-field input,.form-field select{width:100%;padding:11px 12px;border:1px solid #d6e4bd;border-radius:9px;background:white;color:#26351b;font:inherit;font-size:14px}.form-field small{font-size:11px;color:#68745b;line-height:1.5}.primary-button{border:0;border-radius:10px;padding:13px 18px;background:#79ad19;color:white;font-size:14px;font-weight:900;cursor:pointer}.primary-button:disabled{opacity:.6}.save-message{font-size:12px;color:#68745b}.save-message.success{color:#3e851c}.save-message.error{color:#b7442a}.admin-help{margin-top:18px;padding:13px;border-radius:10px;background:#f2f8e6;color:#68745b;font-size:12px;line-height:1.6}
-@media(max-width:600px){.admin-form{grid-template-columns:1fr}.form-field-full{grid-column:auto}.admin-shell{padding:20px 16px}}
+/* =========================================================
+   REPUBLIK MELON | KECAMATAN WATES
+   styles.css - versi rapi dan terkonsolidasi
+   Public dashboard + halaman admin
+   ========================================================= */
 
-/* Compact public contact and update details */
-.contact-info{display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap;font-size:clamp(8px,.72vw,10px);color:#536b2a;white-space:nowrap}.contact-info span{font-weight:900;letter-spacing:.55px;color:#789b2d}.contact-info strong{color:#36551a}.contact-info a{color:#36551a;font-weight:900;text-decoration:none}.update-stack{text-align:right;display:grid;gap:2px}
-@media(max-width:760px){.contact-info{white-space:normal;justify-content:flex-start}.update-stack{text-align:left}}
-
-
-/* REPUBLIK MELON – high contrast / stronger typography revision */
-:root{--ink:#18340b;--muted:#43552e;--melon-dark:#477c08;--orange-deep:#c85c00;--line:#c9df8b;--green:#28770d}
-body{color:#18340b;background-color:#f5d77d;background-image:linear-gradient(rgba(255,246,211,.28),rgba(255,246,211,.28)),url("assets/kulit-melon.png")}
-.melon-board{background:rgba(255,255,248,.985);border-color:#b8d66c;box-shadow:0 14px 48px rgba(42,78,9,.22)}
-.topbar{flex-basis:14%;min-height:100px;background:linear-gradient(105deg,#a9e52e 0%,#d0f05b 48%,#ffad1f 100%);box-shadow:inset 0 -3px 0 rgba(77,112,9,.14)}
-.crest-wrap.melon-logo{width:clamp(76px,7.2vw,104px);height:clamp(76px,7.2vw,104px);border:2px solid #fff;border-radius:13px;background:#fff;box-shadow:0 3px 12px rgba(39,72,5,.18)}
-.crest-wrap.melon-logo img{display:block;width:100%;height:100%;object-fit:contain}
-.identity h1{font-size:clamp(30px,3.35vw,52px);color:#173907;font-weight:1000;letter-spacing:-1.4px;text-shadow:0 1px 0 rgba(255,255,255,.32)}
-.identity h1 span{color:#c95700}
-.govline,.office-line{color:#29480d;font-size:clamp(9px,.82vw,12px);font-weight:950}
-.clock-day{color:#29480d;font-size:clamp(12px,1.08vw,16px);font-weight:950}.clock-date{color:#3f551c;font-size:clamp(11px,.92vw,14px);font-weight:700}.clock-time{color:#173907;font-size:clamp(25px,2.55vw,39px);font-weight:1000}
-.section-heading h2,.market-heading h2{color:#24480c;font-size:clamp(18px,1.75vw,26px);font-weight:1000}.section-kicker{color:#638d0c;font-size:clamp(9px,.78vw,12px);font-weight:950}
-.service-title h3{color:#23480c;font-size:clamp(23px,2.55vw,39px);font-weight:1000}.service-title p,.service-note{color:#3f4f2c;font-weight:650;font-size:clamp(11px,.9vw,14px)}
-.mini-label,.availability-label,.card-caption{color:#5e7e18;font-size:clamp(9px,.78vw,12px);font-weight:950}.availability-value{color:#bd5a00;font-size:clamp(25px,2.65vw,40px);font-weight:1000}.availability-bottom>strong{color:#23480c;font-weight:1000}
-.network-state{font-size:clamp(17px,1.55vw,24px);font-weight:1000}.network-state.normal{color:#28770d}.official-role{color:#263f12;font-size:clamp(12px,1vw,15px);font-weight:850}.official-status{font-size:clamp(10px,.78vw,12px);font-weight:1000}.official-foot{color:#536c2c;font-weight:700;font-size:10px}
-.market-name{font-size:clamp(11px,1.05vw,16px);font-weight:1000}.market-overlay strong{color:#ffe06b;font-size:clamp(17px,1.85vw,28px);font-weight:1000;text-shadow:0 2px 5px rgba(0,0,0,.65)}
-.motto,.contact-info span{color:#527d08;font-weight:1000}.contact-info,.contact-info strong,.contact-info a{color:#263f12;font-size:clamp(9px,.8vw,12px);font-weight:850}.updated-at,.connection-message{color:#465a2b;font-size:clamp(9px,.75vw,11px);font-weight:700}.live-chip{color:#315e08;background:#e2f6a9;font-size:10px;font-weight:1000}
-.service-area,.official-area{border-color:#c8df8a}.service-hero{background:linear-gradient(120deg,#e8f7bd,#fff0cb);border-color:#d2e69c}.network-card{border-color:#d0e3a1}.service-note{background:#fff0cc;border-color:#f2d28a}.service-note b{background:#ffad1f;color:#542900}
-@media(max-height:700px){.topbar{min-height:84px}.crest-wrap.melon-logo{width:76px;height:76px}.identity h1{font-size:clamp(27px,3vw,42px)}}
-@media(max-width:760px){.topbar{min-height:unset}.crest-wrap.melon-logo{width:68px;height:68px}.identity h1{font-size:clamp(24px,7vw,36px)}}
-
-
-/* Penataan ulang desktop: satu layar, tidak bertumpuk */
-@media (min-width: 761px) {
-  html, body { width:100%; height:100%; overflow:hidden; }
-  .public-page { height:100vh; min-height:0; padding:10px 14px; overflow:hidden; }
-  .melon-board { height:100%; min-height:0; gap:8px; padding:12px; overflow:hidden; }
-  .topbar { flex:0 0 13%; min-height:76px; }
-  .main-grid { flex:1 1 0; min-height:0; grid-template-columns:minmax(0,1.72fr) minmax(300px,.9fr); gap:12px; }
-  .service-area { display:grid; grid-template-rows:auto minmax(130px,1fr) auto auto; gap:8px; min-height:0; overflow:hidden; }
-  .service-hero { min-height:0; height:100%; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); }
-  .service-title { min-width:0; overflow:hidden; }
-  .service-title h3 { font-size:clamp(21px,2.1vw,34px); }
-  .availability { min-width:0; overflow:hidden; }
-  .availability-value { overflow-wrap:anywhere; }
-  .network-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
-  .network-card { min-height:65px; }
-  .service-note { min-height:42px; }
-  .official-area { display:grid; grid-template-rows:auto minmax(0,1fr) auto; gap:7px; min-height:0; overflow:hidden; }
-  .official-list { display:grid; grid-template-rows:repeat(6,minmax(0,1fr)); gap:0; min-height:0; }
-  .official-row { min-height:0; padding:5px 8px; overflow:hidden; }
-  .official-role { min-width:0; line-height:1.2; font-size:clamp(10px,.88vw,13px); }
-  .official-status { flex:0 0 60px; }
-  .market-area { flex:0 0 19%; min-height:115px; overflow:hidden; }
-  .market-grid { min-height:0; }
-  .bottomline { flex:0 0 auto; min-height:30px; flex-wrap:nowrap; overflow:hidden; }
-  .contact-info, .update-stack { min-width:0; }
+/* ---------- Warna dan reset ---------- */
+:root {
+  --melon: #A8D934;
+  --melon-light: #C8EB69;
+  --melon-dark: #477C08;
+  --orange: #FFB52E;
+  --orange-deep: #C85C00;
+  --ink: #18340B;
+  --muted: #43552E;
+  --cream: #FFFFFF;
+  --line: #C9DF8B;
+  --green: #28770D;
+  --green-bg: #DDF2C8;
+  --red: #B83224;
+  --red-bg: #FCE1D9;
 }
-@media (min-width:761px) and (max-height:760px) {
-  .topbar { flex-basis:12%; }
-  .market-area { flex-basis:18%; min-height:100px; }
-  .service-area, .official-area { padding:9px; }
-  .service-title h3 { font-size:clamp(19px,1.9vw,29px); }
-  .official-row { padding:4px 7px; }
-}
-.network-symbol { overflow:hidden; padding:4px; }
-.network-symbol img { display:block; width:100%; height:100%; object-fit:contain; }
-.network-symbol-siak img { border-radius:6px; mix-blend-mode:multiply; filter:hue-rotate(55deg) saturate(1.2); }
 
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  color: var(--ink);
+  background-color: #EAF2D8;
+  background-image:
+    linear-gradient(rgba(246, 250, 238, .78), rgba(246, 250, 238, .78)),
+    url("assets/kulit-melon.png");
+  background-repeat: repeat;
+  background-size: auto, 397px 221px;
+}
 
 /* =========================================================
-   REPUBLIK MELON – FINAL HIGH-CONTRAST PUBLIC DISPLAY
-   Overrides visual rules above; admin styles remain intact.
+   HALAMAN PUBLIK
    ========================================================= */
-:root{
-  --melon:#A8D934; --melon-dark:#477C08; --orange:#F28C00;
-  --orange-deep:#C85C00; --ink:#18340B; --muted:#43552E;
-  --cream:#FFFFFF; --line:#C9DF8B; --green:#28770D;
-  --red:#B83224;
-}
-body{
-  color:var(--ink);
-  background-color:#EAF2D8;
-  background-image:linear-gradient(rgba(246,250,238,.78),rgba(246,250,238,.78)),url("assets/kulit-melon.png");
-  background-size:auto,397px 221px;
-}
-.melon-board{
-  background:#FFFFFF;
-  border:1px solid #AFCF68;
-  box-shadow:0 14px 48px rgba(35,70,8,.20);
-}
-.topbar{
-  background:linear-gradient(108deg,#A8D934 0%,#C8EB69 55%,#FFB52E 100%);
-  box-shadow:inset 0 -4px 0 rgba(48,85,8,.16),0 5px 16px rgba(48,85,8,.10);
-}
-.identity h1{color:#173907;font-weight:950;text-shadow:none}
-.identity h1 span{color:#C95700}
-.govline,.office-line,.clock-day{color:#29480D;font-weight:900}
-.clock-date{color:#3F551C;font-weight:700}
-.clock-time{color:#173907;font-weight:950}
-.service-area,.official-area{
-  background:#FFFFFF;border:1px solid #BFD985;
-  box-shadow:0 5px 18px rgba(46,75,15,.07);
-}
-.official-area{background:linear-gradient(145deg,#FFFFFF,#F5FAE9)}
-.service-hero{
-  background:linear-gradient(120deg,#E8F7BD 0%,#FFF2D2 100%);
-  border:1px solid #C9DF8B;
-}
-.service-title h3,.section-heading h2,.market-heading h2{color:#23480C;font-weight:950}
-.service-title p,.service-note{color:#354728;font-weight:600}
-.availability{
-  border:1px solid #D5E4B4;
-  box-shadow:0 7px 20px rgba(56,83,20,.10);
-}
-.availability-label,.mini-label,.card-caption{color:#557B12;font-weight:900}
-.availability-value{color:#B95100;font-weight:950}
-.availability-bottom>strong{color:#23480C;font-weight:950}
-.network-card{border-color:#C9DDA0;background:#FFFFFF}
-.network-symbol{background:#E8F4CF}
-.network-state.normal{color:#28770D}
-.network-state.warning{color:#A65300}
-.service-note{background:#FFF1CC;border-color:#EBCB7C}
-.service-note b{background:#F28C00;color:#492500}
-.official-heading h2{margin:0;color:#23480C;font-size:clamp(16px,1.35vw,21px);font-weight:950;letter-spacing:.4px}
-.official-list{gap:2px}
-.official-row{
-  display:grid;grid-template-columns:50px minmax(0,1fr) auto;
-  align-items:center;justify-content:initial;gap:9px;
-  padding:4px 7px;border-bottom:1px solid #E2EBCF;
-  border-radius:8px;min-width:0;
-}
-.official-row:nth-child(even){background:#F7FAF1}
-.official-photo,.official-avatar{
-  width:48px;height:48px;min-width:48px;object-fit:cover;
-  object-position:center 25%;border-radius:8px;
-  border:2px solid #D3E5AD;background:#EDF4DF;
-  box-shadow:0 2px 6px rgba(33,63,10,.12);
-}
-.official-avatar{
-  display:grid;place-items:center;font-size:10px;font-weight:900;
-  color:#477C08;letter-spacing:.3px;
-}
-.official-role{color:#203B0D;font-size:clamp(11px,.88vw,14px);font-weight:850;line-height:1.2}
-.official-status{
-  min-width:58px;padding:6px 8px;font-size:9px;font-weight:950;
-  border-radius:7px;letter-spacing:.35px;
-}
-.official-status.on{background:#DDF2C8;color:#236B0B}
-.official-status.off{background:#FCE1D9;color:#A52D1D}
-.official-status.duty{background:#FFF0C7;color:#925000}
-.market-area{min-height:0}
-.market-heading h2{font-weight:950}
-.market-subtitle,.market-coordinate{color:#596B43}
-.market-card{border:1px solid #BBD28E;box-shadow:0 5px 14px rgba(35,62,12,.12)}
-.market-card:after{inset:15% 0 0;background:linear-gradient(transparent,rgba(12,28,5,.88))}
-.market-name{color:#FFFFFF;text-shadow:0 2px 5px #15210D}
-.market-overlay strong{color:#FFE06B;text-shadow:0 2px 5px rgba(0,0,0,.75)}
-.bottomline{border-top:1px solid #D6E5B7}
-.motto,.contact-info span{color:#477C08;font-weight:950}
-.contact-info,.contact-info strong,.contact-info a,.updated-at,.connection-message{color:#30491C;font-weight:750}
-.connection-message.connected{color:#23720C}
-@media(min-width:761px){
-  .official-list{grid-template-rows:repeat(9,minmax(0,1fr))}
-  .official-row{min-height:0}
-  .official-photo,.official-avatar{width:clamp(40px,3.3vw,50px);height:clamp(40px,3.3vw,50px);min-width:clamp(40px,3.3vw,50px)}
-}
-@media(min-width:761px) and (max-height:760px){
-  .official-row{padding:2px 5px;gap:7px}
-  .official-photo,.official-avatar{width:38px;height:38px;min-width:38px}
-  .official-status{padding:4px 6px}
-}
-@media(max-width:760px){
-  body{background-color:#F4F8EC}
-  .official-row{grid-template-columns:48px minmax(0,1fr) auto;padding:7px}
-  .official-photo,.official-avatar{width:44px;height:44px;min-width:44px}
-  .official-role{font-size:13px}
-  .market-grid{grid-template-columns:1fr;grid-auto-rows:190px}
-  .market-heading h2{font-size:19px}
-  .bottomline{gap:8px}
+
+.public-page {
+  width: 100%;
+  height: 100vh;
+  min-height: 0;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  padding: clamp(8px, 1.25vh, 16px) clamp(10px, 1.3vw, 22px);
+  overflow: hidden;
 }
 
-
-/* =========================================================
-   REPUBLIK MELON V2 – FULL WIDTH OFFICIAL CARDS + SERVICE TABLE
-   Kantor Kecamatan Wates photo watermark.
-   ========================================================= */
-@media (min-width:761px){
-  html,body{height:100%;overflow:hidden}
-  .public-page{height:100vh;min-height:0;padding:10px 14px;overflow:hidden}
-  .melon-board{
-    height:100%;min-height:0;display:flex;flex-direction:column;
-    gap:8px;padding:12px;overflow:hidden;
-    grid-template-rows:none;
-  }
-  .topbar{flex:0 0 13%;min-height:76px}
-  .official-area-full{
-    position:relative;isolation:isolate;display:flex;flex-direction:column;
-    flex:1 1 0;min-height:0;overflow:hidden;padding:10px 12px;
-    background:#fff;border:1px solid #BFD985;border-radius:16px;
-  }
-  .official-area-full:before{
-    content:"";position:absolute;inset:0;z-index:-2;
-    background-image:url("assets/kantor-kecamatan-wates.png");
-    background-size:cover;background-position:center 53%;
-    opacity:.23;
-  }
-  .official-area-full:after{
-    content:"";position:absolute;inset:0;z-index:-1;
-    background:rgba(255,255,255,.70);pointer-events:none;
-  }
-  .official-heading{flex:0 0 auto;padding:0 4px 6px}
-  .official-heading h2{margin:0;color:#23480C;font-size:clamp(18px,1.5vw,23px);font-weight:950;letter-spacing:.5px}
-  .official-subtitle{margin:2px 0 0;color:#527D08;font-size:9px;font-weight:850;letter-spacing:1px}
-  .official-grid{
-    flex:1 1 auto;min-height:0;display:grid;
-    grid-template-columns:repeat(3,minmax(0,1fr));
-    grid-template-rows:repeat(3,minmax(0,1fr));
-    gap:5px;
-  }
-  .official-grid .official-row{
-    min-width:0;min-height:0;display:grid;
-    grid-template-columns:clamp(65px,5.2vw,76px) minmax(0,1fr) auto;
-    align-items:center;gap:9px;padding:5px 9px;
-    border:1px solid rgba(137,174,72,.65);border-radius:10px;
-    background:rgba(255,255,255,.87);
-    box-shadow:0 2px 7px rgba(36,66,12,.08);
-  }
-  .official-grid .official-photo,.official-grid .official-avatar{
-    width:clamp(58px,5vw,72px);height:clamp(58px,5vw,72px);
-    min-width:clamp(58px,5vw,72px);object-fit:cover;
-    object-position:center 24%;border:2px solid #D1E4A9;
-    border-radius:8px;background:#EFF5E5;
-  }
-  .official-grid .official-avatar{display:grid;place-items:center;font-size:11px;font-weight:900;color:#477C08}
-  .official-grid .official-avatar[hidden]{
-  display:none !important;
-}
-    .official-grid .official-role{
-    min-width:0;text-align:left;color:#203B0D;
-    font-size:clamp(12px,.98vw,15px);font-weight:900;line-height:1.18;
-  }
-  .official-grid .official-status{
-    min-width:64px;text-align:right;justify-self:end;
-    padding:6px 8px;font-size:clamp(9px,.7vw,11px);
-    white-space:nowrap;border-radius:7px;
-  }
-  .information-area{
-    flex:0 0 25%;min-height:0;display:flex;flex-direction:column;
-    gap:5px;padding:8px 11px;border:1px solid #C8DDA0;
-    border-radius:14px;background:#FFFFFF;overflow:hidden;
-  }
-  .information-heading{flex:0 0 auto}
-  .information-heading .section-kicker{margin:0 0 2px;color:#638D0C}
-  .information-heading h2{margin:0;color:#23480C;font-size:clamp(15px,1.25vw,19px);font-weight:950}
-  .information-table{
-    flex:1 1 auto;min-height:0;display:grid;
-    grid-template-rows:repeat(6,minmax(0,1fr));
-    border:1px solid #C9DDA0;border-radius:8px;overflow:hidden;
-  }
-  .information-row{
-    display:grid;grid-template-columns:minmax(220px,28%) minmax(0,1fr);
-    min-height:0;border-bottom:1px solid #DCE8C6;
-    background:rgba(255,255,255,.96);
-  }
-  .information-row:last-child{border-bottom:0}
-  .information-row:nth-child(even){background:#F7FAF1}
-  .information-label{
-    display:flex;align-items:center;padding:4px 11px;
-    color:#29480D;font-size:clamp(10px,.82vw,12px);
-    font-weight:950;border-right:1px solid #DCE8C6;
-  }
-  .information-value{
-    display:flex;align-items:center;gap:12px;padding:4px 13px;
-    color:#263F12;font-size:clamp(10px,.82vw,12px);font-weight:650;
-    line-height:1.25;min-width:0;
-  }
-  .availability-inline strong{font-size:clamp(15px,1.15vw,18px);font-weight:950;color:#23480C;white-space:nowrap}
-  .availability-inline small{font-size:9px;letter-spacing:.6px}
-  .info-state{font-size:11px;font-weight:900;color:#A65300}
-  .network-state{font-size:clamp(12px,.95vw,14px);font-weight:950}
-  .network-state.normal{color:#28770D}
-  .network-state.warning{color:#B54700}
-  .information-description .information-value{font-weight:600}
-  .bottomline{flex:0 0 auto;min-height:28px}
-}
-@media (min-width:761px) and (max-height:760px){
-  .topbar{flex-basis:12%;min-height:65px}
-  .official-area-full{padding:7px 9px}
-  .official-heading{padding-bottom:3px}
-  .official-grid{gap:4px}
-  .official-grid .official-row{grid-template-columns:54px minmax(0,1fr) auto;padding:3px 6px;gap:7px}
-  .official-grid .official-photo,.official-grid .official-avatar{width:50px;height:50px;min-width:50px}
-  .information-area{flex-basis:26%;padding:5px 8px}
-}
-@media(max-width:760px){
-  .melon-board{height:auto;min-height:100svh;overflow:visible}
-  .official-area-full{position:relative;isolation:isolate;display:flex;flex-direction:column;gap:8px;overflow:hidden;padding:10px}
-  .official-area-full:before{content:"";position:absolute;inset:0;z-index:-2;background:url("assets/kantor-kecamatan-wates.png") center/cover no-repeat;opacity:.20}
-  .official-area-full:after{content:"";position:absolute;inset:0;z-index:-1;background:rgba(255,255,255,.76)}
-  .official-heading h2{margin:0;color:#23480C;font-size:19px}
-  .official-subtitle{margin:2px 0 0;color:#527D08;font-size:9px;font-weight:850}
-  .official-grid{display:grid;grid-template-columns:1fr;gap:5px}
-  .official-grid .official-row{
-    display:grid;grid-template-columns:54px minmax(0,1fr) auto;
-    align-items:center;gap:9px;padding:5px 7px;
-    border:1px solid #C9DDA0;border-radius:9px;background:rgba(255,255,255,.91)
-  }
-  .official-grid .official-photo,.official-grid .official-avatar{width:48px;height:48px;min-width:48px;object-fit:cover;object-position:center 24%;border-radius:7px}
-  .official-grid .official-role{font-size:13px;font-weight:900;color:#203B0D;text-align:left}
-  .official-grid .official-status{min-width:58px;text-align:right;font-size:9px;padding:6px}
-  .information-area{display:flex;flex-direction:column;gap:6px;padding:10px;border:1px solid #C8DDA0;border-radius:12px;background:#fff}
-  .information-heading h2{margin:0;color:#23480C;font-size:18px}
-  .information-heading .section-kicker{margin:0 0 2px}
-  .information-table{display:flex;flex-direction:column;border:1px solid #C9DDA0;border-radius:8px;overflow:hidden}
-  .information-row{display:grid;grid-template-columns: minmax(115px,36%) minmax(0,1fr);border-bottom:1px solid #DCE8C6}
-  .information-row:last-child{border-bottom:0}
-  .information-label{padding:9px 7px;display:flex;align-items:center;border-right:1px solid #DCE8C6;color:#29480D;font-size:10px;font-weight:900}
-  .information-value{padding:9px 8px;display:flex;align-items:center;gap:7px;color:#263F12;font-size:11px;line-height:1.35;min-width:0}
-  .availability-inline{flex-wrap:wrap}
-  .availability-inline strong{font-size:15px;color:#23480C}
-  .info-state{font-size:10px;font-weight:900;color:#A65300}
-  .information-description .information-value{font-weight:600}
-  .bottomline{flex-wrap:wrap}
-}
-
-/* =========================================
-   FIX FINAL KARTU STATUS PEJABAT
-   ========================================= */
-
-@media (min-width: 761px) {
-
-  .official-grid .official-row {
-    display: grid !important;
-    grid-template-columns: 58px minmax(0, 1fr) auto !important;
-    grid-template-rows: 1fr !important;
-    align-items: center !important;
-    gap: 10px !important;
-    padding: 6px 10px !important;
-    overflow: hidden;
-  }
-
-  /* Sembunyikan avatar cadangan */
-  .official-grid .official-row .official-avatar[hidden] {
-    display: none !important;
-  }
-
-  /* Foto pejabat */
-  .official-grid .official-row .official-photo {
-    grid-column: 1;
-    grid-row: 1;
-    width: 54px;
-    height: 54px;
-    min-width: 54px;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-
-  /* Nama jabatan */
-  .official-grid .official-row .official-role {
-    grid-column: 2;
-    grid-row: 1;
-    text-align: left !important;
-    font-size: 14px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  /* Status kehadiran */
-  .official-grid .official-row .official-status {
-    grid-column: 3;
-    grid-row: 1;
-    justify-self: end;
-    min-width: 65px;
-    text-align: center !important;
-    padding: 7px 10px;
-  }
-}
-@media (min-width: 761px) {
-  .official-heading {
-    padding-bottom: 12px !important;
-  }
-
-  .official-subtitle {
-    line-height: 1.5;
-    margin-top: 4px !important;
-  }
-}
-
-/* =========================================
-   REPUBLIK MELON - HEADER REFINEMENT
-   ========================================= */
-
-@media (min-width: 761px) {
-
-  /* Header lebih lapang */
-  .topbar {
-    flex: 0 0 16% !important;
-    min-height: 100px;
-    padding: 12px 24px !important;
-    gap: 20px;
-  }
-
-  /* Identitas instansi */
-  .crest-wrap {
-    width: 82px;
-    height: 82px;
-  }
-
-  .identity h1 {
-    font-size: clamp(32px, 3.2vw, 48px);
-    letter-spacing: -1px;
-  }
-
-  /* Panel jam */
-  .clockbox {
-    min-width: 250px;
-    padding: 10px 16px;
-    border: none;
-    border-radius: 13px;
-    background: #355E0B;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(30,65,5,.18);
-  }
-
-  /* Hari dan pasaran */
-  .clock-day {
-    color: #FFFFFF;
-    font-size: 14px;
-    font-weight: 950;
-    letter-spacing: 1px;
-  }
-
-  /* Tanggal */
-  .clock-date {
-    color: #FFFFFF;
-    font-size: 12px;
-    font-weight: 700;
-    margin: 4px 0;
-  }
-
-  /* Jam digital putih ekstra bold */
-  .clock-time {
-    color: #FFFFFF !important;
-    font-size: clamp(30px, 3vw, 44px);
-    font-weight: 950 !important;
-    letter-spacing: 1.5px;
-    line-height: 1.1;
-    font-variant-numeric: tabular-nums;
-    text-shadow: 0 2px 4px rgba(0,0,0,.2);
-  }
-}
-
-/* Penyesuaian layar pendek */
-@media (min-width: 761px) and (max-height: 760px) {
-  .topbar {
-    flex-basis: 15% !important;
-    min-height: 82px;
-  }
-
-  .crest-wrap {
-    width: 65px;
-    height: 65px;
-  }
-
-  .clockbox {
-    padding: 7px 12px;
-  }
-
-  .clock-time {
-    font-size: 30px;
-  }
-}
-
-/* Tampilan mobile */
-@media (max-width: 760px) {
-  .clockbox {
-    background: #355E0B;
-    border-radius: 10px;
-    padding: 9px 12px;
-    text-align: center;
-    border: none;
-  }
-
-  .clock-day,
-  .clock-date,
-  .clock-time {
-    color: #FFFFFF !important;
-  }
-
-  .clock-time {
-    font-weight: 950;
-    font-size: 30px;
-    font-variant-numeric: tabular-nums;
-  }
-}
-
-/* =========================================
-   PERAPIAN FINAL INFORMASI REPUBLIK MELON
-   ========================================= */
-
-/* Hilangkan ruang bekas keterangan status pejabat */
-@media (min-width: 761px) {
-  .official-area {
-    grid-template-rows: 30px minmax(0, 1fr) !important;
-  }
-
-  .official-heading {
-    padding: 0 !important;
-  }
-
-  .official-subtitle {
-    display: none !important;
-  }
-}
-
-/* Judul informasi pelayanan */
-.information-heading {
-  padding: 0 0 3px !important;
-}
-
-.information-heading .section-kicker {
-  display: none !important;
-}
-
-.information-heading h2 {
-  margin: 0 !important;
-  color: #294d0d !important;
-  font-size: clamp(17px, 1.35vw, 21px) !important;
-  font-weight: 950 !important;
-  line-height: 1.2;
-}
-
-/* Tabel informasi */
-.information-table {
+.melon-board {
+  width: 100%;
+  height: 100%;
+  max-width: 1920px;
+  min-height: 0;
   display: flex;
   flex-direction: column;
-  border: 1px solid #c9dda0;
-  border-radius: 9px;
+  gap: 7px;
+  padding: clamp(9px, 1vw, 15px);
+  border: 1px solid #AFCF68;
+  border-radius: clamp(14px, 1.3vw, 24px);
+  background: rgba(255, 255, 255, .985);
+  box-shadow: 0 14px 48px rgba(35, 70, 8, .20);
   overflow: hidden;
-  background: #fff;
 }
 
-.information-row {
-  display: grid;
-  grid-template-columns: minmax(220px, 29%) minmax(0, 1fr);
-  border-bottom: 1px solid #dce8c6;
-  min-height: 29px;
-}
-
-.information-row:last-child {
-  border-bottom: none;
-}
-
-/* Kolom label */
-.information-label {
-  display: flex;
-  align-items: center;
-  padding: 6px 11px !important;
-  border-right: 1px solid #dce8c6;
-  background: #f5f9ed;
-  color: #29480d;
-  font-size: 11px !important;
-  font-weight: 900;
-  line-height: 1.25;
-}
-
-/* Kolom keterangan */
-.information-value {
-  display: flex;
-  align-items: center;
-  min-width: 0;
-  padding: 6px 12px !important;
-  color: #263f12;
-  font-size: 11px !important;
-  font-weight: 600;
-  line-height: 1.35;
-}
-
-/* Jumlah keping dan status */
-.availability-inline {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: nowrap;
-}
-
-.availability-inline strong {
-  color: #23480c;
-  font-size: 16px !important;
-  font-weight: 950;
-  white-space: nowrap;
-}
-
-.availability-inline strong small {
-  font-size: 10px;
-}
-
-.info-state {
-  font-size: 10px;
-  font-weight: 900;
-  white-space: nowrap;
-}
-
-/* Layar kecil */
-@media (max-width: 760px) {
-  .information-row {
-    grid-template-columns: minmax(115px, 36%) minmax(0, 1fr);
-  }
-
-  .information-label {
-    font-size: 9px !important;
-    padding: 7px 6px !important;
-  }
-
-  .information-value {
-    font-size: 10px !important;
-    padding: 7px 8px !important;
-    flex-wrap: wrap;
-  }
-
-  .availability-inline {
-    flex-wrap: wrap;
-    gap: 5px;
-  }
-}
-/* =========================================
-   OPTIMALISASI RUANG STATUS & INFORMASI
-   ========================================= */
-
-@media (min-width: 761px) {
-
-  /* Area status pejabat dibuat lebih pendek */
-  .official-area {
-    flex: 0 0 41% !important;
-    height: auto !important;
-    min-height: 0 !important;
-    padding: 7px 9px !important;
-    gap: 4px !important;
-    grid-template-rows: 25px minmax(0, 1fr) !important;
-  }
-
-  /* Judul status lebih ringkas */
-  .official-heading {
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-
-  .official-heading h2 {
-    font-size: 18px !important;
-    line-height: 1.2;
-  }
-
-  /* Susunan 3 kolom x 3 baris tetap */
-  .official-grid {
-    display: grid !important;
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-    grid-template-rows: repeat(3, minmax(0, 1fr)) !important;
-    gap: 3px !important;
-    min-height: 0;
-  }
-
-  /* Kartu pejabat lebih padat */
-  .official-grid .official-row {
-    grid-template-columns: 48px minmax(0, 1fr) auto !important;
-    gap: 7px !important;
-    padding: 3px 7px !important;
-    min-height: 0;
-  }
-
-  /* Foto tetap proporsional */
-  .official-grid .official-row .official-photo,
-  .official-grid .official-row .official-avatar {
-    width: 44px !important;
-    height: 44px !important;
-    min-width: 44px !important;
-    border-radius: 7px;
-  }
-
-  /* Tulisan jabatan */
-  .official-grid .official-row .official-role {
-    font-size: 12px !important;
-  }
-
-  /* Label status */
-  .official-grid .official-row .official-status {
-    min-width: 58px !important;
-    padding: 5px 7px !important;
-    font-size: 9px !important;
-  }
-
-  /* Informasi pelayanan mengambil sisa ruang */
-  .information-area {
-    flex: 1 1 0 !important;
-    height: auto !important;
-    min-height: 0 !important;
-    padding: 9px !important;
-    gap: 5px !important;
-    overflow: hidden;
-  }
-
-  /* Baris informasi sedikit lebih lega */
-  .information-row {
-    min-height: 31px;
-  }
-
-  .information-label,
-  .information-value {
-    padding-top: 6px !important;
-    padding-bottom: 6px !important;
-  }
-}
-
-/* =========================================
-   HEADER BARU REPUBLIK MELON
-   ========================================= */
+/* ---------- Header utama: logo | identitas | jam ---------- */
 
 .topbar {
-  display: grid !important;
-  grid-template-columns: minmax(250px, 1.05fr) minmax(300px, 1fr) minmax(210px, 250px);
+  position: relative;
+  isolation: isolate;
+  flex: 0 0 20%;
+  min-height: 128px;
+  max-height: 170px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 1.28fr) minmax(190px, 250px);
   align-items: center;
-  gap: 16px;
-  padding: 8px 18px !important;
+  gap: clamp(10px, 1.3vw, 20px);
+  padding: 8px 18px;
+  border-radius: 16px;
+  background: linear-gradient(108deg, #A8D934 0%, #C8EB69 55%, #FFB52E 100%);
+  box-shadow: inset 0 -4px 0 rgba(48, 85, 8, .16), 0 5px 16px rgba(48, 85, 8, .10);
+  overflow: hidden;
+}
+
+.topbar::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 38vw;
+  height: 38vw;
+  max-width: 500px;
+  max-height: 500px;
+  border: 1px solid rgba(255, 255, 255, .35);
+  border-radius: 50%;
+  right: 14%;
+  top: -340%;
+  pointer-events: none;
 }
 
 .brand-logo {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
   display: flex;
   align-items: center;
-  min-width: 0;
-  height: 100%;
+  justify-content: flex-start;
+  overflow: hidden;
 }
 
 .brand-logo img {
   display: block;
   width: 100%;
-  max-width: 440px;
+  max-width: 420px;
+  height: 118px;
   max-height: 100%;
   object-fit: contain;
   object-position: left center;
@@ -750,20 +131,26 @@ body{
 .topbar .identity {
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-self: start;
+  gap: 17px;
   min-width: 0;
+  transform: translateX(12px);
 }
 
 .topbar .crest-wrap {
-  width: 62px;
-  height: 68px;
-  border-radius: 0;
+  width: 88px;
+  height: 98px;
+  flex: 0 0 88px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
   border: 0;
+  border-radius: 0;
   background: transparent;
-  flex: none;
 }
 
 .topbar .crest-wrap img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -774,641 +161,417 @@ body{
 }
 
 .topbar .govline {
-  font-size: clamp(9px, .8vw, 12px);
-  letter-spacing: .8px;
+  color: #29480D;
+  font-size: clamp(11px, .92vw, 14px);
   font-weight: 950;
+  letter-spacing: 1px;
+  line-height: 1.2;
+  white-space: nowrap;
 }
 
 .topbar .identity h1 {
-  font-size: clamp(23px, 2.1vw, 32px);
-  line-height: 1.05;
-  margin: 5px 0;
+  margin: 7px 0;
+  color: #173907;
+  font-size: clamp(29px, 2.55vw, 39px);
+  font-weight: 950;
+  letter-spacing: -.8px;
+  line-height: 1.08;
   white-space: nowrap;
 }
 
 .topbar .identity h1 span {
-  color: #D65B00;
+  color: #C95700;
 }
 
 .topbar .office-line {
-  font-size: clamp(8px, .7vw, 10px);
-  letter-spacing: 1px;
+  color: #29480D;
+  font-size: clamp(10px, .82vw, 12px);
+  font-weight: 950;
+  letter-spacing: 1.15px;
+  line-height: 1.2;
+  white-space: nowrap;
 }
 
 .topbar .clockbox {
-  min-width: 0;
+  z-index: 2;
   width: 100%;
-  padding: 8px 10px;
+  min-width: 0;
+  padding: 10px 12px;
   border: 0;
   border-radius: 13px;
   background: #355E0B;
   text-align: center;
+  box-shadow: 0 4px 12px rgba(30, 65, 5, .18);
 }
 
 .topbar .clock-day,
 .topbar .clock-date,
 .topbar .clock-time {
-  color: #fff !important;
+  color: #FFFFFF !important;
+}
+
+.topbar .clock-day {
+  font-size: clamp(11px, .98vw, 14px);
+  font-weight: 950;
+  letter-spacing: 1px;
+}
+
+.topbar .clock-date {
+  margin: 4px 0;
+  font-size: clamp(10px, .84vw, 12px);
+  font-weight: 700;
 }
 
 .topbar .clock-time {
+  font-size: clamp(28px, 2.5vw, 38px);
   font-weight: 950 !important;
+  letter-spacing: 1.5px;
+  line-height: 1.15;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, .2);
 }
 
-@media (max-width: 1000px) and (min-width: 761px) {
-  .topbar {
-    grid-template-columns: minmax(190px, .9fr) minmax(250px, 1fr) 190px;
-    gap: 9px;
-    padding: 7px 10px !important;
-  }
+/* ---------- Panel status pejabat ---------- */
 
-  .topbar .crest-wrap {
-    width: 48px;
-    height: 54px;
-  }
-
-  .topbar .identity h1 {
-    font-size: 22px;
-  }
+.official-area-full {
+  position: relative;
+  isolation: isolate;
+  flex: 0 0 42%;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 7px 10px;
+  border: 1px solid #BFD985;
+  border-radius: 15px;
+  background: #FFFFFF;
+  overflow: hidden;
 }
 
-@media (max-width: 760px) {
-  .topbar {
-    display: flex !important;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .brand-logo {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .brand-logo img {
-    max-width: 420px;
-    max-height: 100px;
-  }
-
-  .topbar .identity {
-    width: 100%;
-  }
-
-  .topbar .clockbox {
-    width: 100%;
-  }
+.official-area-full::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  background-image: url("assets/kantor-kecamatan-wates.png");
+  background-size: cover;
+  background-position: center 53%;
+  opacity: .23;
 }
 
-/* =========================================
-   HEADER REPUBLIK MELON - EXPANDED VERSION
-   ========================================= */
-
-@media (min-width: 761px) {
-
-  .topbar {
-    flex: 0 0 17% !important;
-    min-height: 130px !important;
-    max-height: none !important;
-    padding: 10px 18px !important;
-
-    display: grid !important;
-    grid-template-columns:
-      minmax(300px, 1.15fr)
-      minmax(300px, 1fr)
-      minmax(220px, 250px) !important;
-
-    align-items: center !important;
-    gap: 18px !important;
-    overflow: hidden !important;
-  }
-
-  /* Logo REPUBLIK MELON */
-  .brand-logo {
-    width: 100%;
-    height: 100%;
-    min-width: 0;
-    display: flex;
-    align-items: center;
-  }
-
-  .brand-logo img {
-    width: 100%;
-    max-width: 460px;
-    height: 115px;
-    max-height: 100%;
-    object-fit: contain;
-    object-position: left center;
-  }
-
-  /* Lambang dan identitas kecamatan */
-  .topbar .identity {
-    display: flex;
-    align-items: center;
-    gap: 13px;
-    min-width: 0;
-  }
-
-  .topbar .crest-wrap {
-    width: 68px !important;
-    height: 76px !important;
-    flex: 0 0 68px;
-    background: transparent;
-    border: none;
-  }
-
-  .topbar .crest-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-
-  .topbar .govline {
-    font-size: 12px;
-    letter-spacing: .8px;
-  }
-
-  .topbar .identity h1 {
-    font-size: clamp(25px, 2.2vw, 34px);
-    line-height: 1.1;
-    margin: 6px 0;
-    white-space: nowrap;
-  }
-
-  .topbar .office-line {
-    font-size: 10px;
-    letter-spacing: 1px;
-  }
-
-  /* Jam digital */
-  .topbar .clockbox {
-    width: 100%;
-    min-width: 0;
-    padding: 12px 10px;
-    border: none;
-    border-radius: 13px;
-    background: #355E0B;
-    text-align: center;
-  }
-
-  .topbar .clock-day,
-  .topbar .clock-date,
-  .topbar .clock-time {
-    color: #FFFFFF !important;
-  }
-
-  .topbar .clock-day {
-    font-size: 14px;
-    font-weight: 950;
-  }
-
-  .topbar .clock-date {
-    font-size: 12px;
-    margin: 4px 0;
-  }
-
-  .topbar .clock-time {
-    font-size: clamp(29px, 2.5vw, 38px);
-    font-weight: 950 !important;
-    line-height: 1.15;
-    white-space: nowrap;
-  }
+.official-area-full::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: rgba(255, 255, 255, .70);
+  pointer-events: none;
 }
 
-/* Laptop dengan tinggi layar terbatas */
-@media (min-width: 761px) and (max-height: 760px) {
-  .topbar {
-    flex-basis: 18% !important;
-    min-height: 112px !important;
-  }
-
-  .brand-logo img {
-    height: 98px;
-  }
-
-  .topbar .crest-wrap {
-    width: 55px !important;
-    height: 62px !important;
-    flex-basis: 55px;
-  }
+/* Header status pejabat dan informasi pelayanan menggunakan gaya sama */
+.official-heading {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  min-height: 22px;
+  padding: 0 3px 2px;
+  margin: 0;
+  line-height: 1;
 }
 
-/* Tampilan HP */
-@media (max-width: 760px) {
-  .topbar {
-    display: flex !important;
-    flex-wrap: wrap;
-    min-height: 0;
-    padding: 12px !important;
-  }
-
-  .brand-logo {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .brand-logo img {
-    width: 100%;
-    max-width: 440px;
-    height: auto;
-    max-height: 120px;
-    object-fit: contain;
-  }
-
-  .topbar .identity {
-    width: 100%;
-  }
-
-  .topbar .clockbox {
-    width: 100%;
-  }
+.official-heading h2 {
+  margin: 0;
+  color: #23480C;
+  font-size: clamp(16px, 1.35vw, 20px);
+  font-weight: 950;
+  letter-spacing: .4px;
+  line-height: 1.15;
 }
 
-
-/* =========================================
-   HEADER REPUBLIK MELON - EXPANDED VERSION
-   ========================================= */
-
-@media (min-width: 761px) {
-
-  .topbar {
-    flex: 0 0 17% !important;
-    min-height: 130px !important;
-    max-height: none !important;
-    padding: 10px 18px !important;
-
-    display: grid !important;
-    grid-template-columns:
-      minmax(300px, 1.15fr)
-      minmax(300px, 1fr)
-      minmax(220px, 250px) !important;
-
-    align-items: center !important;
-    gap: 18px !important;
-    overflow: hidden !important;
-  }
-
-  /* Logo REPUBLIK MELON */
-  .brand-logo {
-    width: 100%;
-    height: 100%;
-    min-width: 0;
-    display: flex;
-    align-items: center;
-  }
-
-  .brand-logo img {
-    width: 100%;
-    max-width: 460px;
-    height: 115px;
-    max-height: 100%;
-    object-fit: contain;
-    object-position: left center;
-  }
-
-  /* Lambang dan identitas kecamatan */
-  .topbar .identity {
-    display: flex;
-    align-items: center;
-    gap: 13px;
-    min-width: 0;
-  }
-
-  .topbar .crest-wrap {
-    width: 68px !important;
-    height: 76px !important;
-    flex: 0 0 68px;
-    background: transparent;
-    border: none;
-  }
-
-  .topbar .crest-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-
-  .topbar .govline {
-    font-size: 12px;
-    letter-spacing: .8px;
-  }
-
-  .topbar .identity h1 {
-    font-size: clamp(25px, 2.2vw, 34px);
-    line-height: 1.1;
-    margin: 6px 0;
-    white-space: nowrap;
-  }
-
-  .topbar .office-line {
-    font-size: 10px;
-    letter-spacing: 1px;
-  }
-
-  /* Jam digital */
-  .topbar .clockbox {
-    width: 100%;
-    min-width: 0;
-    padding: 12px 10px;
-    border: none;
-    border-radius: 13px;
-    background: #355E0B;
-    text-align: center;
-  }
-
-  .topbar .clock-day,
-  .topbar .clock-date,
-  .topbar .clock-time {
-    color: #FFFFFF !important;
-  }
-
-  .topbar .clock-day {
-    font-size: 14px;
-    font-weight: 950;
-  }
-
-  .topbar .clock-date {
-    font-size: 12px;
-    margin: 4px 0;
-  }
-
-  .topbar .clock-time {
-    font-size: clamp(29px, 2.5vw, 38px);
-    font-weight: 950 !important;
-    line-height: 1.15;
-    white-space: nowrap;
-  }
+.official-grid {
+  position: relative;
+  z-index: 1;
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  gap: 5px;
 }
 
-/* Laptop dengan tinggi layar terbatas */
-@media (min-width: 761px) and (max-height: 760px) {
-  .topbar {
-    flex-basis: 18% !important;
-    min-height: 112px !important;
-  }
-
-  .brand-logo img {
-    height: 98px;
-  }
-
-  .topbar .crest-wrap {
-    width: 55px !important;
-    height: 62px !important;
-    flex-basis: 55px;
-  }
+.official-grid .official-row {
+  min-width: 0;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 68px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 9px;
+  border: 1px solid rgba(137, 174, 72, .65);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .87);
+  box-shadow: 0 2px 7px rgba(36, 66, 12, .08);
+  overflow: hidden;
 }
 
-/* Tampilan HP */
-@media (max-width: 760px) {
-  .topbar {
-    display: flex !important;
-    flex-wrap: wrap;
-    min-height: 0;
-    padding: 12px !important;
-  }
-
-  .brand-logo {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .brand-logo img {
-    width: 100%;
-    max-width: 440px;
-    height: auto;
-    max-height: 120px;
-    object-fit: contain;
-  }
-
-  .topbar .identity {
-    width: 100%;
-  }
-
-  .topbar .clockbox {
-    width: 100%;
-  }
+.official-grid .official-photo,
+.official-grid .official-avatar {
+  width: 62px;
+  height: 62px;
+  min-width: 62px;
+  object-fit: cover;
+  object-position: center 24%;
+  border: 2px solid #D1E4A9;
+  border-radius: 9px;
+  background: #EFF5E5;
+  box-shadow: 0 2px 6px rgba(33, 63, 10, .12);
 }
 
-/* =========================================
-   HEADER FINAL - IDENTITAS LEBIH DOMINAN
-   ========================================= */
-
-@media (min-width: 761px) {
-  .topbar {
-    flex: 0 0 18% !important;
-    min-height: 145px !important;
-    padding: 10px 18px !important;
-    grid-template-columns:
-      minmax(300px, 1.12fr)
-      minmax(350px, 1.12fr)
-      minmax(220px, 250px) !important;
-    gap: 16px !important;
-  }
-
-  /* Logo REPUBLIK MELON */
-  .brand-logo {
-    background: transparent !important;
-  }
-
-  .brand-logo img {
-    width: 100%;
-    max-width: 500px;
-    height: 132px;
-    object-fit: contain;
-    object-position: left center;
-    background: transparent !important;
-  }
-
-  /* Lambang Kabupaten Blitar */
-  .topbar .crest-wrap {
-    width: 88px !important;
-    height: 94px !important;
-    flex: 0 0 88px !important;
-    background: transparent !important;
-    border: none !important;
-    border-radius: 0 !important;
-  }
-
-  .topbar .crest-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    background: transparent !important;
-  }
-
-  /* Pemerintah Kabupaten Blitar */
-  .topbar .govline {
-    font-size: clamp(13px, 1.05vw, 16px) !important;
-    font-weight: 950 !important;
-    letter-spacing: 1px;
-  }
-
-  /* Kecamatan Wates */
-  .topbar .identity h1 {
-    font-size: clamp(31px, 2.7vw, 41px) !important;
-    font-weight: 950 !important;
-    line-height: 1.08;
-    margin: 7px 0 !important;
-  }
-
-  /* Papan Informasi Digital */
-  .topbar .office-line {
-    font-size: clamp(11px, .9vw, 14px) !important;
-    font-weight: 950 !important;
-    letter-spacing: 1.2px;
-  }
+.official-grid .official-avatar {
+  display: grid;
+  place-items: center;
+  color: #477C08;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .3px;
 }
 
-/* Laptop */
-@media (min-width: 761px) and (max-height: 760px) {
-  .topbar {
-    flex-basis: 19% !important;
-    min-height: 125px !important;
-  }
-
-  .brand-logo img {
-    height: 112px;
-  }
-
-  .topbar .crest-wrap {
-    width: 72px !important;
-    height: 80px !important;
-    flex-basis: 72px !important;
-  }
+.official-grid .official-avatar[hidden] {
+  display: none !important;
 }
 
-/* =========================================
-   HEADER REPUBLIK MELON - REVISI IDENTITAS
-   ========================================= */
-
-@media (min-width: 761px) {
-  .topbar {
-    flex: 0 0 19% !important;
-    min-height: 180px !important;
-    padding: 10px 18px !important;
-
-    grid-template-columns:
-      minmax(300px, 1.12fr)
-      minmax(350px, 1.12fr)
-      minmax(220px, 250px) !important;
-
-    gap: 12px !important;
-    align-items: center !important;
-  }
-
-  /* Logo REPUBLIK MELON */
-  .brand-logo img {
-    max-width: 500px;
-    height: 150px;
-    object-fit: contain;
-    object-position: left center;
-  }
-
-  /* Kelompok identitas digeser ke kiri 2 cm */
-  .topbar .identity {
-    transform: translateX(-76px);
-    display: flex;
-    align-items: center;
-    gap: 13px;
-    min-width: 0;
-  }
-
-  /* Lambang Kabupaten Blitar: naik 75% */
-  .topbar .crest-wrap {
-    width: 154px !important;
-    height: 164px !important;
-    flex: 0 0 154px !important;
-    background: transparent !important;
-    border: none !important;
-    border-radius: 0 !important;
-  }
-
-  .topbar .crest-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    background: transparent !important;
-  }
-
-  /* Pemerintah Kabupaten Blitar */
-  .topbar .govline {
-    font-size: 16px !important;
-    font-weight: 950 !important;
-    letter-spacing: 1px;
-    white-space: nowrap;
-  }
-
-  /* Kecamatan Wates */
-  .topbar .identity h1 {
-    font-size: clamp(32px, 2.7vw, 41px) !important;
-    font-weight: 950 !important;
-    line-height: 1.1;
-    margin: 7px 0 !important;
-    white-space: nowrap;
-  }
-
-  /* Title utama */
-  .topbar .office-line {
-    font-size: 18px !important;
-    font-weight: 950 !important;
-    letter-spacing: 1.4px;
-    white-space: nowrap;
-  }
-
-  /* Jam tetap di kanan */
-  .topbar .clockbox {
-    width: 100%;
-    position: relative;
-    z-index: 2;
-  }
+.official-grid .official-role {
+  min-width: 0;
+  color: #203B0D;
+  font-size: clamp(11px, .9vw, 14px);
+  font-weight: 900;
+  line-height: 1.18;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* Penyesuaian laptop */
-@media (min-width: 761px) and (max-width: 1100px) {
-  .topbar .identity {
-    transform: translateX(-35px);
-  }
-
-  .topbar .crest-wrap {
-    width: 100px !important;
-    height: 110px !important;
-    flex-basis: 100px !important;
-  }
-
-  .topbar .govline {
-    font-size: 12px !important;
-  }
-
-  .topbar .identity h1 {
-    font-size: 25px !important;
-  }
-
-  .topbar .office-line {
-    font-size: 13px !important;
-  }
+.official-grid .official-status {
+  min-width: 60px;
+  justify-self: end;
+  padding: 6px 9px;
+  border-radius: 7px;
+  font-size: 9px;
+  font-weight: 950;
+  letter-spacing: .35px;
+  text-align: center;
+  white-space: nowrap;
 }
 
-/* HP */
-@media (max-width: 760px) {
-  .topbar .identity {
-    transform: none !important;
-  }
-
-  .topbar .crest-wrap {
-    width: 75px !important;
-    height: 82px !important;
-    flex-basis: 75px !important;
-  }
-
-  .topbar .office-line {
-    font-size: 13px !important;
-    font-weight: 950 !important;
-  }
+.official-status.on {
+  color: #236B0B;
+  background: #DDF2C8;
 }
 
-/* Kontak WhatsApp */
-.whatsapp-contact {
-  color: inherit;
+.official-status.off {
+  color: #A52D1D;
+  background: #FCE1D9;
+}
+
+.official-status.duty {
+  color: #925000;
+  background: #FFF0C7;
+}
+
+/* ---------- Panel informasi pelayanan ---------- */
+
+.information-area {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 6px 9px;
+  border: 1px solid #BFD985;
+  border-radius: 14px;
+  background: #FFFFFF;
+  overflow: hidden;
+}
+
+/* Kelas .official-heading pada HTML membuat bentuk header identik */
+.information-heading {
+  flex: 0 0 auto;
+  min-height: 22px;
+  padding: 0 3px 2px;
+  margin: 0;
+}
+
+.information-heading h2 {
+  margin: 0;
+  color: #23480C;
+  font-size: clamp(16px, 1.35vw, 20px);
+  font-weight: 950;
+  letter-spacing: .4px;
+  line-height: 1.15;
+}
+
+.information-table {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #C9DDA0;
+  border-radius: 9px;
+  overflow: hidden;
+  background: #FFFFFF;
+}
+
+.information-row {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(220px, 29%) minmax(0, 1fr);
+  border-bottom: 1px solid #DCE8C6;
+  background: rgba(255, 255, 255, .96);
+}
+
+.information-row:last-child {
+  border-bottom: 0;
+}
+
+.information-row:nth-child(even) {
+  background: #F7FAF1;
+}
+
+.information-label {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  padding: 3px 11px;
+  border-right: 1px solid #DCE8C6;
+  background: #F5F9ED;
+  color: #29480D;
+  font-size: clamp(9px, .65vw, 10px);
+  font-weight: 950;
+  line-height: 1.15;
+}
+
+.information-value {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 3px 12px;
+  color: #263F12;
+  font-size: clamp(9px, .65vw, 10px);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.availability-inline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+
+.availability-inline strong {
+  color: #23480C;
+  font-size: 15px;
+  font-weight: 950;
+  white-space: nowrap;
+}
+
+.availability-inline strong small {
+  font-size: 9px;
+  letter-spacing: .6px;
+}
+
+.info-state {
+  color: #A65300;
+  font-size: 10px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.info-state.waiting {
+  color: #A65300;
+}
+
+.network-state {
+  font-size: 13px;
+  font-weight: 950;
+}
+
+.network-state.normal {
+  color: #28770D;
+}
+
+.network-state.warning {
+  color: #B54700;
+}
+
+/* Teks uraian disamakan ukurannya dengan label PENCETAKAN KTP-EL,
+   tetapi dibuat normal/tidak bold. */
+.information-description .information-value,
+.information-description-text {
+  font-size: clamp(9px, .65vw, 10px);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+/* ---------- Footer ---------- */
+
+.bottomline {
+  flex: 0 0 auto;
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 4px 4px 0;
+  border-top: 1px solid #D6E5B7;
+  overflow: hidden;
+}
+
+.motto {
+  color: #477C08;
+  font-size: 9px;
+  font-weight: 950;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.contact-info {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  color: #30491C;
+  font-size: clamp(9px, .72vw, 11px);
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.contact-info span {
+  color: #477C08;
+  font-weight: 950;
+  letter-spacing: .55px;
+}
+
+.contact-info strong,
+.contact-info a {
+  color: #30491C;
+  font-weight: 850;
   text-decoration: none;
-  font-weight: 700;
+}
+
+.whatsapp-contact {
   cursor: pointer;
 }
 
@@ -1417,438 +580,561 @@ body{
   text-decoration: underline;
 }
 
-/* =========================================
-   FOTO PEJABAT LEBIH BESAR
-   ========================================= */
-
-@media (min-width: 761px) {
-  .official-grid .official-row {
-    grid-template-columns: 68px minmax(0, 1fr) auto !important;
-    gap: 10px !important;
-    padding: 4px 9px !important;
-  }
-
-  .official-grid .official-row .official-photo,
-  .official-grid .official-row .official-avatar {
-    width: 62px !important;
-    height: 62px !important;
-    min-width: 62px !important;
-    border-radius: 9px !important;
-    object-fit: cover !important;
-  }
-
-  .official-grid .official-row .official-role {
-    font-size: 13px !important;
-    font-weight: 900 !important;
-  }
-
-  .official-grid .official-row .official-status {
-    min-width: 60px !important;
-  }
+.update-stack {
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+  text-align: right;
 }
 
-@media (max-width: 760px) {
-  .official-grid .official-row .official-photo,
-  .official-grid .official-row .official-avatar {
-    width: 54px !important;
-    height: 54px !important;
-    min-width: 54px !important;
-    object-fit: cover !important;
-  }
+.updated-at,
+.connection-message {
+  color: #465A2B;
+  font-size: 9px;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
-
+.connection-message.connected {
+  color: #23720C;
+}
 
 /* =========================================================
-   REPUBLIK MELON – PENYESUAIAN RUANG ZOOM 100%
-   Fokus: judul lebih ringkas dan seluruh tabel pelayanan terlihat.
-   Berlaku untuk desktop; aturan mobile dan admin tidak diubah.
+   RESPONSIVE DESKTOP / LAPTOP
    ========================================================= */
-@media (min-width: 761px) {
-  /* Sedikit kurangi tinggi header agar ruang konten bertambah */
-  .topbar {
-    flex: 0 0 17% !important;
-    min-height: 150px !important;
-  }
 
-  /* Area status pejabat: judul lebih pendek, ukuran kartu/foto dipertahankan */
-  .official-area-full {
-    flex: 0 0 39% !important;
-    padding: 7px 10px !important;
-    gap: 3px !important;
-  }
-
-  .official-heading {
-    flex: 0 0 auto !important;
-    padding: 0 3px 2px !important;
-    margin: 0 !important;
-    line-height: 1 !important;
-  }
-
-  .official-heading h2 {
-    margin: 0 !important;
-    font-size: 16px !important;
-    line-height: 1.05 !important;
-    letter-spacing: .35px !important;
-  }
-
-  /* Informasi pelayanan menggunakan ruang sisa */
-  .information-area {
-    flex: 1 1 0 !important;
-    min-height: 0 !important;
-    padding: 6px 9px !important;
-    gap: 3px !important;
-  }
-
-  .information-heading {
-    flex: 0 0 auto !important;
-    padding: 0 0 1px !important;
-    margin: 0 !important;
-    line-height: 1 !important;
-  }
-
-  .information-heading h2 {
-    margin: 0 !important;
-    font-size: 16px !important;
-    line-height: 1.05 !important;
-    letter-spacing: .3px !important;
-  }
-
-  /* Lima/enam baris tabel berbagi tinggi secara merata tanpa terpotong */
-  .information-table {
-    flex: 1 1 0 !important;
-    min-height: 0 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    overflow: hidden !important;
-  }
-
-  .information-row {
-    flex: 1 1 0 !important;
-    min-height: 0 !important;
-  }
-
-  .information-label,
-  .information-value {
-    min-height: 0 !important;
-    padding-top: 3px !important;
-    padding-bottom: 3px !important;
-    line-height: 1.15 !important;
-  }
-
-  .information-label {
-    font-size: 10px !important;
-  }
-
-  .information-value {
-    font-size: 10px !important;
-  }
-
-  .bottomline {
-    min-height: 25px !important;
-    padding-top: 4px !important;
-  }
-}
-
-/* Pada laptop dengan tinggi layar pendek, kompresi dibuat sedikit lebih kuat */
-@media (min-width: 761px) and (max-height: 760px) {
-  .topbar {
-    flex-basis: 16% !important;
-    min-height: 118px !important;
-  }
-
-  .official-area-full {
-    flex-basis: 38% !important;
-  }
-
-  .official-heading h2,
-  .information-heading h2 {
-    font-size: 15px !important;
-  }
-
-  .information-label,
-  .information-value {
-    padding-top: 2px !important;
-    padding-bottom: 2px !important;
-    font-size: 9.5px !important;
-  }
-}
-
-
-
-/* =========================================================
-   REPUBLIK MELON – KOMPAKSI TABEL INFORMASI PELAYANAN
-   Mengurangi tinggi area tabel agar header tidak terdesak.
-   Desktop only; tampilan mobile tetap mengikuti aturan sebelumnya.
-   ========================================================= */
-@media (min-width: 761px) {
-  /* Batasi porsi panel informasi; ruang vertikal kembali ke header */
-  .information-area {
-    flex: 0 0 22% !important;
-    min-height: 0 !important;
-    padding: 5px 9px !important;
-    gap: 3px !important;
-  }
-
-  .information-heading {
-    flex: 0 0 auto !important;
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-
-  .information-heading h2 {
-    font-size: 15px !important;
-    line-height: 1 !important;
-  }
-
-  /* Baris tabel dibuat rapat, bukan membentang memenuhi seluruh panel */
-  .information-table {
-    flex: 1 1 auto !important;
-    min-height: 0 !important;
-    display: flex !important;
-    flex-direction: column !important;
-  }
-
-  .information-row {
-    flex: 1 1 0 !important;
-    min-height: 0 !important;
-  }
-
-  .information-label,
-  .information-value {
-    padding-top: 2px !important;
-    padding-bottom: 2px !important;
-    line-height: 1.08 !important;
-  }
-
-  .information-label {
-    font-size: 9px !important;
-  }
-
-  .information-value {
-    font-size: 9px !important;
-  }
-
-  .availability-inline {
-    gap: 8px !important;
-  }
-
-  .availability-inline strong {
-    font-size: 14px !important;
-  }
-
-  .information-description .information-value {
-    line-height: 1.12 !important;
-  }
-}
-
-/* Laptop dengan tinggi layar terbatas */
-@media (min-width: 761px) and (max-height: 760px) {
-  .information-area {
-    flex-basis: 21% !important;
-    padding: 4px 8px !important;
-  }
-
-  .information-heading h2 {
-    font-size: 14px !important;
-  }
-
-  .information-label,
-  .information-value {
-    padding-top: 1px !important;
-    padding-bottom: 1px !important;
-    font-size: 9px !important;
-  }
-}
-
-
-
-/* =========================================================
-   REPUBLIK MELON – ALOKASI ULANG RUANG VERTIKAL (V3)
-   Ruang kosong di bawah dipindahkan ke header utama.
-   ========================================================= */
-@media (min-width: 761px) {
-  /* Perbesar bidang header agar logo, identitas, dan jam tampil utuh */
-  .topbar {
-    flex: 0 0 32% !important;
-    min-height: 190px !important;
-    max-height: none !important;
-    overflow: hidden !important;
-    align-items: center !important;
-    padding: 12px 20px !important;
-  }
-
-  .brand-logo {
-    height: 100% !important;
-    align-items: center !important;
-  }
-
-  .brand-logo img {
-    height: 170px !important;
-    max-height: 100% !important;
-    width: 100% !important;
-    object-fit: contain !important;
-    object-position: left center !important;
-  }
-
-  .topbar .identity {
-    align-self: center !important;
-  }
-
-  .topbar .crest-wrap {
-    width: 78px !important;
-    height: 88px !important;
-    flex-basis: 78px !important;
-  }
-
-  .topbar .identity h1 {
-    font-size: clamp(25px, 2.25vw, 35px) !important;
-    line-height: 1.08 !important;
-  }
-
-  .topbar .clockbox {
-    padding: 12px 10px !important;
-  }
-
-  .topbar .clock-time {
-    font-size: clamp(29px, 2.6vw, 40px) !important;
-    line-height: 1.1 !important;
-  }
-
-  /* Pertahankan tinggi area pejabat dan tabel yang sudah dirapikan */
-  .official-area-full {
-    flex: 0 0 39% !important;
-  }
-
-  .information-area {
-    flex: 0 0 22% !important;
-  }
-}
-
-/* Laptop dengan tinggi viewport terbatas */
-@media (min-width: 761px) and (max-height: 760px) {
-  .topbar {
-    flex-basis: 32% !important;
-    min-height: 190px !important;
-  }
-
-  .brand-logo img {
-    height: 160px !important;
-  }
-
-  .topbar .crest-wrap {
-    width: 68px !important;
-    height: 78px !important;
-    flex-basis: 68px !important;
-  }
-}
-
-
-
-/* =========================================================
-   REPUBLIK MELON – PENYEMPURNAAN HEADER TIGA BAGIAN (V4)
-   Bagian kiri (logo) dan kanan (jam) dipertahankan.
-   Fokus memperlebar, menggeser, dan memperbesar bagian tengah.
-   ========================================================= */
-@media (min-width: 761px) {
-  .topbar {
-    grid-template-columns:
-      minmax(360px, 1.08fr)
-      minmax(470px, 1.28fr)
-      minmax(220px, 250px) !important;
-    column-gap: 20px !important;
-  }
-
-  /* Kolom tengah: lambang dan identitas pemerintah */
-  .topbar .identity {
-    justify-self: start !important;
-    gap: 17px !important;
-    transform: translateX(12px);
-  }
-
-  .topbar .crest-wrap {
-    width: 88px !important;
-    height: 98px !important;
-    flex: 0 0 88px !important;
-  }
-
-  .topbar .identity-copy {
-    min-width: 0;
-  }
-
-  .topbar .govline {
-    font-size: clamp(11px, .92vw, 14px) !important;
-    letter-spacing: 1px !important;
-    line-height: 1.2 !important;
-  }
-
-  .topbar .identity h1 {
-    font-size: clamp(29px, 2.55vw, 39px) !important;
-    line-height: 1.08 !important;
-    letter-spacing: -.8px !important;
-    margin: 7px 0 !important;
-  }
-
-  .topbar .office-line {
-    font-size: clamp(10px, .82vw, 12px) !important;
-    letter-spacing: 1.15px !important;
-    line-height: 1.2 !important;
-  }
-}
-
-/* Pada desktop yang lebih sempit, jaga tiga kolom tetap proporsional */
 @media (min-width: 761px) and (max-width: 1100px) {
   .topbar {
-    grid-template-columns:
-      minmax(250px, .95fr)
-      minmax(360px, 1.2fr)
-      minmax(175px, 200px) !important;
-    column-gap: 10px !important;
+    grid-template-columns: minmax(0, .95fr) minmax(0, 1.2fr) minmax(175px, 200px);
+    gap: 10px;
+  }
+
+  .brand-logo img {
+    max-width: 350px;
+    height: 105px;
   }
 
   .topbar .identity {
-    gap: 10px !important;
+    gap: 10px;
     transform: translateX(5px);
   }
 
   .topbar .crest-wrap {
-    width: 64px !important;
-    height: 74px !important;
-    flex-basis: 64px !important;
+    width: 64px;
+    height: 74px;
+    flex-basis: 64px;
+  }
+
+  .topbar .govline {
+    font-size: 11px;
   }
 
   .topbar .identity h1 {
-    font-size: clamp(23px, 2.3vw, 29px) !important;
+    font-size: clamp(23px, 2.3vw, 29px);
+  }
+
+  .topbar .office-line {
+    font-size: 9px;
+  }
+
+  .official-grid .official-row {
+    grid-template-columns: 54px minmax(0, 1fr) auto;
+    gap: 7px;
+    padding: 3px 6px;
+  }
+
+  .official-grid .official-photo,
+  .official-grid .official-avatar {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
   }
 }
 
+/* Layar desktop dengan tinggi terbatas */
+@media (min-width: 761px) and (max-height: 760px) {
+  .melon-board {
+    gap: 5px;
+    padding: 8px;
+  }
 
+  .topbar {
+    flex-basis: 19%;
+    min-height: 105px;
+    max-height: 135px;
+    padding: 6px 12px;
+  }
+
+  .brand-logo img {
+    height: 98px;
+  }
+
+  .topbar .crest-wrap {
+    width: 60px;
+    height: 68px;
+    flex-basis: 60px;
+  }
+
+  .topbar .identity h1 {
+    font-size: clamp(24px, 2.2vw, 32px);
+  }
+
+  .topbar .clockbox {
+    padding: 7px 9px;
+  }
+
+  .topbar .clock-time {
+    font-size: 29px;
+  }
+
+  .official-area-full {
+    flex-basis: 41%;
+    padding: 5px 8px;
+  }
+
+  .official-grid {
+    gap: 4px;
+  }
+
+  .official-grid .official-row {
+    grid-template-columns: 48px minmax(0, 1fr) auto;
+    gap: 6px;
+    padding: 2px 5px;
+  }
+
+  .official-grid .official-photo,
+  .official-grid .official-avatar {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+  }
+
+  .official-grid .official-role {
+    font-size: 11px;
+  }
+
+  .official-grid .official-status {
+    min-width: 54px;
+    padding: 4px 5px;
+    font-size: 8px;
+  }
+
+  .information-area {
+    padding: 4px 7px;
+  }
+
+  .information-heading,
+  .official-heading {
+    min-height: 19px;
+  }
+
+  .official-heading h2,
+  .information-heading h2 {
+    font-size: 15px;
+  }
+
+  .information-label,
+  .information-value,
+  .information-description .information-value,
+  .information-description-text {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    font-size: 9px;
+    line-height: 1.1;
+  }
+
+  .bottomline {
+    min-height: 24px;
+    padding-top: 3px;
+  }
+}
 
 /* =========================================================
-   REPUBLIK MELON – PROPORSI LOGO HEADER (V5)
-   Logo kiri diperkecil agar tinggi visualnya seimbang
-   dengan blok identitas Kecamatan Wates di tengah.
+   RESPONSIVE MOBILE
    ========================================================= */
-@media (min-width: 761px) {
+
+@media (max-width: 760px) {
+  html,
+  body {
+    height: auto;
+    min-height: 100%;
+  }
+
+  body {
+    overflow: auto;
+    background-color: #F4F8EC;
+  }
+
+  .public-page {
+    height: auto;
+    min-height: 100svh;
+    padding: 8px;
+    overflow: visible;
+  }
+
+  .melon-board {
+    height: auto;
+    min-height: 100svh;
+    gap: 8px;
+    padding: 9px;
+    overflow: visible;
+  }
+
+  .topbar {
+    flex: 0 0 auto;
+    min-height: 0;
+    max-height: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 12px !important;
+  }
+
   .brand-logo {
-    justify-content: flex-start !important;
-    overflow: hidden !important;
+    width: 100%;
+    height: auto;
+    justify-content: center;
   }
 
   .brand-logo img {
-    width: 100% !important;
-    max-width: 420px !important;
-    height: 118px !important;
-    max-height: 100% !important;
-    object-fit: contain !important;
-    object-position: left center !important;
+    width: 100%;
+    max-width: 440px;
+    height: auto;
+    max-height: 120px;
+    object-position: center;
+  }
+
+  .topbar .identity {
+    width: 100%;
+    transform: none;
+    gap: 10px;
+  }
+
+  .topbar .crest-wrap {
+    width: 75px;
+    height: 82px;
+    flex-basis: 75px;
+  }
+
+  .topbar .govline {
+    font-size: 10px;
+    white-space: normal;
+  }
+
+  .topbar .identity h1 {
+    margin: 5px 0;
+    font-size: clamp(23px, 7vw, 34px);
+    white-space: normal;
+  }
+
+  .topbar .office-line {
+    font-size: 9px;
+    white-space: normal;
+  }
+
+  .topbar .clockbox {
+    width: 100%;
+    padding: 9px 12px;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  .topbar .clock-day {
+    font-size: 12px;
+  }
+
+  .topbar .clock-date {
+    font-size: 11px;
+  }
+
+  .topbar .clock-time {
+    font-size: 30px;
+  }
+
+  .official-area-full {
+    flex: 0 0 auto;
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .official-heading,
+  .information-heading {
+    min-height: 22px;
+    padding: 0 2px 2px;
+  }
+
+  .official-heading h2,
+  .information-heading h2 {
+    font-size: 18px;
+  }
+
+  .official-grid {
+    flex: 0 0 auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    gap: 5px;
+  }
+
+  .official-grid .official-row {
+    grid-template-columns: 54px minmax(0, 1fr) auto;
+    gap: 9px;
+    padding: 5px 7px;
+  }
+
+  .official-grid .official-photo,
+  .official-grid .official-avatar {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+  }
+
+  .official-grid .official-role {
+    font-size: 13px;
+  }
+
+  .official-grid .official-status {
+    min-width: 58px;
+    padding: 6px;
+    font-size: 9px;
+  }
+
+  .information-area {
+    flex: 0 0 auto;
+    gap: 6px;
+    padding: 10px;
+    overflow: visible;
+  }
+
+  .information-table {
+    flex: 0 0 auto;
+    overflow: hidden;
+  }
+
+  .information-row {
+    flex: 0 0 auto;
+    grid-template-columns: minmax(115px, 36%) minmax(0, 1fr);
+    min-height: 36px;
+  }
+
+  .information-label {
+    padding: 8px 7px;
+    font-size: 9px;
+  }
+
+  .information-value {
+    padding: 8px;
+    gap: 7px;
+    flex-wrap: wrap;
+    font-size: 10px;
+    line-height: 1.35;
+  }
+
+  .information-description .information-value,
+  .information-description-text {
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 1.35;
+  }
+
+  .availability-inline {
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .availability-inline strong {
+    font-size: 15px;
+  }
+
+  .info-state {
+    font-size: 10px;
+  }
+
+  .bottomline {
+    flex: 0 0 auto;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 7px 4px 2px;
+    overflow: visible;
+  }
+
+  .motto {
+    width: 100%;
+    white-space: normal;
+  }
+
+  .contact-info {
+    justify-content: flex-start;
+    white-space: normal;
+    font-size: 10px;
+  }
+
+  .update-stack {
+    width: 100%;
+    text-align: left;
+  }
+
+  .updated-at,
+  .connection-message {
+    white-space: normal;
   }
 }
 
-/* Layar desktop lebih sempit */
-@media (min-width: 761px) and (max-width: 1100px) {
-  .brand-logo img {
-    max-width: 350px !important;
-    height: 105px !important;
+/* =========================================================
+   HALAMAN ADMIN
+   Aturan admin dipertahankan agar tidak mengganggu dashboard publik.
+   ========================================================= */
+
+.admin-page {
+  min-height: 100vh;
+  height: auto;
+  overflow: auto;
+  padding: 24px 14px;
+  background-color: #FFF4D6;
+  background-image:
+    linear-gradient(rgba(255, 250, 232, .48), rgba(255, 250, 232, .48)),
+    url("assets/kulit-melon.png");
+  background-repeat: repeat;
+  background-size: auto, 397px 221px;
+}
+
+.admin-shell {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 26px;
+  border: 1px solid #DCEAB9;
+  border-radius: 18px;
+  background: #FFFEF8;
+  box-shadow: 0 14px 40px rgba(84, 111, 32, .12);
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 18px;
+  color: #628C1E;
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.admin-header .eyebrow {
+  color: #91B52D;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 1.4px;
+}
+
+.admin-header h1 {
+  margin: 0 0 7px;
+  color: #36551A;
+  font-size: 28px;
+}
+
+.admin-header > p:last-child {
+  margin: 0 0 22px;
+  color: #68745B;
+  font-size: 14px;
+}
+
+.admin-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.form-field-full {
+  grid-column: 1 / -1;
+}
+
+.form-field h2 {
+  margin: 8px 0 0;
+  color: #36551A;
+  font-size: 16px;
+}
+
+.form-field label {
+  color: #53613E;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.form-field input,
+.form-field select {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid #D6E4BD;
+  border-radius: 9px;
+  background: #FFFFFF;
+  color: #26351B;
+  font: inherit;
+  font-size: 14px;
+}
+
+.form-field small {
+  color: #68745B;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.primary-button {
+  padding: 13px 18px;
+  border: 0;
+  border-radius: 10px;
+  background: #79AD19;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.primary-button:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+.save-message {
+  color: #68745B;
+  font-size: 12px;
+}
+
+.save-message.success {
+  color: #3E851C;
+}
+
+.save-message.error {
+  color: #B7442A;
+}
+
+.admin-help {
+  margin-top: 18px;
+  padding: 13px;
+  border-radius: 10px;
+  background: #F2F8E6;
+  color: #68745B;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .admin-page {
+    padding: 12px 8px;
+  }
+
+  .admin-form {
+    grid-template-columns: 1fr;
+  }
+
+  .form-field-full {
+    grid-column: auto;
+  }
+
+  .admin-shell {
+    padding: 20px 16px;
   }
 }
