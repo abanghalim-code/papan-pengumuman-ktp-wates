@@ -60,7 +60,9 @@ document.addEventListener("DOMContentLoaded", function () {
   document.body.appendChild(responseFrame);
 
   window.addEventListener("message", function (event) {
-    if (event.source !== responseFrame.contentWindow) return;
+    if (!event.data ||
+    event.data.type !== "REPUBLIK_MELON_SAVE" ||
+    event.data.nonce !== activeNonce) return;
     const data = event.data;
     if (!data || data.type !== "REPUBLIK_MELON_SAVE" || data.nonce !== activeNonce) return;
 
