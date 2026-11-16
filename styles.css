@@ -1821,3 +1821,34 @@ body{
     font-size: clamp(23px, 2.3vw, 29px) !important;
   }
 }
+
+
+
+/* =========================================================
+   REPUBLIK MELON – PROPORSI LOGO HEADER (V5)
+   Logo kiri diperkecil agar tinggi visualnya seimbang
+   dengan blok identitas Kecamatan Wates di tengah.
+   ========================================================= */
+@media (min-width: 761px) {
+  .brand-logo {
+    justify-content: flex-start !important;
+    overflow: hidden !important;
+  }
+
+  .brand-logo img {
+    width: 100% !important;
+    max-width: 420px !important;
+    height: 118px !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
+    object-position: left center !important;
+  }
+}
+
+/* Layar desktop lebih sempit */
+@media (min-width: 761px) and (max-width: 1100px) {
+  .brand-logo img {
+    max-width: 350px !important;
+    height: 105px !important;
+  }
+}
