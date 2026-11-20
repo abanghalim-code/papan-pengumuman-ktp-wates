@@ -684,82 +684,88 @@
   <script src="config.js"></script>
   <script src="app.js"></script>
 
-  <script>
-    /* Pengendali halaman generik: otomatis membaca semua .display-page */
-    (() => {
-      const pages = Array.from(document.querySelectorAll('.display-page'));
-      if (!pages.length) return;
+<script>
+  /* NAVIGASI HALAMAN MANUAL - TANPA OTOMATIS */
+  (() => {
+    const pages = Array.from(
+      document.querySelectorAll('.display-page')
+    );
 
-      const previousButton = document.getElementById('page-prev');
-      const nextButton = document.getElementById('page-next');
-      const currentLabel = document.getElementById('page-current');
-      const totalLabel = document.getElementById('page-total');
-      const titleLabel = document.getElementById('page-title');
+    if (!pages.length) return;
 
-      let activeIndex = Math.max(0, pages.findIndex(page => page.classList.contains('page-active')));
-      let autoTimer = null;
-      const AUTO_INTERVAL = 15000;
+    const previousButton = document.getElementById('page-prev');
+    const nextButton = document.getElementById('page-next');
+    const currentLabel = document.getElementById('page-current');
+    const totalLabel = document.getElementById('page-total');
+    const titleLabel = document.getElementById('page-title');
 
-      const showPage = (index) => {
-        if (index < 0 || index >= pages.length) return;
-        activeIndex = index;
+    let activeIndex = Math.max(
+      0,
+      pages.findIndex(page =>
+        page.classList.contains('page-active')
+      )
+    );
 
-        pages.forEach((page, pageIndex) => {
-          const isActive = pageIndex === activeIndex;
-          page.classList.toggle('page-active', isActive);
-          page.setAttribute('aria-hidden', String(!isActive));
-        });
+    const showPage = (index) => {
+      activeIndex = Math.max(
+        0,
+        Math.min(index, pages.length - 1)
+      );
 
-        if (currentLabel) currentLabel.textContent = String(activeIndex + 1).padStart(2, '0');
-        if (totalLabel) totalLabel.textContent = String(pages.length).padStart(2, '0');
-        if (titleLabel) titleLabel.textContent = pages[activeIndex].dataset.pageTitle || `HALAMAN ${activeIndex + 1}`;
+      pages.forEach((page, pageIndex) => {
+        const isActive = pageIndex === activeIndex;
 
-        if (previousButton) previousButton.disabled = activeIndex === 0;
-        if (nextButton) nextButton.disabled = activeIndex === pages.length - 1;
-      };
-
-      const stopAuto = () => {
-        if (autoTimer) window.clearInterval(autoTimer);
-        autoTimer = null;
-      };
-
-      const startAuto = () => {
-        stopAuto();
-        if (pages.length < 2) return;
-        autoTimer = window.setInterval(() => {
-          showPage((activeIndex + 1) % pages.length);
-        }, AUTO_INTERVAL);
-      };
-
-      previousButton?.addEventListener('click', () => {
-        showPage((activeIndex - 1 + pages.length) % pages.length);
-        startAuto();
+        page.classList.toggle('page-active', isActive);
+        page.setAttribute('aria-hidden', String(!isActive));
       });
 
-      nextButton?.addEventListener('click', () => {
-        showPage((activeIndex + 1) % pages.length);
-        startAuto();
-      });
+      if (currentLabel) {
+        currentLabel.textContent =
+          String(activeIndex + 1).padStart(2, '0');
+      }
 
-      document.addEventListener('keydown', event => {
-        if (event.key === 'ArrowRight') {
-          showPage((activeIndex + 1) % pages.length);
-          startAuto();
-        } else if (event.key === 'ArrowLeft') {
-          showPage((activeIndex - 1 + pages.length) % pages.length);
-          startAuto();
-        }
-      });
+      if (totalLabel) {
+        totalLabel.textContent =
+          String(pages.length).padStart(2, '0');
+      }
 
-      document.addEventListener('visibilitychange', () => {
-        if (document.hidden) stopAuto();
-        else startAuto();
-      });
+      if (titleLabel) {
+        titleLabel.textContent =
+          pages[activeIndex].dataset.pageTitle ||
+          `HALAMAN ${activeIndex + 1}`;
+      }
 
-      showPage(activeIndex);
-      startAuto();
-    })();
-  </script>
+      if (previousButton) {
+        previousButton.disabled = activeIndex === 0;
+      }
+
+      if (nextButton) {
+        nextButton.disabled = activeIndex === pages.length - 1;
+      }
+    };
+
+    previousButton?.addEventListener('click', () => {
+      showPage(activeIndex - 1);
+    });
+
+    nextButton?.addEventListener('click', () => {
+      showPage(activeIndex + 1);
+    });
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'ArrowRight') {
+        showPage(activeIndex + 1);
+      }
+
+      if (event.key === 'ArrowLeft') {
+        showPage(activeIndex - 1);
+      }
+    });
+
+    showPage(activeIndex);
+  })();
+</script>
+
 
 </body>
 </html>
